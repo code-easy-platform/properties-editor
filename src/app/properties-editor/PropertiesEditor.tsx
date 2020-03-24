@@ -4,7 +4,6 @@ import { IItem } from './shared/interfaces';
 import { ListItem } from './shared/components/ListItem';
 
 const css_base: React.CSSProperties = {
-    // backgroundColor: '#22252a',
     width: '100%',
     height: '100%',
     flexDirection: 'column'

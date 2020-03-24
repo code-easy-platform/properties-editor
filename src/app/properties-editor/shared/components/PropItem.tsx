@@ -12,19 +12,19 @@ const css_prop_item: React.CSSProperties = {
 export const PropItem: React.FC<IProperties> = ({ id, label, value }) => {
 
     const css_prop_item_label: React.CSSProperties = {
+        wordBreak: 'break-all',
         textAlign: 'start',
         width: '20%',
-
     }
 
     const css_prop_item_input: React.CSSProperties = {
         padding: 10,
-        // backgroundColor: '#22252a',
-        border: '0.5px solid white',
+        backgroundColor: '#ffffff10',
+        border: '0.5px solid #ffffff15',
         borderRadius: 4,
         paddingRight: 4,
         paddingLeft: 4,
-        // color: 'white',
+        color: 'white',
         width: '70%',
     }
 
