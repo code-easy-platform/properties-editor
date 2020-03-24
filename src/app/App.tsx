@@ -1,7 +1,7 @@
 import React from 'react';
 
 import { PropertiesEditor } from './properties-editor/PropertiesEditor';
-import { IItem } from './properties-editor/shared/interfaces';
+import { IItem, TypeValues } from './properties-editor/shared/interfaces';
 import './App.scss';
 
 const itens: IItem[] = [
@@ -13,12 +13,14 @@ const itens: IItem[] = [
       {
         id: 1,
         label: 'Name',
-        value: 'IF'
+        value: 'IF',
+        typeValue: TypeValues.string
       },
       {
         id: 2,
+        value: 'true',
         label: 'Condiction',
-        value: 'true'
+        typeValue: TypeValues.string
       },
     ]
   }
@@ -30,6 +32,7 @@ const App: React.FC = () => {
       <div style={{ maxWidth: 300, minWidth: 300, alignContent: '' }}>
         <PropertiesEditor
           itens={itens}
+          onChange={itens => console.log(itens)}
         />
       </div>
     </div>
