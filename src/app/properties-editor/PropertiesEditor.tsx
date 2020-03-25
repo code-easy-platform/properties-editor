@@ -4,10 +4,10 @@ import { IItem } from './shared/interfaces';
 import { ListItem } from './shared/components/ListItem';
 
 const css_base: React.CSSProperties = {
-    width: '100%',
-    height: '100%',
     flexDirection: 'column',
-    overflow: 'auto'
+    marginBottom: '100px',
+    overflow: 'auto',
+    flex: '1',
 };
 
 interface PropertiesEditorProps {
@@ -31,7 +31,12 @@ export const PropertiesEditor: React.FC<PropertiesEditorProps> = ({ itens, onCha
 
     return (
         <div style={css_base}>
-            {state.itens.map((item, index) => <ListItem {...item} onChange={data => onChangeListItem(data, index)} />)}
+            {state.itens.map((item, index) => {
+                return (<>
+                    <ListItem {...item} onChange={data => onChangeListItem(data, index)} />
+                    <div style={{ height: '30px' }} />
+                </>);
+            })}
         </div>
     );
 }
