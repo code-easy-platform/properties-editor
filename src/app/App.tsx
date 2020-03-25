@@ -22,6 +22,36 @@ const itens: IItem[] = [
         label: 'Condiction',
         typeValue: TypeValues.string
       },
+      {
+        id: 3,
+        value: 'true',
+        label: 'Condiction',
+        typeValue: TypeValues.string
+      },
+      {
+        id: 4,
+        value: 'true',
+        label: 'Condiction',
+        typeValue: TypeValues.string
+      },
+      {
+        id: 5,
+        value: 'true',
+        label: 'Condiction',
+        typeValue: TypeValues.string
+      },
+      {
+        id: 6,
+        value: 'true',
+        label: 'Condiction',
+        typeValue: TypeValues.string
+      },
+      {
+        id: 7,
+        value: 'true',
+        label: 'Condiction',
+        typeValue: TypeValues.string
+      }
     ]
   }
 ]
