@@ -34,7 +34,7 @@ export const PropertiesEditor: React.FC<PropertiesEditorProps> = ({ itens, onCha
             {state.itens.map((item, index) => {
                 return (<>
                     <ListItem {...item} onChange={data => onChangeListItem(data, index)} />
-                    <div style={{ height: '30px' }} />
+                    <div style={{ minHeight: '30px' }} />
                 </>);
             })}
         </div>
