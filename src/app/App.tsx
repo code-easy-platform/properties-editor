@@ -20,7 +20,7 @@ const itens: IItem[] = [
         id: 2,
         value: 'true',
         label: 'Condiction',
-        typeValue: TypeValues.string
+        typeValue: TypeValues.boolean
       },
       {
         id: 3,
