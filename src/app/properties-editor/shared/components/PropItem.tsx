@@ -18,10 +18,13 @@ export const PropItem: React.FC<PropItemProps> = ({ id, label, typeValue, value,
     const [state, setState] = useState<IProperties>({ id, label, typeValue, value });
 
     const css_prop_item_label: React.CSSProperties = {
-        wordBreak: 'break-all',
+        textOverflow: 'ellipsis',
+        display: 'inline-block',
         textAlign: 'start',
+        overflow: 'hidden',
         flex: '1',
     }
+
     const css_prop_item_input: React.CSSProperties = {
         padding: 10,
         backgroundColor: '#ffffff10',

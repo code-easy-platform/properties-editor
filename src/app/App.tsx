@@ -19,7 +19,7 @@ const itens: IItem[] = [
       {
         id: 2,
         value: 'true',
-        label: 'Condiction',
+        label: 'Enabled',
         typeValue: TypeValues.boolean
       },
       {
