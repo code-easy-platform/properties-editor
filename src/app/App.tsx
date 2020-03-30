@@ -36,7 +36,7 @@ const itens: IItem[] = [
       },
       {
         id: 5,
-        value: '""',
+        value: '',
         label: 'Expression',
         typeValue: TypeValues.expression
       },
