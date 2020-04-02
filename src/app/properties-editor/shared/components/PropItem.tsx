@@ -18,6 +18,10 @@ interface PropItemProps extends IProperties {
 export const PropItem: React.FC<PropItemProps> = ({ id, label, typeValue, value, onChange }) => {
 
     const [state, setState] = useState<IProperties>({ id, label, typeValue, value });
+    state.typeValue = typeValue;
+    state.label = label;
+    state.value = value;
+    state.id = id;
 
     const css_prop_item_label: React.CSSProperties = {
         textOverflow: 'ellipsis',

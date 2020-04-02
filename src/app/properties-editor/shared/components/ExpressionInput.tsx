@@ -4,10 +4,7 @@ import MonacoEditor from 'react-monaco-editor';
 export const ExpressionInput = (props: React.DetailedHTMLProps<React.InputHTMLAttributes<HTMLInputElement>, HTMLInputElement>) => {
     // const onDoubleClick = props.onDoubleClick ? props.onDoubleClick : () => { };
 
-    const [state, setState] = useState({
-        isOpenEditor: false,
-        code: ''
-    })
+    const [state, setState] = useState({ isOpenEditor: false, code: '' })
 
     return (
         <div style={{
@@ -21,8 +18,6 @@ export const ExpressionInput = (props: React.DetailedHTMLProps<React.InputHTMLAt
                 <path d='M0 0h24v24H0z' fill='none' />
                 <path fill='#ffffff15' d='M18 4H6v2l6.5 6L6 18v2h12v-3h-7l5-5-5-5h7z' />
             </svg>
-
-
 
             {state.isOpenEditor && <div style={{ position: 'fixed', left: '0px', top: '0px', width: '100vw', height: '100vh', alignItems: 'center', justifyContent: 'center' }}>
 
