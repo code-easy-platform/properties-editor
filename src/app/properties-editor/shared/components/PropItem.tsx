@@ -1,4 +1,4 @@
-import React, { useState } from 'react';
+import React, { useState, useEffect } from 'react';
 
 import { IProperties, TypeValues } from '../interfaces';
 import { DefaultSwitch } from './DefaultSwitch';
@@ -18,10 +18,9 @@ interface PropItemProps extends IProperties {
 export const PropItem: React.FC<PropItemProps> = ({ id, label, typeValue, value, onChange }) => {
 
     const [state, setState] = useState<IProperties>({ id, label, typeValue, value });
-    state.typeValue = typeValue;
-    state.label = label;
-    state.value = value;
-    state.id = id;
+    useEffect(() => {
+        setState({ id, label, typeValue, value })
+    }, [id, label, typeValue, value ]);
 
     const css_prop_item_label: React.CSSProperties = {
         textOverflow: 'ellipsis',
