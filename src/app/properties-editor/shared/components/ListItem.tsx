@@ -7,6 +7,10 @@ interface ListItemProps extends IItem { onChange(data: IItem): void; }
 export const ListItem: React.FC<ListItemProps> = ({ id, name, properties, isHeader, onChange }) => {
 
     const [state, setState] = useState<IItem>({ id, name, properties, isHeader });
+    state.id = id;
+    state.name = name;
+    state.properties = properties
+    state.isHeader = isHeader;
 
     const css_list_item: React.CSSProperties = {
         backgroundColor: isHeader ? '#ffffff10' : '',
