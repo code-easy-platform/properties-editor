@@ -6,48 +6,48 @@ import './App.scss';
 
 const itens: IItem[] = [
   {
-    id: 1,
+    id: '1',
     name: 'Any string',
     isHeader: true,
     properties: [
       {
-        id: 1,
+        id: '1',
         label: 'String',
         value: 'Any string',
         typeValue: TypeValues.string
       },
       {
-        id: 2,
+        id: '2',
         value: true,
         label: 'Boolean',
         typeValue: TypeValues.boolean
       },
       {
-        id: 3,
+        id: '3',
         value: 0,
         label: 'Number',
         typeValue: TypeValues.number
       },
       {
-        id: 4,
+        id: '4',
         value: null,
         label: 'Binary',
         typeValue: TypeValues.binary
       },
       {
-        id: 5,
+        id: '5',
         value: '',
         label: 'Expression',
         typeValue: TypeValues.expression
       },
       {
-        id: 6,
+        id: '6',
         value: 'true',
         label: 'Big string',
         typeValue: TypeValues.bigstring
       },
       {
-        id: 7,
+        id: '7',
         value: 'true',
         label: 'Condiction',
         typeValue: TypeValues.string
