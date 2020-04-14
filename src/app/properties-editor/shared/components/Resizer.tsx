@@ -27,7 +27,7 @@ export const Resizer: React.FC<ResizerProps> = ({ left, onChange, paiRef }) => {
             onMouseDown={onMouseDown}
             onMouseUp={onMouseUp}
             style={{
-                backgroundColor: 'black',
+                backgroundColor: 'transparent',
                 position: 'absolute',
                 cursor: 'col-resize',
                 left: state.left,

@@ -14,11 +14,21 @@ export const ExpressionInput = (props: React.DetailedHTMLProps<React.InputHTMLAt
             alignItems: 'center',
         }}>
             <input {...props} onDoubleClick={e => setState({ ...state, isOpenEditor: true })} style={{ ...props.style, width: '100%', maxWidth: '100%', paddingRight: '24px' }} />
-            <div style={{ ...props.style, minWidth: 0, width: 0, marginLeft: 4, cursor: 'pointer', height: '100%' }} />
+            <div
+                style={{ ...props.style, minWidth: 0, width: 0, marginLeft: 4, cursor: 'pointer', height: '100%' }}
+                onClick={(e: any) => setState({ ...state, isOpenEditor: true })}
+            />
 
             {state.isOpenEditor && <div style={{ position: 'fixed', left: '0px', top: '0px', width: '100vw', height: '100vh', alignItems: 'center', justifyContent: 'center' }}>
 
-                <div style={{ width: '70%', height: '70%', backgroundColor: '#2c2c2c', padding: '8px' }}>
+                <div style={{
+                    backgroundColor: '#2c2c2c',
+                    flexDirection: 'column',
+                    alignItems: 'flex-end',
+                    padding: '8px',
+                    height: '70%',
+                    width: '70%',
+                }}>
 
                     <div style={{ padding: '8px' }}>
                         <button onClick={e => setState({ ...state, isOpenEditor: false })}>Fechar</button>
@@ -42,6 +52,6 @@ export const ExpressionInput = (props: React.DetailedHTMLProps<React.InputHTMLAt
 
             </div>}
 
-        </div>
+        </div >
     );
 }
