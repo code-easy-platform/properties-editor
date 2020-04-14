@@ -12,45 +12,51 @@ const itens: IItem[] = [
     properties: [
       {
         id: '1',
-        label: 'String',
+        name: 'String',
         value: 'Any string',
-        typeValue: TypeValues.string
+        type: TypeValues.string
       },
       {
         id: '2',
         value: true,
-        label: 'Boolean',
-        typeValue: TypeValues.boolean
+        name: 'Boolean',
+        type: TypeValues.boolean
       },
       {
         id: '3',
         value: 0,
-        label: 'Number',
-        typeValue: TypeValues.number
+        name: 'Number',
+        type: TypeValues.number
       },
       {
         id: '4',
         value: null,
-        label: 'Binary',
-        typeValue: TypeValues.binary
+        name: 'Binary',
+        type: TypeValues.binary
       },
       {
         id: '5',
         value: '',
-        label: 'Expression',
-        typeValue: TypeValues.expression
+        name: 'Expression',
+        type: TypeValues.expression
       },
       {
         id: '6',
         value: 'true',
-        label: 'Big string',
-        typeValue: TypeValues.bigstring
+        name: 'Big string',
+        type: TypeValues.bigstring
       },
       {
         id: '7',
         value: 'true',
-        label: 'Condiction',
-        typeValue: TypeValues.string
+        name: 'Condiction',
+        type: TypeValues.expression
+      },
+      {
+        id: '8',
+        value: 'My name',
+        name: 'Name',
+        type: TypeValues.assign
       }
     ]
   }
@@ -59,7 +65,7 @@ const itens: IItem[] = [
 const App: React.FC = () => {
   return (
     <div className="App">
-      <div style={{ maxWidth: 300, minWidth: 300, height: 200, alignContent: '', marginTop: 400 }}>
+      <div style={{ maxWidth: 300, minWidth: 300, alignContent: '' }}>
         <PropertiesEditor
           itens={itens}
           onChange={itens => console.log(itens)}
