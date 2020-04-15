@@ -10,8 +10,10 @@ export enum TypeValues {
 }
 
 export interface IProperties {
+    valueHasError?: boolean;
     id: string | undefined;
-    type: TypeValues
+    nameHasError?: boolean;
+    type: TypeValues;
     name: string;
     value: any;
 }

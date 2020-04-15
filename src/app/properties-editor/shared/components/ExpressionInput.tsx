@@ -70,6 +70,6 @@ export const ExpressionInput = (props: React.DetailedHTMLProps<React.InputHTMLAt
 
             </div>}
 
-        </div >
+        </div>
     );
 }
