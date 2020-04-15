@@ -65,6 +65,7 @@ export const PropItem: React.FC<PropItemProps> = ({ id, name, type, value, onCha
                         style={css_prop_item_input}
                         id={'prop_id_' + state.id}
                         value={state.value}
+                        autoComplete='off'
                     />
                 </div>
             );
@@ -98,6 +99,7 @@ export const PropItem: React.FC<PropItemProps> = ({ id, name, type, value, onCha
                         style={{ ...css_prop_item_input, height: '50px' }}
                         id={'prop_id_' + state.id}
                         value={state.value}
+                        autoComplete='off'
                     />
                 </div>
             );
@@ -115,6 +117,7 @@ export const PropItem: React.FC<PropItemProps> = ({ id, name, type, value, onCha
                         id={'prop_id_' + state.id}
                         value={state.value}
                         type='number'
+                        autoComplete='off'
                     />
                 </div>
             );

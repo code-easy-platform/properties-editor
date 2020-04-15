@@ -14,6 +14,7 @@ export const DefaultSwitch = ({ id, checked = false, onChange, hasError = false 
             onChange={onChange}
             handleDiameter={20}
             checkedIcon={true}
+            autoComplete='off'
             checked={checked}
             height={25}
             width={50}
