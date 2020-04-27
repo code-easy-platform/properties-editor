@@ -1,13 +1,13 @@
 import React from 'react';
 
-import { PropertiesEditor } from './properties-editor/PropertiesEditor';
 import { IItem, TypeValues } from './properties-editor/shared/interfaces';
-import './App.scss';
+import { PropertiesEditor } from './properties-editor/PropertiesEditor';
+import './App.css';
 
 const itens: IItem[] = [
   {
     id: '1',
-    name: 'Any string',
+    name: 'My name to view only',
     isHeader: true,
     properties: [
       {
@@ -26,7 +26,6 @@ const itens: IItem[] = [
         editValueDisabled: false,
         editNameDisabled: true,
         valueHasError: true,
-        nameHasError: true,
       },
       {
         id: '2',
@@ -70,13 +69,9 @@ const itens: IItem[] = [
       },
       {
         id: '6',
-        value: 'true',
         name: 'Big string',
+        value: 'My big string',
         type: TypeValues.bigstring,
-        editValueDisabled: false,
-        editNameDisabled: true,
-        valueHasError: false,
-        nameHasError: false,
       },
       {
         id: '7',
@@ -96,7 +91,7 @@ const itens: IItem[] = [
         editValueDisabled: false,
         editNameDisabled: false,
         valueHasError: true,
-        nameHasError: true,
+        nameHasError: false,
       }
     ]
   }
@@ -109,6 +104,7 @@ const App: React.FC = () => {
         <PropertiesEditor
           itens={itens}
           onChange={itens => console.log(itens)}
+          onChangeInputWidth={(width) => console.log(width)}
         />
       </div>
     </div>
