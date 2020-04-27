@@ -4,7 +4,7 @@ interface ResizerProps { onChange(left: number): void }
 export const Resizer: React.FC<ResizerProps> = ({ onChange }) => {
 
     const mouseMove = (e: MouseEvent) => {
-        onChange(((window.innerWidth / 2) - e.pageX) + 142);
+        onChange(window.innerWidth - e.pageX);
     }
 
     const mouseUp = () => {
