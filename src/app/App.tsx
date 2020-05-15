@@ -12,7 +12,7 @@ const item: IItem = {
     {
       id: '0',
       name: 'Name',
-      information: 'Minha infromação de teste. Esta informação serve para informar algo que pode ser importante ao usuário!',
+      //information: 'Minha infromação de teste. Esta informação serve para informar algo que pode ser importante ao usuário!',
       value: 'My name to view only',
       type: TypeValues.viewOnly,
       valueHasError: false,

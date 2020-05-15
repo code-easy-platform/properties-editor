@@ -42,7 +42,7 @@ export const PropertiesEditor: React.FC<PropertiesEditorProps> = ({ inputsWidth 
     }
 
     return (
-        <div className="flex1 flex-column overflow-auto" style={{ boxShadow: "0 0 10px 0px black" }}>
+        <div className="flex1 flex-column overflow-auto">
             <ListItem
                 onChange={data => onChangeListItem(data)}
                 onChangeInputWidth={changeInputWidth}
