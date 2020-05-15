@@ -1,11 +1,15 @@
 @import "./variables.css";
+@import "./paddings.css";
+@import "./margins.css";
+@import "./fonts.css";
+@import "./flexs.css";
 
 * {
   -webkit-user-select: none;
   -moz-user-select: -moz-none;
-  outline: --outline-padrao;
   -ms-user-select: none;
   user-select: none;
+  outline: none;
   padding: 0;
   margin: 0;
 }
@@ -16,6 +20,9 @@
 .selected,
 *[selected="true"] {
   background-color: var(--main-select-color);
+}
+.editing {
+  background-color: var(--main-editing-color);
 }
 .selected,
 *[selected="true"]:hover {
@@ -57,15 +64,23 @@ label {
   cursor: pointer;
 }
 
-input, textarea {
+input,
+textarea,
+select {
   background-color: var(--main-background-bars);
-  border: var(--input-border);
-  color: var(--color-white);
   padding: var(--size-2);
   border-radius: var(--size-1);
   padding-right: var(--size-1);
   padding-left: var(--size-1);
+  border: var(--input-border);
   color: var(--color-white);
+}
+
+input:focus,
+textarea:focus,
+select:focus {
+  background-color: var(--main-background-input-focus);
+  outline: var(--outline-none);
 }
 /* Remove os botões da input de texto */
 /* Chrome, Safari, Edge, Opera */
@@ -77,6 +92,29 @@ input::-webkit-inner-spin-button {
 /* Firefox */
 input[type="number"] {
   -moz-appearance: textfield;
+}
+
+/* Backgrounds base */
+.background {
+  background-color: var(--main-background);
+}
+.background-bars {
+  background-color: var(--main-background-bars);
+}
+.background-panels {
+  background-color: var(--main-background-panels);
+}
+.background-highlighted {
+  background-color: var(--main-background-highlighted);
+}
+/*  ---------------- */
+
+.border-radius {
+  border-radius: var(--size-1);
+}
+
+.box-shadow-small {
+  box-shadow: var(--box-shadow-small);
 }
 
 .no-events {
@@ -118,20 +156,9 @@ input[type="number"] {
   height: var(--size-fill);
 }
 
-/* Backgrounds base */
-.background {
-  background-color: var(--main-background);
+.absolute {
+  position: absolute;
 }
-.background-bars {
-  background-color: var(--main-background-bars);
-}
-.background-panels {
-  background-color: var(--main-background-panels);
-}
-.background-highlighted {
-  background-color: var(--main-background-highlighted);
-}
-/*  ---------------- */
 
 .display-block {
   display: block;
@@ -154,17 +181,8 @@ input[type="number"] {
   font-weight: 500;
 }
 
-.display-flex {
-  display: flex;
-}
-.flex1 {
-  flex: 1;
-}
-.flex-column {
-  flex-direction: column;
-}
-.flex-row {
-  flex-direction: row;
+.color-primary {
+  background-color: var(--color-primary);
 }
 
 .hr {
@@ -181,74 +199,52 @@ input[type="number"] {
   width: 100%;
 }
 .hr.divider {
-  margin-top: var(--size-2);
   margin-bottom: var(--size-2);
+  margin-top: var(--size-2);
 }
 
 .btn {
   border: var(--size-none) solid var(--color-white);
   color: var(--font-color-input-propertie-editor);
+  background-color: var(--color-transparent);
   font-family: var(--font-family-vs-code);
-  background: var(--main-background);
+  width: fit-content;
   cursor: pointer;
   padding: var(--size-1-5);
-  padding-left: var(--size-1-5);
   padding-right: var(--size-1-5);
+  padding-left: var(--size-1-5);
+}
+.btn:hover {
+  background-color: var(--main-background-highlighted);
+  color: var(--color-white);
 }
 .btn:focus {
-  outline: var(--outline-padrao);
+  background-color: var(--main-background-highlighted);
+  color: var(--color-white);
+}
+.btn:active {
+  color: var(--color-white);
+  opacity: 0.5;
+}
+
+.btn-xs {
+  height: calc(var(--size-xs) * 3);
+}
+.btn-s {
+  height: calc(var(--size-s) * 3);
+}
+.btn-m {
+  height: calc(var(--size-m) * 3);
+}
+.btn-g {
+  height: calc(var(--size-g) * 3);
+}
+.btn-xg {
+  height: calc(var(--size-xg) * 3);
 }
 
 .width-auto {
   width: auto;
-}
-
-.margin-xs {
-  margin: var(--margin-xs);
-}
-.margin-s {
-  margin: var(--margin-s);
-}
-.margin-m {
-  margin: var(--margin-m);
-}
-.margin-g {
-  margin: var(--margin-g);
-}
-.margin-xg {
-  margin: var(--margin-xg);
-}
-
-.margin-top-xs {
-  margin-top: var(--margin-xs);
-}
-.margin-top-s {
-  margin-top: var(--margin-s);
-}
-.margin-top-m {
-  margin-top: var(--margin-m);
-}
-.margin-top-g {
-  margin-top: var(--margin-g);
-}
-.margin-top-xg {
-  margin-top: var(--margin-xg);
-}
-
-.margin-bottom-xs {
-  margin-bottom: var(--margin-xs);
-}
-.margin-bottom-s {
-  margin-bottom: var(--margin-s);
-}
-.margin-bottom-m {
-  margin-bottom: var(--margin-m);
-}
-.margin-bottom-g {
-  margin-bottom: var(--margin-g);
-}
-.margin-bottom-xg {
-  margin-bottom: var(--margin-xg);
 }
 
 /* Ajusta o scroll de todos os elementos. */
@@ -283,4 +279,30 @@ input[type="number"] {
 .mini-scroll-bar::-webkit-scrollbar-thumb {
   background-color: var(--main-background-bars);
   width: var(--size-x-scroll-bar-small);
+}
+
+[info-message] {
+  position: relative;
+}
+
+[info-message]::before {
+  background-color: var(--main-background-info);
+  box-shadow: var(--box-shadow-context-menu);
+  font-size: var(--font-size-sm);
+  border-radius: var(--size-1);
+  content: attr(info-message);
+  padding: var(--padding-xs);
+  color: var(--color-white);
+  white-space: break-spaces;
+  pointer-events: none;
+  text-align: center;
+  max-width: 200px;
+  position: fixed;
+  z-index: 5000;
+  display: none;
+  height: auto;
+}
+
+[info-message]:hover::before {
+  display: block;
 }
