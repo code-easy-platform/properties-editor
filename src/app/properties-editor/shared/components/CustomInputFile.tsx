@@ -33,6 +33,6 @@ export const CustomInputFile = (props: React.DetailedHTMLProps<React.InputHTMLAt
             key={Utils.getRandomId() + "_" + props.id}
             onKeyPress={e => { input.current.click() }}
         >{state.fileName || 'Select a file...'}</div>
-        <input key={props.id} id={props.id} type='file' disabled={props.disabled} autoComplete='off' ref={input} onChange={(e) => { setState({ fileName: e.target.value }); onChange(e) }} style={{ display: 'none' }} />
+        <input key={props.id} id={props.id} type='file' disabled={props.disabled} autoComplete='off' ref={input} onChange={(e: any) => { setState({ fileName: e.target.files[0].name }); onChange(e) }} style={{ display: 'none' }} />
     </>);
 }

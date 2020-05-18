@@ -15,6 +15,7 @@ const item: IItem = {
       //information: 'Minha infromação de teste. Esta informação serve para informar algo que pode ser importante ao usuário!',
       value: 'My name to view only',
       type: TypeValues.viewOnly,
+      propertieType: 'viewOnly',
       valueHasError: false,
       nameHasError: false,
     },
@@ -22,6 +23,7 @@ const item: IItem = {
       id: '1',
       name: 'String',
       value: 'Any string',
+      propertieType: 'String',
       type: TypeValues.string,
       information: 'Minha infromação de teste',
       editValueDisabled: false,
@@ -32,6 +34,7 @@ const item: IItem = {
       id: '2',
       value: true,
       name: 'Boolean',
+      propertieType: 'Boolean',
       information: 'Minha infromação de teste',
       type: TypeValues.boolean,
       editValueDisabled: false,
@@ -44,8 +47,9 @@ const item: IItem = {
       value: 0,
       name: 'Number',
       information: 'Minha infromação de teste',
-      type: TypeValues.number,
       editValueDisabled: false,
+      propertieType: 'number',
+      type: TypeValues.number,
       editNameDisabled: true,
       valueHasError: false,
       nameHasError: false,
@@ -54,6 +58,7 @@ const item: IItem = {
       id: '4',
       value: null,
       name: 'Binary',
+      propertieType: 'File',
       information: 'Minha infromação de teste',
       type: TypeValues.binary,
       editValueDisabled: false,
@@ -67,6 +72,7 @@ const item: IItem = {
       name: 'Expression',
       information: 'Minha infromação de teste',
       type: TypeValues.expression,
+      propertieType: 'expresion',
       editValueDisabled: false,
       editNameDisabled: true,
       valueHasError: false,
@@ -76,6 +82,7 @@ const item: IItem = {
       id: '6',
       name: 'Big string',
       value: 'My big string',
+      propertieType: 'description',
       type: TypeValues.bigstring,
       information: 'Minha infromação de teste',
     },
@@ -83,6 +90,7 @@ const item: IItem = {
       id: '7',
       value: 'true',
       name: 'Condiction',
+      propertieType: 'if',
       information: 'Minha infromação de teste',
       type: TypeValues.expression,
       editValueDisabled: false,
@@ -94,6 +102,7 @@ const item: IItem = {
       id: '8',
       name: 'Name',
       value: 'My name',
+      propertieType: 'name',
       information: 'Minha infromação de teste',
       type: TypeValues.assign,
       editValueDisabled: false,
@@ -104,8 +113,9 @@ const item: IItem = {
     {
       id: '9',
       value: 'opts',
-      editValueDisabled: false,
       name: 'Combo',
+      propertieType: 'combo',
+      editValueDisabled: false,
       type: TypeValues.selection,
       information: 'Combo box para seleção única de itens',
       suggestions: [
@@ -141,8 +151,9 @@ const item: IItem = {
     },
     {
       id: '10',
-      name: 'Combo Yes/No',
       value: 'false',
+      name: 'Combo Yes/No',
+      propertieType: 'YesNo',
       editValueDisabled: false,
       type: TypeValues.yesNoSelection,
       information: 'Combo box para seleção de sim ou não(boolean)'
@@ -157,7 +168,7 @@ const App: React.FC = () => {
         <PropertiesEditor
           item={item}
           onChange={itens => console.log(itens)}
-          onChangeInputWidth={(width) => console.log(width)}
+          //onChangeInputWidth={(width) => console.log(width)}
         />
       </div>
     </div>
