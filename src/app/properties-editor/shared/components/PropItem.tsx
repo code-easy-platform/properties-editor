@@ -275,7 +275,10 @@ export const PropItem: React.FC<PropItemProps> = (props) => { // Extende outra i
                     <Resizer onChange={newWidth => onChangeInputWidth(newWidth)} />
                     <select
                         style={{ ...css_prop_item_input, width: inputWidth ? `${inputWidth}px` : '70%', minWidth: minWidth, maxWidth: '90%' }}
-                        onChange={e => { setState({ ...state, value: e.target.value }); onChange(state); }}
+                        onChange={e => {
+                            setState({ ...state, value: e.target.value });
+                            onChange({ ...state, value: e.target.value });
+                        }}
                         disabled={state.editValueDisabled}
                         className={"background-bars"}
                         key={'prop_key_' + state.id}
@@ -308,7 +311,10 @@ export const PropItem: React.FC<PropItemProps> = (props) => { // Extende outra i
                     <select
                         style={{ ...css_prop_item_input, width: inputWidth ? `${inputWidth}px` : '70%', minWidth: minWidth, maxWidth: '90%' }}
                         onDoubleClick={_ => setState({ ...state, value: (state.value === "true" ? "false" : "true") })}
-                        onChange={e => { setState({ ...state, value: e.target.value }); onChange(state); }}
+                        onChange={e => {
+                            setState({ ...state, value: e.target.value });
+                            onChange({ ...state, value: e.target.value });
+                        }}
                         disabled={state.editValueDisabled}
                         className={"background-bars"}
                         key={'prop_key_' + state.id}
