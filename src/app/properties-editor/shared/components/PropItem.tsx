@@ -1,4 +1,5 @@
 import React, { useState, useEffect } from 'react';
+import { IconMoreInfo } from 'code-easy-components';
 
 import { IProperties, TypeValues } from '../interfaces';
 import { CustomInputFile } from './CustomInputFile';
@@ -7,7 +8,6 @@ import { DefaultSwitch } from './DefaultSwitch';
 import { Resizer } from './Resizer';
 import { Assign } from './Assign';
 
-import icon_info from './../icons/info-icon.png';
 
 const css_prop_item: React.CSSProperties = {
     justifyContent: 'space-between',
@@ -81,7 +81,7 @@ export const PropItem: React.FC<PropItemProps> = (props) => { // Extende outra i
                 <div key={'prop_item_key_' + state.id} style={css_prop_item} className="padding-s padding-bottom-none">
                     <label htmlFor={'prop_id_' + state.id} className="flex1 " style={css_prop_item_label} info-message={state.information}>
                         {state.name}
-                        {(state.information !== "" && state.information !== undefined) && <img className="margin-left-xs" aria-label="teste" width={10} height={10} src={icon_info} alt="info-icon" />}
+                        {(state.information !== "" && state.information !== undefined) && <img className="margin-left-xs" aria-label="teste" width={10} height={10} src={IconMoreInfo} alt="info-icon" />}
                     </label>
                     <Resizer onChange={newWidth => onChangeInputWidth(newWidth)} />
                     <div style={{ width: inputWidth ? `${inputWidth}px` : '70%', minWidth: minWidth, maxWidth: '90%' }}>
@@ -109,7 +109,7 @@ export const PropItem: React.FC<PropItemProps> = (props) => { // Extende outra i
                 <div key={'prop_item_key_' + state.id} style={css_prop_item} className="padding-s padding-bottom-none">
                     <label htmlFor={'prop_id_' + state.id} className="flex1 " style={css_prop_item_label} info-message={state.information}>
                         {state.name}
-                        {(state.information !== "" && state.information !== undefined) && <img className="margin-left-xs" aria-label="teste" width={10} height={10} src={icon_info} alt="info-icon" />}
+                        {(state.information !== "" && state.information !== undefined) && <img className="margin-left-xs" aria-label="teste" width={10} height={10} src={IconMoreInfo} alt="info-icon" />}
                     </label>
                     <Resizer onChange={newWidth => onChangeInputWidth(newWidth)} />
                     <div style={{ width: inputWidth ? `${inputWidth}px` : '70%', minWidth: minWidth, maxWidth: '90%' }}>
@@ -134,7 +134,7 @@ export const PropItem: React.FC<PropItemProps> = (props) => { // Extende outra i
                 <div key={'prop_item_key_' + state.id} style={css_prop_item} className="padding-s padding-bottom-none">
                     <label htmlFor={'prop_id_' + state.id} className="flex1 " style={css_prop_item_label} info-message={state.information}>
                         {state.name}
-                        {(state.information !== "" && state.information !== undefined) && <img className="margin-left-xs" aria-label="teste" width={10} height={10} src={icon_info} alt="info-icon" />}
+                        {(state.information !== "" && state.information !== undefined) && <img className="margin-left-xs" aria-label="teste" width={10} height={10} src={IconMoreInfo} alt="info-icon" />}
                     </label>
                     <Resizer onChange={newWidth => onChangeInputWidth(newWidth)} />
                     <div style={{ width: inputWidth ? `${inputWidth}px` : '70%', minWidth: minWidth, maxWidth: '90%' }}>
@@ -159,7 +159,7 @@ export const PropItem: React.FC<PropItemProps> = (props) => { // Extende outra i
                 <div key={'prop_item_key_' + state.id} style={css_prop_item} className="padding-s padding-bottom-none">
                     <label htmlFor={'prop_id_' + state.id} className="flex1 " style={css_prop_item_label} info-message={state.information}>
                         {state.name}
-                        {(state.information !== "" && state.information !== undefined) && <img className="margin-left-xs" aria-label="teste" width={10} height={10} src={icon_info} alt="info-icon" />}
+                        {(state.information !== "" && state.information !== undefined) && <img className="margin-left-xs" aria-label="teste" width={10} height={10} src={IconMoreInfo} alt="info-icon" />}
                     </label>
                     <Resizer onChange={newWidth => onChangeInputWidth(newWidth)} />
                     <div style={{ width: inputWidth ? `${inputWidth}px` : '70%', minWidth: minWidth, maxWidth: '90%' }}>
@@ -184,7 +184,7 @@ export const PropItem: React.FC<PropItemProps> = (props) => { // Extende outra i
                 <div key={'prop_item_key_' + state.id} style={css_prop_item} className="padding-s padding-bottom-none">
                     <label htmlFor={'prop_id_' + state.id} className="flex1 " style={css_prop_item_label} info-message={state.information}>
                         {state.name}
-                        {(state.information !== "" && state.information !== undefined) && <img className="margin-left-xs" aria-label="teste" width={10} height={10} src={icon_info} alt="info-icon" />}
+                        {(state.information !== "" && state.information !== undefined) && <img className="margin-left-xs" aria-label="teste" width={10} height={10} src={IconMoreInfo} alt="info-icon" />}
                     </label>
                     <Resizer onChange={newWidth => onChangeInputWidth(newWidth)} />
                     <div style={{ width: inputWidth ? `${inputWidth}px` : '70%', minWidth: minWidth, maxWidth: '90%' }}>
@@ -210,7 +210,7 @@ export const PropItem: React.FC<PropItemProps> = (props) => { // Extende outra i
                 <div key={'prop_item_key_' + state.id} style={css_prop_item} className="padding-s padding-bottom-none">
                     <label htmlFor={'prop_id_' + state.id} className="flex1 " style={css_prop_item_label} info-message={state.information}>
                         {state.name}
-                        {(state.information !== "" && state.information !== undefined) && <img className="margin-left-xs" aria-label="teste" width={10} height={10} src={icon_info} alt="info-icon" />}
+                        {(state.information !== "" && state.information !== undefined) && <img className="margin-left-xs" aria-label="teste" width={10} height={10} src={IconMoreInfo} alt="info-icon" />}
                     </label>
                     <Resizer onChange={newWidth => onChangeInputWidth(newWidth)} />
                     <div style={{ width: inputWidth ? `${inputWidth}px` : '70%', minWidth: minWidth, maxWidth: '90%' }}>
@@ -232,7 +232,7 @@ export const PropItem: React.FC<PropItemProps> = (props) => { // Extende outra i
                 <div key={'prop_key_' + state.id} style={css_prop_item} className="padding-s padding-bottom-none">
                     <label htmlFor={'prop_id_' + state.id} className="flex1 " style={css_prop_item_label} info-message={state.information}>
                         {state.name}
-                        {(state.information !== "" && state.information !== undefined) && <img className="margin-left-xs" aria-label="teste" width={10} height={10} src={icon_info} alt="info-icon" />}
+                        {(state.information !== "" && state.information !== undefined) && <img className="margin-left-xs" aria-label="teste" width={10} height={10} src={IconMoreInfo} alt="info-icon" />}
                     </label>
                     <DefaultSwitch
                         checked={state.value}
@@ -270,7 +270,7 @@ export const PropItem: React.FC<PropItemProps> = (props) => { // Extende outra i
                 <div key={'prop_key_' + state.id} style={css_prop_item} className="padding-s padding-bottom-none">
                     <label htmlFor={'prop_id_' + state.id} className="flex1 " style={css_prop_item_label} info-message={state.information}>
                         {state.name}
-                        {(state.information !== "" && state.information !== undefined) && <img className="margin-left-xs" aria-label="teste" width={10} height={10} src={icon_info} alt="info-icon" />}
+                        {(state.information !== "" && state.information !== undefined) && <img className="margin-left-xs" aria-label="teste" width={10} height={10} src={IconMoreInfo} alt="info-icon" />}
                     </label>
                     <Resizer onChange={newWidth => onChangeInputWidth(newWidth)} />
                     <select
@@ -302,7 +302,7 @@ export const PropItem: React.FC<PropItemProps> = (props) => { // Extende outra i
                 <div key={'prop_key_' + state.id} style={css_prop_item} className="padding-s padding-bottom-none">
                     <label htmlFor={'prop_id_' + state.id} className="flex1 " style={css_prop_item_label} info-message={state.information}>
                         {state.name}
-                        {(state.information !== "" && state.information !== undefined) && <img className="margin-left-xs" aria-label="teste" width={10} height={10} src={icon_info} alt="info-icon" />}
+                        {(state.information !== "" && state.information !== undefined) && <img className="margin-left-xs" aria-label="teste" width={10} height={10} src={IconMoreInfo} alt="info-icon" />}
                     </label>
                     <Resizer onChange={newWidth => onChangeInputWidth(newWidth)} />
                     <select
