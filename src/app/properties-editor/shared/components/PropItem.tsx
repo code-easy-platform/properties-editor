@@ -32,6 +32,12 @@ export const PropItem: React.FC<PropItemProps> = (props) => { // Extende outra i
         }
     }, []);
 
+    if (containerWidth.current) {
+        containerWidth.current.addEventListener('resizer', () => {
+            setContainer({ width: containerWidth.current.offsetWidth || 0 });
+        });
+    }
+
     const [state, setState] = useState<IProperties>({
         editValueDisabled: props.editValueDisabled,
         editNameDisabled: props.editNameDisabled,
