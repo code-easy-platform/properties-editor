@@ -12,7 +12,7 @@ const item: IItem = {
     {
       id: '0',
       name: 'Name',
-      //information: 'Minha infromação de teste. Esta informação serve para informar algo que pode ser importante ao usuário!',
+      information: 'Minha infromação de teste. Esta informação serve para informar algo que pode ser importante ao usuário!',
       value: 'My name to view only',
       type: TypeValues.viewOnly,
       propertieType: 'viewOnly',
@@ -22,6 +22,7 @@ const item: IItem = {
     {
       id: '1',
       name: 'String',
+      group: 'Simple',
       value: 'Any string',
       propertieType: 'String',
       type: TypeValues.string,
@@ -34,6 +35,7 @@ const item: IItem = {
       id: '2',
       value: true,
       name: 'Boolean',
+      group: 'Simple',
       propertieType: 'Boolean',
       information: 'Minha infromação de teste',
       type: TypeValues.boolean,
@@ -46,6 +48,7 @@ const item: IItem = {
       id: '3',
       value: 0,
       name: 'Number',
+      group: 'Simple',
       information: 'Minha infromação de teste',
       editValueDisabled: false,
       propertieType: 'number',
@@ -58,6 +61,7 @@ const item: IItem = {
       id: '4',
       value: null,
       name: 'Binary',
+      group: 'Simple',
       propertieType: 'File',
       information: 'Minha infromação de teste',
       type: TypeValues.binary,
@@ -69,6 +73,7 @@ const item: IItem = {
     {
       id: '5',
       value: '',
+      group: 'Advanced',
       name: 'Expression',
       information: 'Minha infromação de teste',
       type: TypeValues.expression,
@@ -81,6 +86,7 @@ const item: IItem = {
     },
     {
       id: '6',
+      group: 'Simple',
       name: 'Big string',
       value: 'My big string',
       propertieType: 'description',
@@ -90,6 +96,7 @@ const item: IItem = {
     {
       id: '7',
       value: 'true',
+      group: 'Advanced',
       name: 'Condiction',
       propertieType: 'if',
       information: 'Minha infromação de teste',
@@ -99,13 +106,104 @@ const item: IItem = {
       editNameDisabled: true,
       valueHasError: false,
       nameHasError: false,
+      suggestions: [
+        {
+          label: 'Opção sugerida',
+          description: '',
+          disabled: false,
+          value: 'opts1',
+          name: 'opts1',
+        },
+        {
+          label: 'Opção sugerida 1',
+          description: '',
+          disabled: false,
+          value: 'opts2',
+          name: 'opts2',
+        },
+        {
+          label: 'Opção sugerida 2',
+          description: '',
+          disabled: false,
+          value: 'opts3',
+          name: 'opts3',
+        },
+        {
+          label: 'Opção sugerida disable',
+          description: '',
+          disabled: true,
+          value: 'opts4',
+          name: 'opts4',
+        }
+      ]
     },
     {
       id: '8',
       name: 'Name',
       value: 'My name',
+      group: 'Advanced',
       propertieType: 'name',
       information: 'Minha infromação de teste',
+      nameSuggestions: [
+        {
+          label: 'Param1',
+          description: '',
+          disabled: false,
+          value: 'Param1',
+          name: 'Param1',
+        },
+        {
+          label: 'Param2',
+          description: '',
+          disabled: false,
+          value: 'Param2',
+          name: 'Param2',
+        },
+        {
+          label: 'Param3',
+          description: '',
+          disabled: false,
+          value: 'Param3',
+          name: 'Param3',
+        },
+        {
+          label: 'Param4 disable',
+          description: '',
+          disabled: true,
+          value: 'Param4',
+          name: 'Param4',
+        }
+      ],
+      suggestions: [
+        {
+          label: 'Opção sugerida',
+          description: '',
+          disabled: false,
+          value: 'opts1',
+          name: 'opts1',
+        },
+        {
+          label: 'Opção sugerida 1',
+          description: '',
+          disabled: false,
+          value: 'opts2',
+          name: 'opts2',
+        },
+        {
+          label: 'Opção sugerida 2',
+          description: '',
+          disabled: false,
+          value: 'opts3',
+          name: 'opts3',
+        },
+        {
+          label: 'Opção sugerida disable',
+          description: '',
+          disabled: true,
+          value: 'opts4',
+          name: 'opts4',
+        }
+      ],
       editValueDisabled: false,
       openEditor: console.log,
       type: TypeValues.assign,
@@ -117,6 +215,7 @@ const item: IItem = {
       id: '9',
       value: 'opts',
       name: 'Combo',
+      group: 'Simple',
       propertieType: 'combo',
       editValueDisabled: false,
       type: TypeValues.selection,
@@ -155,12 +254,57 @@ const item: IItem = {
     {
       id: '10',
       value: 'false',
+      group: 'Advanced',
       name: 'Combo Yes/No',
       propertieType: 'YesNo',
       editValueDisabled: false,
       type: TypeValues.yesNoSelection,
       information: 'Combo box para seleção de sim ou não(boolean)'
-    }
+    },
+    {
+      id: '11',
+      value: '',
+      group: 'Advanced',
+      name: 'Expression',
+      information: 'Expression with suggestion',
+      type: TypeValues.expression,
+      propertieType: 'expresion',
+      editValueDisabled: false,
+      openEditor: console.log,
+      editNameDisabled: true,
+      valueHasError: false,
+      nameHasError: false,
+      suggestions: [
+        {
+          label: 'Opção sugerida',
+          description: '',
+          disabled: false,
+          value: 'opts1',
+          name: 'opts1',
+        },
+        {
+          label: 'Opção sugerida 1',
+          description: '',
+          disabled: false,
+          value: 'opts2',
+          name: 'opts2',
+        },
+        {
+          label: 'Opção sugerida 2',
+          description: '',
+          disabled: false,
+          value: 'opts3',
+          name: 'opts3',
+        },
+        {
+          label: 'Opção sugerida disable',
+          description: '',
+          disabled: true,
+          value: 'opts4',
+          name: 'opts4',
+        }
+      ]
+    },
   ]
 };
 
