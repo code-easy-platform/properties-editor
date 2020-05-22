@@ -314,8 +314,8 @@ const App: React.FC = () => {
       <div style={{ maxWidth: 300, minWidth: 300, alignContent: '', boxShadow: 'black 0px 0px 14px 0px' }}>
         <PropertiesEditor
           item={item}
-          onChange={itens => console.log(itens)}
-          //onChangeInputWidth={(width) => console.log(width)}
+          onChange={console.log}
+          onChangeInputWidth={(width) => console.log(width)}
         />
       </div>
     </div>
