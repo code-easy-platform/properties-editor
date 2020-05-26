@@ -300,7 +300,7 @@ export const PropItem: React.FC<PropItemProps> = (props) => { // Extende outra i
                         id={'prop_id_' + state.id}
                         disabled={state.editValueDisabled}
                         onChange={value => {
-                            console.log(value)
+                            state.value = value;
                             setState({ ...state, value: value });
                             onChange(state);
                         }}
