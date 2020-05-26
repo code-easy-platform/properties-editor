@@ -33,7 +33,7 @@ const item: IItem = {
     },
     {
       id: '2',
-      value: true,
+      value: false,
       name: 'Boolean',
       group: 'Simple',
       propertieType: 'Boolean',
