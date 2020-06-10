@@ -7,6 +7,7 @@ import './App.css';
 const item: IItem = {
   id: '1',
   name: 'My name to view only',
+  subname: 'Teste',
   isHeader: true,
   properties: [
     {
