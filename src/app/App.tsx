@@ -95,6 +95,13 @@ const item: IItem = {
       information: 'Minha infromação de teste',
     },
     {
+      id: '6',
+      group: 'Simple',
+      value: 'My big string',
+      propertieType: 'description',
+      type: TypeValues.fullBigString,
+    },
+    {
       id: '7',
       value: 'true',
       group: 'Advanced',
