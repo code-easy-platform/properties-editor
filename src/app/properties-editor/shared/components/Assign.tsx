@@ -9,7 +9,7 @@ interface IAssign extends IProperties {
     onKeyDown(e: any): void;
     onBlur(e: any): void;
 }
-export const Assign: React.FC<IAssign> = ({ id, name, value, suggestions, nameSuggestions, openEditor, nameHasError = false, valueHasError = false, onChangeName, onChangeValue, onKeyDown, onBlur, editNameDisabled = false, editValueDisabled = false }) => {
+export const Assign: React.FC<IAssign> = ({ id, name, value, suggestions, nameSuggestions, openEditor, focusOnRender, nameHasError = false, valueHasError = false, onChangeName, onChangeValue, onKeyDown, onBlur, editNameDisabled = false, editValueDisabled = false }) => {
 
     const css_prop_item_input_name: React.CSSProperties = {
         border: nameHasError ? 'var(--input-border-error)' : 'var(--input-border)',
@@ -35,6 +35,7 @@ export const Assign: React.FC<IAssign> = ({ id, name, value, suggestions, nameSu
                 openEditor={openEditor}
                 placeholder={'Propertie'}
                 id={'name_prop_id_' + id}
+                autoFocus={focusOnRender}
                 disabled={editNameDisabled}
                 key={'name_prop_key_' + id}
                 suggestions={nameSuggestions}

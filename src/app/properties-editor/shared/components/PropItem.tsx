@@ -4,7 +4,7 @@ import { IconMoreInfo } from 'code-easy-components';
 import { DefaultSwitch } from './toggle-swicth/DefaultSwitch';
 import { IProperties, TypeValues } from '../interfaces';
 import { ExpressionInput } from './ExpressionInput';
-import { InputFile } from './CustomInputFile';
+import { InputFile } from './input-file/InputFile';
 import { Tooltip } from './tooltip/Tooltip';
 import { Resizer } from './Resizer';
 import { Assign } from './Assign';
@@ -46,10 +46,12 @@ export const PropItem: React.FC<PropItemProps> = memo((props) => { // Extende ou
         nameSuggestions: props.nameSuggestions,
         propertieType: props.propertieType,
         valueHasError: props.valueHasError,
+        focusOnRender: props.focusOnRender,
         nameHasError: props.nameHasError,
         information: props.information,
         suggestions: props.suggestions,
         useOnChange: props.useOnChange,
+        fileMaxSize: props.fileMaxSize,
         openEditor: props.openEditor,
         group: props.group,
         value: props.value,
@@ -64,11 +66,13 @@ export const PropItem: React.FC<PropItemProps> = memo((props) => { // Extende ou
             editNameDisabled: props.editNameDisabled,
             nameSuggestions: props.nameSuggestions,
             propertieType: props.propertieType,
+            focusOnRender: props.focusOnRender,
             valueHasError: props.valueHasError,
             nameHasError: props.nameHasError,
             information: props.information,
             useOnChange: props.useOnChange,
             suggestions: props.suggestions,
+            fileMaxSize: props.fileMaxSize,
             openEditor: props.openEditor,
             group: props.group,
             value: props.value,
@@ -142,13 +146,12 @@ export const PropItem: React.FC<PropItemProps> = memo((props) => { // Extende ou
                     <Resizer onChange={newWidth => onChangeInputWidth(newWidth)} />
                     <div style={{ width: inputWidth ? `${inputWidth}px` : '70%', minWidth: minWidth, maxWidth: '90%' }}>
                         <input
-                            className="full-width background-bars"
                             onChange={e => setState({ ...state, value: e.target.value })}
+                            className={"full-width background-bars"}
                             disabled={state.editValueDisabled}
                             onKeyDown={(e) => onkeyPress(e)}
-                            onBlur={_ => {
-                                onChange(state)
-                            }}
+                            autoFocus={state.focusOnRender}
+                            onBlur={_ => onChange(state)}
                             key={'prop_key_' + state.id}
                             style={css_prop_item_input}
                             id={'prop_id_' + state.id}
@@ -175,6 +178,7 @@ export const PropItem: React.FC<PropItemProps> = memo((props) => { // Extende ou
                             className="full-width background-bars"
                             disabled={state.editValueDisabled}
                             onKeyDown={(e) => onkeyPress(e)}
+                            autoFocus={state.focusOnRender}
                             suggestions={state.suggestions}
                             openEditor={state.openEditor}
                             onBlur={_ => onChange(state)}
@@ -198,11 +202,12 @@ export const PropItem: React.FC<PropItemProps> = memo((props) => { // Extende ou
                     <Resizer onChange={newWidth => onChangeInputWidth(newWidth)} />
                     <div style={{ width: inputWidth ? `${inputWidth}px` : '70%', minWidth: minWidth, maxWidth: '90%' }}>
                         <textarea
-                            className="full-width background-bars"
                             style={{ ...css_prop_item_input, height: '50px', resize: 'vertical' }}
                             onChange={e => setState({ ...state, value: e.target.value })}
+                            className={"full-width background-bars"}
                             disabled={state.editValueDisabled}
                             onKeyDown={(e) => onkeyPress(e)}
+                            autoFocus={state.focusOnRender}
                             onBlur={_ => onChange(state)}
                             key={'prop_key_' + state.id}
                             id={'prop_id_' + state.id}
@@ -217,11 +222,12 @@ export const PropItem: React.FC<PropItemProps> = memo((props) => { // Extende ou
             return (
                 <div ref={containerWidth} key={'prop_item_key_' + state.id} style={css_prop_item} className="padding-s padding-bottom-none">
                     <textarea
-                        className="full-width background-bars"
                         style={{ ...css_prop_item_input, height: '100px', resize: 'vertical' }}
                         onChange={e => setState({ ...state, value: e.target.value })}
+                        className={"full-width background-bars"}
                         disabled={state.editValueDisabled}
                         onKeyDown={(e) => onkeyPress(e)}
+                        autoFocus={state.focusOnRender}
                         onBlur={_ => onChange(state)}
                         key={'prop_key_' + state.id}
                         id={'prop_id_' + state.id}
@@ -247,6 +253,7 @@ export const PropItem: React.FC<PropItemProps> = memo((props) => { // Extende ou
                             onChange={e => setState({ ...state, value: e.target.value })}
                             disabled={state.editValueDisabled}
                             onKeyDown={(e) => onkeyPress(e)}
+                            autoFocus={state.focusOnRender}
                             onBlur={_ => onChange(state)}
                             key={'prop_key_' + state.id}
                             style={css_prop_item_input}
@@ -272,6 +279,8 @@ export const PropItem: React.FC<PropItemProps> = memo((props) => { // Extende ou
                         <InputFile
                             className="full-width background-bars border-radius outline-none"
                             disabled={state.editValueDisabled}
+                            autoFocus={state.focusOnRender}
+                            fileMaxSize={state.fileMaxSize}
                             key={'prop_key_' + state.id}
                             fileName={state.value?.name}
                             style={css_prop_item_input}
@@ -320,6 +329,7 @@ export const PropItem: React.FC<PropItemProps> = memo((props) => { // Extende ou
                         checked={state.value}
                         hasError={valueHasError}
                         id={'prop_id_' + state.id}
+                        autoFocus={state.focusOnRender}
                         disabled={state.editValueDisabled}
                         onChange={value => {
                             state.value = value;
@@ -343,11 +353,13 @@ export const PropItem: React.FC<PropItemProps> = memo((props) => { // Extende ou
                     valueHasError={valueHasError}
                     onBlur={_ => onChange(state)}
                     key={'assign_key_' + state.id}
+                    fileMaxSize={state.fileMaxSize}
                     information={state.information}
                     useOnChange={state.useOnChange}
                     suggestions={state.suggestions}
                     onKeyDown={(e) => onkeyPress(e)}
                     propertieType={state.propertieType}
+                    focusOnRender={state.focusOnRender}
                     nameSuggestions={state.nameSuggestions}
                     editNameDisabled={state.editNameDisabled}
                     editValueDisabled={state.editValueDisabled}
@@ -372,6 +384,7 @@ export const PropItem: React.FC<PropItemProps> = memo((props) => { // Extende ou
                             onChange({ ...state, value: e.target.value });
                         }}
                         disabled={state.editValueDisabled}
+                        autoFocus={state.focusOnRender}
                         className={"background-bars"}
                         key={'prop_key_' + state.id}
                         id={'prop_id_' + state.id}
@@ -413,6 +426,7 @@ export const PropItem: React.FC<PropItemProps> = memo((props) => { // Extende ou
                             onChange({ ...state, value: e.target.value });
                         }}
                         disabled={state.editValueDisabled}
+                        autoFocus={state.focusOnRender}
                         className={"background-bars"}
                         key={'prop_key_' + state.id}
                         id={'prop_id_' + state.id}

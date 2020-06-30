@@ -68,6 +68,7 @@ const item: IItem = {
       type: TypeValues.binary,
       editValueDisabled: false,
       editNameDisabled: true,
+      fileMaxSize: 1000000,
       valueHasError: false,
       nameHasError: false,
     },
@@ -218,6 +219,7 @@ const item: IItem = {
       editNameDisabled: false,
       valueHasError: false,
       nameHasError: false,
+      focusOnRender: true,
     },
     {
       id: '9',

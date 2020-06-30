@@ -31,8 +31,17 @@ export interface IProperties {
     valueHasError?: boolean;
     id: string | undefined;
     nameHasError?: boolean;
-    information?: string;
     useOnChange?: boolean;
+    /**
+     * This property allows the input to be focused automatically when rendered on the screen
+     */
+    focusOnRender?:boolean;
+    information?: string;
+    /**
+     * Max size in bytes
+     * Default value 1MB(1048576)
+     */
+    fileMaxSize?: number;
     propertieType?: any;
     type: TypeValues;
     group?: string;
