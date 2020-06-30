@@ -97,7 +97,7 @@ const item: IItem = {
     {
       id: '6',
       group: 'Simple',
-      value: 'My big string',
+      value: 'My full big string',
       propertieType: 'description',
       type: TypeValues.fullBigString,
     },
