@@ -28,6 +28,8 @@ export interface IProperties {
     suggestions?: ISuggestion[];
     editValueDisabled?: boolean;
     editNameDisabled?: boolean;
+    valueHasWarning?: boolean;
+    nameHasWarning?: boolean;
     valueHasError?: boolean;
     id: string | undefined;
     nameHasError?: boolean;

@@ -3,12 +3,14 @@
 @import "./paddings.css";
 @import "./margins.css";
 @import "./opacity.css";
+@import "./colors.css";
 @import "./fonts.css";
 @import "./flexs.css";
 
 * {
-  -webkit-user-select: none;
+  font-family: var(--font-family-normal);
   -moz-user-select: -moz-none;
+  -webkit-user-select: none;
   -ms-user-select: none;
   user-select: none;
   outline: none;
@@ -19,13 +21,16 @@
 *:focus {
   outline: var(--outline-padrao);
 }
+
 .selected,
 *[selected="true"] {
   background-color: var(--main-select-color);
 }
+
 .editing {
   background-color: var(--main-editing-color);
 }
+
 .selected,
 *[selected="true"]:hover {
   background-color: var(--main-select-color) !important;
@@ -35,7 +40,6 @@ html,
 body,
 #root,
 .App {
-  font-family: var(--font-family-vs-code);
   background-color: var(--main-background);
   height: var(--size-window-vh-fill);
   width: var(--size-window-vw-fill);
@@ -62,6 +66,7 @@ a:active {
   color: var(--color-white);
   opacity: 0.5;
 }
+
 label {
   cursor: pointer;
 }
@@ -84,6 +89,7 @@ select:focus {
   background-color: var(--main-background-input-focus);
   outline: var(--outline-none);
 }
+
 /* Remove os botões da input de texto */
 /* Chrome, Safari, Edge, Opera */
 input::-webkit-outer-spin-button,
@@ -91,9 +97,26 @@ input::-webkit-inner-spin-button {
   -webkit-appearance: none;
   margin: 0;
 }
+
 /* Firefox */
 input[type="number"] {
   -moz-appearance: textfield;
+}
+
+input[type="checkbox"] {
+  all: unset;
+  background-color: var(--main-background-bars);
+  margin-right: var(--margin-s);
+  border-radius: var(--size-1);
+  border: var(--input-border);
+  padding: var(--size-0-5);
+  height: var(--size-m);
+  width: var(--size-m);
+  cursor: pointer;
+}
+
+input[type="checkbox"]:checked {
+  background-color: var(--color-primary);
 }
 
 .text-ellipsis {
@@ -108,15 +131,19 @@ input[type="number"] {
 .background {
   background-color: var(--main-background);
 }
+
 .background-bars {
   background-color: var(--main-background-bars);
 }
+
 .background-info {
   background-color: var(--main-background-info);
 }
+
 .background-panels {
   background-color: var(--main-background-panels);
 }
+
 .background-highlighted {
   background-color: var(--main-background-highlighted);
 }
@@ -128,6 +155,9 @@ input[type="number"] {
 
 .border-radius {
   border-radius: var(--size-1);
+}
+.border-radius-soft {
+  border-radius: var(--size-0-5);
 }
 
 .border-default {
@@ -151,6 +181,7 @@ input[type="number"] {
   background-color: unset;
   opacity: 0.5;
 }
+
 .disabled:hover {
   background-color: unset;
   opacity: 0.5;
@@ -160,6 +191,7 @@ input[type="number"] {
   border-radius: 50px;
   width: fit-content;
 }
+
 .dragging-over {
   background-color: var(--main-background-highlighted) !important;
   border-radius: 50px !important;
@@ -191,6 +223,9 @@ input[type="number"] {
 .overflow-scroll {
   overflow: scroll;
 }
+.overflow-contrast:hover::-webkit-scrollbar-thumb {
+  background-color: var(--color-scroll-bar-hover);
+}
 
 .outline-none {
   outline: var(--outline-none);
@@ -211,14 +246,17 @@ input[type="number"] {
   height: var(--border-size-1);
   border: none;
 }
+
 .hr.hr-vertical {
   width: var(--border-size-1);
   height: 100%;
 }
+
 .hr.hr-white {
   background-color: var(--main-background-highlighted);
   width: 100%;
 }
+
 .hr.divider {
   margin-bottom: var(--size-2);
   margin-top: var(--size-2);
@@ -228,21 +266,23 @@ input[type="number"] {
   border: var(--size-none) solid var(--color-white);
   color: var(--font-color-input-propertie-editor);
   background-color: var(--color-transparent);
-  font-family: var(--font-family-vs-code);
   width: fit-content;
   cursor: pointer;
   padding: var(--size-1-5);
   padding-right: var(--size-1-5);
   padding-left: var(--size-1-5);
 }
+
 .btn:hover {
   background-color: var(--main-background-highlighted);
   color: var(--color-white);
 }
+
 .btn:focus {
   background-color: var(--main-background-highlighted);
   color: var(--color-white);
 }
+
 .btn:active {
   color: var(--color-white);
   opacity: 0.5;
@@ -251,15 +291,19 @@ input[type="number"] {
 .btn-xs {
   height: calc(var(--size-xs) * 3);
 }
+
 .btn-s {
   height: calc(var(--size-s) * 3);
 }
+
 .btn-m {
   height: calc(var(--size-m) * 3);
 }
+
 .btn-g {
   height: calc(var(--size-g) * 3);
 }
+
 .btn-xg {
   height: calc(var(--size-xg) * 3);
 }
@@ -273,30 +317,39 @@ input[type="number"] {
   width: var(--size-x-scroll-bar);
   height: var(--size-x-scroll-bar);
 }
+
 ::-webkit-scrollbar-corner {
   background-color: var(--color-transparent);
 }
+
 ::-webkit-scrollbar:horizontal {
   height: var(--size-x-scroll-bar-horizontal);
 }
+
 ::-webkit-scrollbar-button {
   display: none;
 }
+
 ::-webkit-scrollbar-track {
   background-color: var(--color-transparent);
 }
+
 ::-webkit-scrollbar-thumb {
   background-color: var(--color-scroll-bar);
 }
+
 ::-webkit-scrollbar-thumb:hover {
   background-color: var(--color-scroll-bar-hover);
 }
+
 ::-webkit-scrollbar-thumb:active {
   background-color: var(--color-scroll-bar-active);
 }
+
 .mini-scroll-bar::-webkit-scrollbar {
   width: var(--size-x-scroll-bar-small);
 }
+
 .mini-scroll-bar::-webkit-scrollbar-thumb {
   background-color: var(--main-background-bars);
   width: var(--size-x-scroll-bar-small);
