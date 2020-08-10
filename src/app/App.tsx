@@ -1,9 +1,11 @@
 import React, { useState } from 'react';
 
+import { PropertiesEditor as PropertiesEditorNew } from './properties-editor-new/';
+import { Switch } from './properties-editor/shared/components/toggle-swicth/Switch';
 import { IItem, TypeValues } from './properties-editor/shared/interfaces';
 import { PropertiesEditor } from './properties-editor/PropertiesEditor';
 import './App.css';
-import { Switch } from './properties-editor/shared/components/toggle-swicth/Switch';
+import { TypeOfValues } from './properties-editor-new/shared/enums';
 
 let item: IItem = {
   id: '1',
@@ -443,6 +445,37 @@ const App: React.FC = () => {
           item={item}
           onChange={console.log}
           onChangeInputWidth={(width) => console.log(width)}
+        />
+      </div>
+      <div className="margin-g" />
+      <div style={{ maxWidth: 300, minWidth: 300, alignContent: '', boxShadow: 'black 0px 0px 14px 0px' }}>
+        <PropertiesEditorNew
+          item={{
+            id: 'T',
+            isHeader: false,
+            name: 'My name to view only',
+            properties: [
+              {
+                id: '1',
+                type: TypeOfValues.assign,
+                value: 'tesste'
+              },
+              {
+                id: '2',
+                type: TypeOfValues.assign,
+                value: 'tesste',
+                group: 'Teste1',
+              },
+              {
+                id: '3',
+                type: TypeOfValues.assign,
+                value: 'tesste',
+                group: 'Teste2',
+              },
+            ]
+          }}
+        // onChange={console.log}
+        // onChangeInputWidth={(width) => console.log(width)}
         />
       </div>
     </div>

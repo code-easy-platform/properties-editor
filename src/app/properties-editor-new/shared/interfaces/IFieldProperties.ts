@@ -1,25 +1,5 @@
-
-export enum TypeValues {
-    yesNoSelection = 'yesNoSelection',
-    fullBigString = 'fullBigString',
-    expression = 'expression',
-    bigstring = 'bigstring',
-    selection = 'selection',
-    viewOnly = 'viewOnly',
-    boolean = 'boolean',
-    string = 'string',
-    number = 'number',
-    binary = 'binary',
-    assign = 'assign',
-}
-
-export interface ISuggestion {
-    description: string;
-    disabled: boolean;
-    label: string;
-    name: string;
-    value: any;
-}
+import { TypeOfValues } from "../enums";
+import { ISuggestion } from "./";
 
 export interface IProperties {
     openEditor?(e: React.MouseEvent<HTMLInputElement, MouseEvent>): void;
@@ -44,16 +24,8 @@ export interface IProperties {
      */
     fileMaxSize?: number;
     propertieType?: any;
-    type: TypeValues;
+    type: TypeOfValues;
     group?: string;
     name?: string;
     value: any;
-}
-
-export interface IItem {
-    id: string | undefined;
-    name: string;
-    subname?: string;
-    isHeader: boolean;
-    properties: IProperties[];
 }
