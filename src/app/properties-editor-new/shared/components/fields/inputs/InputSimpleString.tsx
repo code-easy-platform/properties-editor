@@ -3,12 +3,10 @@ import React, { useState, useCallback } from 'react';
 import { FieldWrapper } from '../field-wrapper/FieldWrapper';
 import { IProperties } from '../../../interfaces';
 
-interface SimpleStringProps extends IProperties {
-    onChange?(data: IProperties): void;
+interface SimpleStringProps extends IProperties<string> {
+    onChange?(data: IProperties<string>): void;
 }
-export const SimpleString: React.FC<SimpleStringProps> = (props) => {
-    const { onChange } = props;
-
+export const SimpleString: React.FC<SimpleStringProps> = ({ onChange, ...props }) => {
     const [value, setValue] = useState(props.value);
 
     const handleOnChange = useCallback((e: React.ChangeEvent<HTMLInputElement>) => {

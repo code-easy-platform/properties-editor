@@ -1,20 +1,36 @@
 import React, { useState, useCallback } from 'react';
 
+import { IProperties, IFileContent } from '../../../interfaces';
 import { FieldWrapper } from '../field-wrapper/FieldWrapper';
-import { IProperties } from '../../../interfaces';
+import { InputFile } from '../../input-file/InputFile';
 
-interface InputSimpleNumberProps extends IProperties<number> {
-    onChange?(data: IProperties<number>): void;
+interface InputImportFileProps extends IProperties<IFileContent> {
+    onChange?(data: IProperties<IFileContent>): void;
 }
-export const InputSimpleNumber: React.FC<InputSimpleNumberProps> = ({ onChange, ...props }) => {
+export const InputImportFile: React.FC<InputImportFileProps> = ({ onChange, ...props }) => {
     const [value, setValue] = useState(props.value);
 
     const handleOnChange = useCallback((e: React.ChangeEvent<HTMLInputElement>) => {
-        if (props.useOnChange && onChange) {
-            onChange({ ...props, value: Number(e.currentTarget.value) });
-            setValue(Number(e.currentTarget.value));
-        } else {
-            setValue(Number(e.currentTarget.value));
+        if (e.target.files && e.target.files[0]) {
+            const fileReader = new FileReader();
+
+            let file: IFileContent = {
+                content: undefined,
+                name: e.target.files ? e.target.files.item(0)?.name : undefined,
+                size: e.target.files ? e.target.files.item(0)?.size : undefined,
+                type: e.target.files ? e.target.files.item(0)?.type : undefined,
+                lastModified: e.target.files ? e.target.files.item(0)?.lastModified : undefined,
+            }
+
+            fileReader.addEventListener("load", (event) => {
+                if (event.target && onChange) {
+                    file.content = event.target.result;
+                    setValue(file);
+                    onChange({ ...props, value: file });
+                }
+            });
+
+            fileReader.readAsDataURL(e.target.files[0]);
         }
     }, [onChange, props]);
 
@@ -34,15 +50,14 @@ export const InputSimpleNumber: React.FC<InputSimpleNumberProps> = ({ onChange, 
             nameHasWarning={props.nameHasWarning}
         >
             {inputId => (
-                <input
-                    className={"full-width background-bars"}
+                <InputFile
+                    className="full-width background-bars border-radius outline-none"
                     disabled={props.editValueDisabled}
                     autoFocus={props.focusOnRender}
+                    fileMaxSize={props.fileMaxSize}
+                    fileName={props.value?.name}
                     onChange={handleOnChange}
                     onBlur={handleOnBlur}
-                    autoComplete={'off'}
-                    type={"number"}
-                    value={value}
                     id={inputId}
                     style={{
                         textDecoration: props.valueHasError ? `var(--text-underline-error)` : props.valueHasWarning ? `var(--text-underline-warning)` : undefined,

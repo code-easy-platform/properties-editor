@@ -491,6 +491,28 @@ const App: React.FC = () => {
                 information: 'My super interesting information',
               },
               {
+                id: '15',
+                value: TypeOfValues.binary,
+                name: 'Binary',
+                group: 'Simple',
+                type: TypeOfValues.binary,
+                information: 'My super interesting information',
+              },
+              {
+                id: '16',
+                group: 'Simple',
+                name: 'Big string',
+                type: TypeOfValues.bigstring,
+                value: 'My big string',
+                information: 'My super interesting information',
+              },
+              {
+                id: '17',
+                group: 'Simple',
+                type: TypeOfValues.fullBigString,
+                value: 'My full big string',
+              },
+              {
                 id: '50',
                 group: 'Advanced',
                 name: 'View only',

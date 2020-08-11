@@ -3,22 +3,22 @@ import React, { useState, useCallback } from 'react';
 import { FieldWrapper } from '../field-wrapper/FieldWrapper';
 import { IProperties } from '../../../interfaces';
 
-interface InputSimpleNumberProps extends IProperties<number> {
-    onChange?(data: IProperties<number>): void;
+interface InputBigStringProps extends IProperties<string> {
+    onChange?(data: IProperties<string>): void;
 }
-export const InputSimpleNumber: React.FC<InputSimpleNumberProps> = ({ onChange, ...props }) => {
+export const InputBigString: React.FC<InputBigStringProps> = ({ onChange, ...props }) => {
     const [value, setValue] = useState(props.value);
 
-    const handleOnChange = useCallback((e: React.ChangeEvent<HTMLInputElement>) => {
+    const handleOnChange = useCallback((e: React.ChangeEvent<HTMLTextAreaElement>) => {
         if (props.useOnChange && onChange) {
-            onChange({ ...props, value: Number(e.currentTarget.value) });
-            setValue(Number(e.currentTarget.value));
+            onChange({ ...props, value: e.currentTarget.value });
+            setValue(e.currentTarget.value);
         } else {
-            setValue(Number(e.currentTarget.value));
+            setValue(e.currentTarget.value);
         }
     }, [onChange, props]);
 
-    const handleOnBlur = useCallback((e: React.FocusEvent<HTMLInputElement>) => {
+    const handleOnBlur = useCallback((e: React.FocusEvent<HTMLTextAreaElement>) => {
         if (props.value !== value && onChange) {
             onChange({ ...props, value });
         }
@@ -34,19 +34,20 @@ export const InputSimpleNumber: React.FC<InputSimpleNumberProps> = ({ onChange, 
             nameHasWarning={props.nameHasWarning}
         >
             {inputId => (
-                <input
+                <textarea
                     className={"full-width background-bars"}
                     disabled={props.editValueDisabled}
                     autoFocus={props.focusOnRender}
                     onChange={handleOnChange}
                     onBlur={handleOnBlur}
-                    autoComplete={'off'}
-                    type={"number"}
+                    autoComplete={"off"}
                     value={value}
                     id={inputId}
                     style={{
                         textDecoration: props.valueHasError ? `var(--text-underline-error)` : props.valueHasWarning ? `var(--text-underline-warning)` : undefined,
                         border: props.valueHasError ? 'var(--input-border-error)' : props.valueHasWarning ? 'var(--input-border-warning)' : 'var(--input-border)',
+                        height: '50px',
+                        resize: 'vertical'
                     }}
                 />
             )}

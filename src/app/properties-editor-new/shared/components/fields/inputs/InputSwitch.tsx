@@ -5,12 +5,10 @@ import { IProperties } from '../../../interfaces';
 import { Switch } from '../../toggle-swicth/Switch';
 
 interface InputSwitchProps extends IProperties<boolean> {
-    onChange?(data: IProperties): void;
+    onChange?(data: IProperties<boolean>): void;
 }
-export const InputSwitch: React.FC<InputSwitchProps> = (props) => {
-    const { onChange } = props;
-
-    const [value, setValue] = useState<boolean>(props.value);
+export const InputSwitch: React.FC<InputSwitchProps> = ({ onChange, ...props }) => {
+    const [value, setValue] = useState(props.value);
 
     const handleOnChange = useCallback((value: boolean) => {
         if (props.useOnChange && onChange) {
@@ -29,7 +27,7 @@ export const InputSwitch: React.FC<InputSwitchProps> = (props) => {
 
     return (
         <FieldWrapper
-            minWidth={40}
+            minWidth={50}
             id={props.id || ''}
             name={props.name || ''}
             information={props.information}
