@@ -1,7 +1,7 @@
 import { TypeOfValues } from "../enums";
 import { ISuggestion } from "./";
 
-export interface IProperties {
+export interface IProperties<T=any> {
     openEditor?(e: React.MouseEvent<HTMLInputElement, MouseEvent>): void;
     nameSuggestions?: ISuggestion[];
     suggestions?: ISuggestion[];
@@ -16,7 +16,7 @@ export interface IProperties {
     /**
      * This property allows the input to be focused automatically when rendered on the screen
      */
-    focusOnRender?:boolean;
+    focusOnRender?: boolean;
     information?: string;
     /**
      * Max size in bytes
@@ -27,5 +27,5 @@ export interface IProperties {
     type: TypeOfValues;
     group?: string;
     name?: string;
-    value: any;
+    value: T;
 }
