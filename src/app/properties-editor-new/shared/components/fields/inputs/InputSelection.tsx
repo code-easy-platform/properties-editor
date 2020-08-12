@@ -10,19 +10,11 @@ export const InputSelection: React.FC<InputSelectionProps> = ({ onChange, ...pro
     const [value, setValue] = useState(props.value);
 
     const handleOnChange = useCallback((e: React.ChangeEvent<HTMLSelectElement>) => {
-        if (props.useOnChange && onChange) {
+        if (onChange) {
             onChange({ ...props, value: e.currentTarget.value });
-            setValue(e.currentTarget.value);
-        } else {
             setValue(e.currentTarget.value);
         }
     }, [onChange, props]);
-
-    const handleOnBlur = useCallback((e: React.FocusEvent<HTMLSelectElement>) => {
-        if (props.value !== value && onChange) {
-            onChange({ ...props, value });
-        }
-    }, [onChange, props, value]);
 
     return (
         <FieldWrapper
@@ -39,7 +31,6 @@ export const InputSelection: React.FC<InputSelectionProps> = ({ onChange, ...pro
                     autoFocus={props.focusOnRender}
                     className={"background-bars"}
                     onChange={handleOnChange}
-                    onBlur={handleOnBlur}
                     value={value}
                     id={inputId}
                     style={{

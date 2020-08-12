@@ -20,7 +20,13 @@ export const FieldsList: React.FC<FieldsListProps> = ({ fields = [] }) => {
         <div className="flex-column overflow-auto full-height">
             {fields
                 .filter(field => field.group === undefined)
-                .map((field, index) => <Field key={index} field={field} />)
+                .map((field, index) => (
+                    <Field
+                        key={index}
+                        field={field}
+                        onChange={console.log}
+                    />
+                ))
             }
             {groups.map((group, index) => {
                 return (
@@ -29,6 +35,7 @@ export const FieldsList: React.FC<FieldsListProps> = ({ fields = [] }) => {
                             <Field
                                 key={index}
                                 field={field}
+                                onChange={console.log}
                             />
                         ))}
                     </FieldGroup>

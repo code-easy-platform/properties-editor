@@ -288,7 +288,7 @@ let item: IItem = {
     {
       id: '10',
       value: 'false',
-      group: 'Advanced',
+      group: 'Simple',
       name: 'Combo Yes/No',
       propertieType: 'YesNo',
       editValueDisabled: false,
