@@ -16,13 +16,21 @@ export const InputSelectionYesNo: React.FC<InputSelectionYesNoProps> = ({ onChan
         }
     }, [onChange, props]);
 
+    const handleOnDoubleClick = useCallback(() => {
+        if (onChange) {
+            onChange({ ...props, value: !value });
+            setValue(!value);
+        }
+    }, [onChange, props, value]);
+
     return (
         <FieldWrapper
-            minWidth={40}
+            minWidth={60}
             id={props.id || ''}
             name={props.name || ''}
             information={props.information}
             nameHasError={props.nameHasError}
+            onDoubleClick={handleOnDoubleClick}
             nameHasWarning={props.nameHasWarning}
         >
             {inputId => (

@@ -8,7 +8,7 @@ export const InputViewOnly: React.FC<IProperties> = (props) => {
 
     return (
         <FieldWrapper
-            minWidth={40}
+            minWidth={60}
             id={id || ''}
             name={name || ''}
             nameHasError={nameHasError}

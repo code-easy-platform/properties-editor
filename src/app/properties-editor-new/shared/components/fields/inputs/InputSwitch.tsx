@@ -27,7 +27,7 @@ export const InputSwitch: React.FC<InputSwitchProps> = ({ onChange, ...props }) 
 
     return (
         <FieldWrapper
-            minWidth={50}
+            minWidth={60}
             id={props.id || ''}
             name={props.name || ''}
             information={props.information}

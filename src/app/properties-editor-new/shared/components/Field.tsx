@@ -1,7 +1,7 @@
 import React from 'react';
 
 import {
-    InputSelectionYesNo,
+    InputSelectionYesNo, InputExpression,
     InputViewOnly, SimpleString, InputSwitch, InputSimpleNumber,
     InputImportFile, InputBigString, InputFullBigString, InputSelection,
 } from './fields/inputs/';
@@ -41,6 +41,9 @@ export const Field: React.FC<FieldProps> = ({ field, onChange }) => {
 
         case TypeOfValues.yesNoSelection:
             return <InputSelectionYesNo onChange={onChange} {...field} />;
+
+        case TypeOfValues.expression:
+            return <InputExpression onChange={onChange} {...field} />;
 
         default:
             return null;

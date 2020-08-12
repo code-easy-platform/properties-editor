@@ -18,9 +18,10 @@ interface FieldWrapperProps {
      * Used to render a child with a specific id 
      * @param id Id used in the label htmlFor
      */
-    children(id: string): React.ReactNode
+    children(id: string): React.ReactNode;
+    onDoubleClick?(e: React.MouseEvent<HTMLLabelElement, MouseEvent>): void;
 }
-export const FieldWrapper: React.FC<FieldWrapperProps> = ({ children, id, name, information, minWidth, nameHasError, nameHasWarning }) => {
+export const FieldWrapper: React.FC<FieldWrapperProps> = ({ children, id, name, information, minWidth, nameHasError, nameHasWarning, onDoubleClick }) => {
     const [inputWidth, setInputWidth] = useRecoilState(InputWidthStore);
     const containerWidth = useRef<any>(null);
     const infoIconRef = useRef<any>(null);
@@ -41,6 +42,7 @@ export const FieldWrapper: React.FC<FieldWrapperProps> = ({ children, id, name, 
         <div ref={containerWidth} className={"padding-s padding-bottom-none container-field-wrapper"} >
             <label
                 htmlFor={'prop_id_' + id}
+                onDoubleClick={onDoubleClick}
                 className={"flex1 label-field-wrapper"}
                 style={{
                     textDecoration: nameHasError ? `var(--text-underline-error)` : nameHasWarning ? `var(--text-underline-warning)` : undefined,

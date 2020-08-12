@@ -2,7 +2,7 @@ import { TypeOfValues } from "../enums";
 import { ISuggestion } from "./";
 
 export interface IProperties<T=any> {
-    openEditor?(e: React.MouseEvent<HTMLInputElement, MouseEvent>): void;
+    onPickerClick?(e: React.MouseEvent<HTMLInputElement, MouseEvent>): void;
     nameSuggestions?: ISuggestion[];
     suggestions?: ISuggestion[];
     editValueDisabled?: boolean;

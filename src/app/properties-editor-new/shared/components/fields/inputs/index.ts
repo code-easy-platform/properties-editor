@@ -3,6 +3,7 @@ export * from './InputFullBigString';
 export * from './InputSimpleString';
 export * from './InputSimpleNumber';
 export * from './InputImportFile';
+export * from './InputExpression';
 export * from './InputBigString';
 export * from './InputSelection';
 export * from './InputViewOnly';

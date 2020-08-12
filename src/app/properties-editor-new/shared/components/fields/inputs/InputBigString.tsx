@@ -26,7 +26,7 @@ export const InputBigString: React.FC<InputBigStringProps> = ({ onChange, ...pro
 
     return (
         <FieldWrapper
-            minWidth={40}
+            minWidth={60}
             id={props.id || ''}
             name={props.name || ''}
             information={props.information}

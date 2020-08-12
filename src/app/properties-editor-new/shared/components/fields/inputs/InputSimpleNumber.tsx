@@ -26,7 +26,7 @@ export const InputSimpleNumber: React.FC<InputSimpleNumberProps> = ({ onChange, 
 
     return (
         <FieldWrapper
-            minWidth={40}
+            minWidth={60}
             id={props.id || ''}
             name={props.name || ''}
             information={props.information}
