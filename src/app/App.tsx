@@ -369,80 +369,77 @@ const App: React.FC = () => {
 
   return (
     <div className="App">
-      <section>
-        
-        <div className="padding-s flex-column">
-          <div className="padding-s flex-itens-center flex-space-between">
-            <label className="margin-right-s">Name has error</label>
-            <Switch
-              checked={nameHasError}
-              border={'var(--input-border)'}
-              onChange={() => setNameHasError(!nameHasError)}
-              backgroundColor={'var(--main-background-bars)'}
-            />
-          </div>
-          <div className="padding-s flex-itens-center flex-space-between">
-            <label className="margin-right-s">Value has error</label>
-            <Switch
-              checked={valueHasError}
-              border={'var(--input-border)'}
-              backgroundColor={'var(--main-background-bars)'}
-              onChange={() => setValueHasError(!valueHasError)}
-            />
-          </div>
-          <div className="padding-s flex-itens-center flex-space-between">
-            <label className="margin-right-s">Name has warning</label>
-            <Switch
-              checked={nameHasWarning}
-              border={'var(--input-border)'}
-              backgroundColor={'var(--main-background-bars)'}
-              onChange={() => setNameHasWarning(!nameHasWarning)}
-            />
-          </div>
-          <div className="padding-s flex-itens-center flex-space-between">
-            <label className="margin-right-s">Value has warning</label>
-            <Switch
-              checked={valueHasWarning}
-              border={'var(--input-border)'}
-              backgroundColor={'var(--main-background-bars)'}
-              onChange={() => setValueHasWarning(!valueHasWarning)}
-            />
-          </div>
-          <hr className="hr-white" />
-          <div className="padding-s flex-itens-center flex-space-between">
-            <label className="margin-right-s">Value is disable</label>
-            <Switch
-              checked={valueIsDisabled}
-              border={'var(--input-border)'}
-              backgroundColor={'var(--main-background-bars)'}
-              onChange={() => setValueIsDisabled(!valueIsDisabled)}
-            />
-          </div>
-          <div className="padding-s flex-itens-center flex-space-between">
-            <label className="margin-right-s">Name is disable</label>
-            <Switch
-              checked={nameIsDisabled}
-              border={'var(--input-border)'}
-              backgroundColor={'var(--main-background-bars)'}
-              onChange={() => setNameIsDisabled(!nameIsDisabled)}
-            />
-          </div>
-          <div className="padding-s flex-itens-center flex-space-between">
-            <label className="margin-right-s">Use on change</label>
-            <Switch
-              checked={useOnChange}
-              border={'var(--input-border)'}
-              backgroundColor={'var(--main-background-bars)'}
-              onChange={() => setUseOnChange(!useOnChange)}
-            />
-          </div>
-          <hr className="hr-white" />
-          <div className="padding-s flex-itens-center flex-space-between" style={{ alignItems: 'center' }}>
-            <label className="margin-right-s" style={{ height: 'fit-content' }}>File max size in bytes</label>
-            <input type={"number"} style={{ width: 80 }} onChange={e => setFileMaxSize(Number(e.target.value))} value={fileMaxSize} />
-          </div>
+      <div className="padding-s flex-column">
+        <div className="padding-s flex-itens-center flex-space-between">
+          <label className="margin-right-s">Name has error</label>
+          <Switch
+            checked={nameHasError}
+            border={'var(--input-border)'}
+            onChange={() => setNameHasError(!nameHasError)}
+            backgroundColor={'var(--main-background-bars)'}
+          />
         </div>
-      </section>
+        <div className="padding-s flex-itens-center flex-space-between">
+          <label className="margin-right-s">Value has error</label>
+          <Switch
+            checked={valueHasError}
+            border={'var(--input-border)'}
+            backgroundColor={'var(--main-background-bars)'}
+            onChange={() => setValueHasError(!valueHasError)}
+          />
+        </div>
+        <div className="padding-s flex-itens-center flex-space-between">
+          <label className="margin-right-s">Name has warning</label>
+          <Switch
+            checked={nameHasWarning}
+            border={'var(--input-border)'}
+            backgroundColor={'var(--main-background-bars)'}
+            onChange={() => setNameHasWarning(!nameHasWarning)}
+          />
+        </div>
+        <div className="padding-s flex-itens-center flex-space-between">
+          <label className="margin-right-s">Value has warning</label>
+          <Switch
+            checked={valueHasWarning}
+            border={'var(--input-border)'}
+            backgroundColor={'var(--main-background-bars)'}
+            onChange={() => setValueHasWarning(!valueHasWarning)}
+          />
+        </div>
+        <hr className="hr-white" />
+        <div className="padding-s flex-itens-center flex-space-between">
+          <label className="margin-right-s">Value is disable</label>
+          <Switch
+            checked={valueIsDisabled}
+            border={'var(--input-border)'}
+            backgroundColor={'var(--main-background-bars)'}
+            onChange={() => setValueIsDisabled(!valueIsDisabled)}
+          />
+        </div>
+        <div className="padding-s flex-itens-center flex-space-between">
+          <label className="margin-right-s">Name is disable</label>
+          <Switch
+            checked={nameIsDisabled}
+            border={'var(--input-border)'}
+            backgroundColor={'var(--main-background-bars)'}
+            onChange={() => setNameIsDisabled(!nameIsDisabled)}
+          />
+        </div>
+        <div className="padding-s flex-itens-center flex-space-between">
+          <label className="margin-right-s">Use on change</label>
+          <Switch
+            checked={useOnChange}
+            border={'var(--input-border)'}
+            backgroundColor={'var(--main-background-bars)'}
+            onChange={() => setUseOnChange(!useOnChange)}
+          />
+        </div>
+        <hr className="hr-white" />
+        <div className="padding-s flex-itens-center flex-space-between" style={{ alignItems: 'center' }}>
+          <label className="margin-right-s" style={{ height: 'fit-content' }}>File max size in bytes</label>
+          <input type={"number"} style={{ width: 80 }} onChange={e => setFileMaxSize(Number(e.target.value))} value={fileMaxSize} />
+        </div>
+      </div>
       <div style={{ maxWidth: 300, minWidth: 300, alignContent: '', boxShadow: 'black 0px 0px 14px 0px' }}>
         <PropertiesEditor
           item={item}
@@ -502,15 +499,61 @@ const App: React.FC = () => {
                 id: '16',
                 group: 'Simple',
                 name: 'Big string',
-                type: TypeOfValues.bigstring,
                 value: 'My big string',
+                type: TypeOfValues.bigstring,
                 information: 'My super interesting information',
               },
               {
                 id: '17',
                 group: 'Simple',
-                type: TypeOfValues.fullBigString,
                 value: 'My full big string',
+                type: TypeOfValues.fullBigString,
+              },
+              {
+                id: '18',
+                name: 'Combo',
+                group: 'Simple',
+                value: undefined,
+                type: TypeOfValues.selection,
+                information: 'My super interesting information',
+                suggestions: [
+                  {
+                    label: 'Opção sugerida',
+                    description: '',
+                    disabled: false,
+                    value: 'opts1',
+                    name: 'opts1',
+                  },
+                  {
+                    label: 'Opção sugerida 1',
+                    description: '',
+                    disabled: false,
+                    value: 'opts2',
+                    name: 'opts2',
+                  },
+                  {
+                    description: 'Minha description',
+                    label: 'Opção sugerida 2',
+                    disabled: false,
+                    value: 'opts3',
+                    name: 'opts3',
+                  },
+                  {
+                    description: 'Minha description',
+                    label: 'Opção sugerida disable',
+                    disabled: true,
+                    value: 'opts4',
+                    name: 'opts4',
+                  }
+                ],
+              },
+              {
+                id: '19',
+                value: true,
+                group: 'Simple',
+                name: 'Combo Yes/No',
+                type: TypeOfValues.yesNoSelection,
+                information: 'My super interesting information',
               },
               {
                 id: '50',

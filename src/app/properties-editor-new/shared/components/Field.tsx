@@ -1,6 +1,10 @@
 import React from 'react';
 
-import { InputViewOnly, SimpleString, InputSwitch, InputSimpleNumber, InputImportFile, InputBigString, InputFullBigString } from './fields/inputs/';
+import {
+    InputSelectionYesNo,
+    InputViewOnly, SimpleString, InputSwitch, InputSimpleNumber,
+    InputImportFile, InputBigString, InputFullBigString, InputSelection,
+} from './fields/inputs/';
 import { IProperties } from '../interfaces';
 import { TypeOfValues } from '../enums';
 
@@ -30,6 +34,12 @@ export const Field: React.FC<FieldProps> = ({ field }) => {
 
         case TypeOfValues.fullBigString:
             return <InputFullBigString onChange={console.log} {...field} />;
+
+        case TypeOfValues.selection:
+            return <InputSelection onChange={console.log} {...field} />;
+
+        case TypeOfValues.yesNoSelection:
+            return <InputSelectionYesNo onChange={console.log} {...field} />;
 
         default:
             return null;

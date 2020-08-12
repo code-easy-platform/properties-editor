@@ -1,14 +1,18 @@
 import React from 'react';
 
-interface ResizerProps { onChange(left: number): void }
-export const Resizer: React.FC<ResizerProps> = ({ onChange }) => {
+interface ResizerProps {
+    onChange(left: number): void;
+    onRisizeEnd?(left: number): void;
+}
+export const Resizer: React.FC<ResizerProps> = ({ onChange, onRisizeEnd }) => {
 
     const mouseMove = (e: MouseEvent) => {
         onChange(window.innerWidth - e.pageX);
     }
 
-    const mouseUp = () => {
+    const mouseUp = (e: MouseEvent) => {
         window.document.body.style.cursor = 'unset';
+        onRisizeEnd && onRisizeEnd(window.innerWidth - e.pageX);
         window.onmousemove = null;
         window.onmouseup = null;
     }

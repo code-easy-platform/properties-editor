@@ -52,10 +52,8 @@ export const FieldWrapper: React.FC<FieldWrapperProps> = ({ children, id, name, 
             </label>
             <Tooltip elementRef={infoIconRef} description={information} />
             <Resizer
-                onChange={newWidth => {
-                    setInputWidth(newWidth);
-                    LocalStorageService.setInputsWidth(newWidth);
-                }}
+                onChange={setInputWidth}
+                onRisizeEnd={newWidth => LocalStorageService.setInputsWidth(newWidth)}
             />
             <div style={{ width: inputWidth ? `${inputWidth}px` : '70%', minWidth, maxWidth: '90%' }}>
                 {children('prop_id_' + id)}

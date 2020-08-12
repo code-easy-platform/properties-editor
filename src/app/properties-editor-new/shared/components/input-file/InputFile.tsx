@@ -1,6 +1,8 @@
 import React, { useRef, useState } from 'react';
 import { Utils } from 'code-easy-components';
 
+import './InputFile.css';
+
 type InputFileProps = Omit<{
     fileName?: string;
     /**
@@ -14,8 +16,8 @@ type InputFileProps = Omit<{
  */
 export const InputFile = React.forwardRef(({ fileName, fileMaxSize = 1048576, ...props }: InputFileProps, ref: any) => {
 
-    const input: any = useRef(null);
     const [state, setState] = useState({ fileName });
+    const input: any = useRef(null);
 
     const css_input_file: React.CSSProperties = {
         ...props.style,
@@ -34,17 +36,8 @@ export const InputFile = React.forwardRef(({ fileName, fileMaxSize = 1048576, ..
     }
 
     return (<>
-        <div
-            {...props}
-            style={css_input_file}
-            id={Utils.getUUID() + "_" + props.id}
-            key={Utils.getUUID() + "_" + props.id}
-            onClick={e => { input.current.click() }}
-            onKeyPress={e => { input.current.click() }}
-        >{state.fileName || 'Select a file...'}</div>
         <input
             ref={input}
-            tabIndex={0}
             type={'file'}
             id={props.id}
             key={props.id}
@@ -57,6 +50,16 @@ export const InputFile = React.forwardRef(({ fileName, fileMaxSize = 1048576, ..
                 }
             }}
         />
+        <div
+            {...props}
+            tabIndex={0}
+            style={css_input_file}
+            id={Utils.getUUID() + "_" + props.id}
+            key={Utils.getUUID() + "_" + props.id}
+            onClick={e => { input.current.click() }}
+            onKeyPress={e => { input.current.click() }}
+            className={props.className + " input-file-view"}
+        >{state.fileName || 'Select a file...'}</div>
     </>);
 
 });
