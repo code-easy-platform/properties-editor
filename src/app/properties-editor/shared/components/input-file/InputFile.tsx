@@ -52,11 +52,11 @@ export const InputFile = React.forwardRef(({ fileName, fileMaxSize = 1048576, ..
         />
         <div
             {...props}
-            tabIndex={0}
             style={css_input_file}
             id={Utils.getUUID() + "_" + props.id}
             key={Utils.getUUID() + "_" + props.id}
             onClick={e => { input.current.click() }}
+            tabIndex={!props.disabled ? 0 : undefined}
             onKeyPress={e => { input.current.click() }}
             className={props.className + " input-file-view"}
         >{state.fileName || 'Select a file...'}</div>

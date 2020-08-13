@@ -38,12 +38,12 @@ export const ExpressionInput: React.FC<ExpressionInputProps> = ({ onPickerClick,
     return (
         <div className="flex1" style={{ alignItems: 'center', justifyContent: 'flex-end', position: "relative" }}>
             <input {...props} autoComplete='off' style={{ ...props.style, width: '100%' }} className={`${(suggestions || []).length > 0 && "padding-right-g"}`} />
-            {((suggestions || []).length > 0) && (
+            {(!props.disabled && (suggestions || []).length > 0) && (
                 <img
-                    tabIndex={0}
+                    alt={"open-suggestions"}
                     onClick={openSuggestions}
-                    className="btn border-radius open-suggestions"
-                    src={IconCollapsedFolder} alt="open-suggestions"
+                    src={IconCollapsedFolder}
+                    className={`btn border-radius open-suggestions`}
                     style={{ paddingBottom: 0, paddingTop: 0, minHeight: 32, zIndex: 1, outline: 'none' }}
                     onKeyDown={e => {
                         if (e.keyCode === 13 || e.keyCode === 32) {
@@ -57,10 +57,10 @@ export const ExpressionInput: React.FC<ExpressionInputProps> = ({ onPickerClick,
                 show={showAutoComplete}
                 onSelect={opt => {
                     dismissSuggestion();
-                    onSelectSuggest(opt);
+                    !props.disabled && onSelectSuggest(opt);
                 }}
             />
-            <input type="button" className="full-height background-bars" style={css_picker_editor} disabled={props.disabled} onClick={onPickerClick} />
+            {!props.disabled && <input type="button" className="full-height background-bars" style={css_picker_editor} onClick={!props.disabled && onPickerClick} />}
         </div>
     );
 }

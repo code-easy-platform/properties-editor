@@ -14,18 +14,29 @@ export const Assign: React.FC<IAssignProps> = (props) => {
     const css_prop_item_input_name: React.CSSProperties = {
         border: props.nameHasError ? 'var(--input-border-error)' : props.nameHasWarning ? 'var(--input-border-warning)' : 'var(--input-border)',
         textDecoration: props.nameHasError ? `var(--text-underline-error)` : props.nameHasWarning ? `var(--text-underline-warning)` : undefined,
-        borderBottomRightRadius: 0,
         borderBottomLeftRadius: 0,
+        borderBottomRightRadius: (
+            (
+                (!props.editNameDisabled && !props.editValueDisabled) ||
+                (props.editNameDisabled && props.editValueDisabled)
+            ) ||
+            (!props.editNameDisabled && props.editValueDisabled)
+        ) ? 0 : undefined,
     }
     const css_prop_item_input_value: React.CSSProperties = {
         textDecoration: props.valueHasError ? `var(--text-underline-error)` : props.valueHasError ? `var(--text-underline-warning)` : undefined,
         border: props.valueHasError ? 'var(--input-border-error)' : props.valueHasWarning ? 'var(--input-border-warning)' : 'var(--input-border)',
         ...((!props.valueHasError && (!props.valueHasWarning || props.nameHasWarning)) ? { borderTop: 0 } : {}),
-        WebkitBorderTopRightRadius: 0,
-        WebkitBorderTopLeftRadius: 0,
-        borderTopRightRadius: 0,
         borderTopLeftRadius: 0,
         paddingLeft: 30,
+
+        borderTopRightRadius: (
+            (
+                (!props.editNameDisabled && !props.editValueDisabled) ||
+                (props.editNameDisabled && props.editValueDisabled)
+            ) ||
+            (props.editNameDisabled && !props.editValueDisabled)
+        ) ? 0 : undefined,
     }
 
     const handleOnChangeName = useCallback((e: React.ChangeEvent<HTMLInputElement>) => {
