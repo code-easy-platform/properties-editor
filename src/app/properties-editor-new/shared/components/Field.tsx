@@ -1,9 +1,9 @@
 import React from 'react';
 
 import {
-    InputSelectionYesNo, InputExpression,
+    InputSelectionYesNo, InputExpression, InputSelection,
     InputViewOnly, SimpleString, InputSwitch, InputSimpleNumber,
-    InputImportFile, InputBigString, InputFullBigString, InputSelection,
+    InputImportFile, InputBigString, InputFullBigString, Assign,
 } from './fields/inputs/';
 import { IProperties } from '../interfaces';
 import { TypeOfValues } from '../enums';
@@ -44,6 +44,9 @@ export const Field: React.FC<FieldProps> = ({ field, onChange }) => {
 
         case TypeOfValues.expression:
             return <InputExpression onChange={onChange} {...field} />;
+
+        case TypeOfValues.assign:
+            return <Assign onChange={onChange} {...field} />;
 
         default:
             return null;

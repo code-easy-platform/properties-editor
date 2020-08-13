@@ -37,8 +37,8 @@ export const ExpressionInput: React.FC<ExpressionInputProps> = ({ onPickerClick,
 
     return (
         <div className="flex1" style={{ alignItems: 'center', justifyContent: 'flex-end', position: "relative" }}>
-            <input {...props} onDoubleClick={openSuggestions} autoComplete='off' style={{ ...props.style, width: '100%' }} className={`${(suggestions || []).length > 0 && "padding-right-g"}`} />
-            {((suggestions || []).length > 0) && <img onClick={openSuggestions} className="open-suggestions btn border-radius" src={IconCollapsedFolder} alt="open-suggestions" />}
+            <input {...props} autoComplete='off' style={{ ...props.style, width: '100%' }} className={`${(suggestions || []).length > 0 && "padding-right-g"}`} />
+            {((suggestions || []).length > 0) && <img onClick={openSuggestions} className="btn border-radius open-suggestions" style={{ paddingBottom: 0, paddingTop: 0, minHeight: 32 }} src={IconCollapsedFolder} alt="open-suggestions" />}
             <SearchAutocomplete
                 options={suggestions}
                 show={showAutoComplete}

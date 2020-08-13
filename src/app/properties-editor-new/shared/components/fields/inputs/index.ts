@@ -8,3 +8,4 @@ export * from './InputBigString';
 export * from './InputSelection';
 export * from './InputViewOnly';
 export * from './InputSwitch';
+export * from './Assign';

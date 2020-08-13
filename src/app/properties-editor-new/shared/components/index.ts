@@ -1,4 +1,5 @@
 export * from './fields/field-wrapper/FieldWrapper';
+export * from './expression-input/ExpressionInput';
 export * from './fields/FieldGroup';
 export * from './fields/inputs/';
 export * from './FieldsList';

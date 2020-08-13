@@ -46,10 +46,9 @@ export const InputExpression: React.FC<SimpleStringProps> = ({ onChange, ...prop
         >
             {inputId => (
                 <ExpressionInput
+                    onPickerClick={props.onPickerValueClick}
                     className="full-width background-bars"
-                    onPickerClick={props.onPickerClick}
                     disabled={props.editValueDisabled}
-                    // onKeyDown={(e) => onkeyPress(e)}
                     onSelectSuggest={handleOnSelect}
                     autoFocus={props.focusOnRender}
                     suggestions={props.suggestions}
