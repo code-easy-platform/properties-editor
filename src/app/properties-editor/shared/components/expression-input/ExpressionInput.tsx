@@ -38,7 +38,20 @@ export const ExpressionInput: React.FC<ExpressionInputProps> = ({ onPickerClick,
     return (
         <div className="flex1" style={{ alignItems: 'center', justifyContent: 'flex-end', position: "relative" }}>
             <input {...props} autoComplete='off' style={{ ...props.style, width: '100%' }} className={`${(suggestions || []).length > 0 && "padding-right-g"}`} />
-            {((suggestions || []).length > 0) && <img onClick={openSuggestions} className="btn border-radius open-suggestions" style={{ paddingBottom: 0, paddingTop: 0, minHeight: 32 }} src={IconCollapsedFolder} alt="open-suggestions" />}
+            {((suggestions || []).length > 0) && (
+                <img
+                    tabIndex={0}
+                    onClick={openSuggestions}
+                    className="btn border-radius open-suggestions"
+                    src={IconCollapsedFolder} alt="open-suggestions"
+                    style={{ paddingBottom: 0, paddingTop: 0, minHeight: 32, zIndex: 1, outline: 'none' }}
+                    onKeyDown={e => {
+                        if (e.keyCode === 13 || e.keyCode === 32) {
+                            openSuggestions();
+                        }
+                    }}
+                />
+            )}
             <SearchAutocomplete
                 options={suggestions}
                 show={showAutoComplete}

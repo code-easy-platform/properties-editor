@@ -18,3 +18,6 @@ export const PropertiesEditor: React.FC<PropertiesEditorProps> = ({ item }) => {
         </ConfigurationProvider>
     );
 }
+
+export * from './shared/interfaces';
+export * from './shared/enums';
