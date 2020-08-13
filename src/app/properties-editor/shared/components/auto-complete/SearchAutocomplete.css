@@ -31,3 +31,8 @@
 .option-item :checked:focus+label {
     background-color: var(--main-background-highlighted);
 }
+
+.input-search {
+    border-radius: 0;
+    width: -webkit-fill-available;
+}
