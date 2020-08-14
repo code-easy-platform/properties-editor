@@ -1,20 +1,30 @@
-import React from 'react';
+import React, { useCallback } from 'react';
 
+import { FieldGroup } from './fields/FieldGroup';
 import { IProperties } from '../interfaces';
 import { Field } from './Field';
-import { FieldGroup } from './fields/FieldGroup';
 
 interface FieldsListProps {
     fields: IProperties[];
+    onChange?(fields: IProperties[]): void;
 }
-export const FieldsList: React.FC<FieldsListProps> = ({ fields = [] }) => {
+export const FieldsList: React.FC<FieldsListProps> = ({ fields = [], onChange }) => {
 
     let groups: string[] = [];
     fields.forEach(prop => {
-        if (prop.group && (!groups.some(grup => grup === prop.group))) {
+        if (prop.group && (!groups.some(group => group === prop.group))) {
             groups.push(prop.group);
         }
     });
+
+    const handleOnChange = useCallback((data: IProperties<any>) => {
+        onChange && onChange(fields.map(current => {
+            if (current.id === data.id) {
+                return data;
+            }
+            return current;
+        }));
+    }, [fields, onChange]);
 
     return (
         <div className="flex-column overflow-auto full-height">
@@ -24,7 +34,7 @@ export const FieldsList: React.FC<FieldsListProps> = ({ fields = [] }) => {
                     <Field
                         key={index}
                         field={field}
-                        onChange={console.log}
+                        onChange={handleOnChange}
                     />
                 ))
             }
@@ -35,7 +45,7 @@ export const FieldsList: React.FC<FieldsListProps> = ({ fields = [] }) => {
                             <Field
                                 key={index}
                                 field={field}
-                                onChange={console.log}
+                                onChange={handleOnChange}
                             />
                         ))}
                     </FieldGroup>

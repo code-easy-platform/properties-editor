@@ -1,12 +1,13 @@
 import React from 'react';
 
 import { Header, FieldsList } from './shared/components';
-import { IItem } from './shared/interfaces';
+import { IItem, IProperties } from './shared/interfaces';
 
 interface PropertiesEditorFormProps {
     item: IItem;
+    onChange?(fields: IProperties[]): void;
 }
-export const PropertiesEditorForm: React.FC<PropertiesEditorFormProps> = ({ item }) => {
+export const PropertiesEditorForm: React.FC<PropertiesEditorFormProps> = ({ item, onChange }) => {
 
     return (
         <div className="flex1 flex-column full-width">
@@ -18,6 +19,7 @@ export const PropertiesEditorForm: React.FC<PropertiesEditorFormProps> = ({ item
                 backgroundColor={"var(--main-background-bars)"}
             />
             <FieldsList
+                onChange={onChange}
                 fields={item.properties}
             />
         </div>

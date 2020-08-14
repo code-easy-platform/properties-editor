@@ -1,8 +1,8 @@
 import React, { useState, useCallback } from 'react';
 
 import { FieldWrapper } from './../field-wrapper/FieldWrapper';
-import { IProperties } from '../../../interfaces';
 import { Switch } from '../../toggle-swicth/Switch';
+import { IProperties } from '../../../interfaces';
 
 interface InputSwitchProps extends IProperties<boolean> {
     onChange?(data: IProperties<boolean>): void;
@@ -11,19 +11,11 @@ export const InputSwitch: React.FC<InputSwitchProps> = ({ onChange, ...props }) 
     const [value, setValue] = useState(props.value);
 
     const handleOnChange = useCallback((value: boolean) => {
-        if (props.useOnChange && onChange) {
+        if (onChange) {
             onChange({ ...props, value });
-            setValue(value);
-        } else {
-            setValue(value);
         }
+        setValue(value);
     }, [onChange, props]);
-
-    const handleOnBlur = useCallback((e: React.FocusEvent<HTMLInputElement>) => {
-        if (props.value !== value && onChange) {
-            onChange({ ...props, value });
-        }
-    }, [onChange, props, value]);
 
     return (
         <FieldWrapper
@@ -35,11 +27,10 @@ export const InputSwitch: React.FC<InputSwitchProps> = ({ onChange, ...props }) 
             nameHasWarning={props.nameHasWarning}
         >
             {inputId => (<>
-                <div className="flex1"/>
+                <div className="flex1" />
                 <Switch
                     id={inputId}
                     checked={value}
-                    onBlur={handleOnBlur}
                     onChange={handleOnChange}
                     hasError={props.valueHasError}
                     border={'var(--input-border)'}

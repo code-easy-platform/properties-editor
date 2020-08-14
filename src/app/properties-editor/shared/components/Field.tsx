@@ -12,41 +12,41 @@ interface FieldProps {
     field: IProperties;
     onChange?(data: IProperties): void;
 }
-export const Field: React.FC<FieldProps> = ({ field }) => {
+export const Field: React.FC<FieldProps> = ({ field, onChange }) => {
 
     switch (field.type) {
         case TypeOfValues.viewOnly:
             return <InputViewOnly {...field} />;
 
         case TypeOfValues.string:
-            return <SimpleString {...field} />;
+            return <SimpleString onChange={onChange} {...field} />;
 
         case TypeOfValues.boolean:
-            return <InputSwitch {...field} />;
+            return <InputSwitch onChange={onChange} {...field} />;
 
         case TypeOfValues.number:
-            return <InputSimpleNumber {...field} />;
+            return <InputSimpleNumber onChange={onChange} {...field} />;
 
         case TypeOfValues.binary:
-            return <InputImportFile {...field} />;
+            return <InputImportFile onChange={onChange} {...field} />;
 
         case TypeOfValues.bigstring:
-            return <InputBigString {...field} />;
+            return <InputBigString onChange={onChange} {...field} />;
 
         case TypeOfValues.fullBigString:
-            return <InputFullBigString {...field} />;
+            return <InputFullBigString onChange={onChange} {...field} />;
 
         case TypeOfValues.selection:
-            return <InputSelection {...field} />;
+            return <InputSelection onChange={onChange} {...field} />;
 
         case TypeOfValues.yesNoSelection:
-            return <InputSelectionYesNo {...field} />;
+            return <InputSelectionYesNo onChange={onChange} {...field} />;
 
         case TypeOfValues.expression:
-            return <InputExpression {...field} />;
+            return <InputExpression onChange={onChange} {...field} />;
 
         case TypeOfValues.assign:
-            return <Assign {...field} />;
+            return <Assign onChange={onChange} {...field} />;
 
         default:
             return null;

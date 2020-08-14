@@ -1,19 +1,21 @@
 import React from 'react';
 
+import { IItem, IProperties, IPropertiesEditorConfigurations } from './shared/interfaces';
 import { RecoilContainer } from './shared/stores/RecoilContainer';
 import { ConfigurationProvider } from './shared/contexts';
 import { PropertiesEditorForm } from './PropertiesEditor';
-import { IItem } from './shared/interfaces';
 
 interface PropertiesEditorProps {
     item: IItem;
+    configs?: IPropertiesEditorConfigurations;
+    onChange?(fields: IProperties<any>[]): void;
 }
-export const PropertiesEditor: React.FC<PropertiesEditorProps> = ({ item }) => {
+export const PropertiesEditor: React.FC<PropertiesEditorProps> = ({ item, onChange, configs }) => {
 
     return (
-        <ConfigurationProvider configs={{}}>
+        <ConfigurationProvider configs={configs as IPropertiesEditorConfigurations}>
             <RecoilContainer>
-                <PropertiesEditorForm item={item} />
+                <PropertiesEditorForm item={item} onChange={onChange} />
             </RecoilContainer>
         </ConfigurationProvider>
     );
