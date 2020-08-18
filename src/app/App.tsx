@@ -6,7 +6,6 @@ import './App.css';
 
 let item: IItem = {
   id: 'T',
-  isHeader: false,
   name: 'My name to view only',
   subname: 'My interesting subname',
   properties: [
