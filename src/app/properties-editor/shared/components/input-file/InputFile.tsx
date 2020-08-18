@@ -21,6 +21,7 @@ export const InputFile = React.forwardRef(({ fileName, fileMaxSize = 1048576, ..
 
     const css_input_file: React.CSSProperties = {
         ...props.style,
+        opacity: props.disabled ? 0.7 : undefined,
         padding: 'var(--size-2)',
         paddingRight: 'var(--size-1)',
         paddingLeft: 'var(--size-1)',

@@ -3,11 +3,13 @@ import React, { useState, useCallback } from 'react';
 import { IProperties, IFileContent } from '../../../interfaces';
 import { FieldWrapper } from '../field-wrapper/FieldWrapper';
 import { InputFile } from '../../input-file/InputFile';
+import { useConfigs } from '../../../contexts';
 
 interface InputImportFileProps extends IProperties<IFileContent> {
     onChange?(data: IProperties<IFileContent>): void;
 }
 export const InputImportFile: React.FC<InputImportFileProps> = ({ onChange, ...props }) => {
+    const { inputBorderError, inputBorderWarning, inputBorderDefault, inputTextError, inputTextWarning, inputTextDefault } = useConfigs();
     const [value, setValue] = useState(props.value);
 
     const handleOnChange = useCallback((e: React.ChangeEvent<HTMLInputElement>) => {
@@ -60,8 +62,8 @@ export const InputImportFile: React.FC<InputImportFileProps> = ({ onChange, ...p
                     onBlur={handleOnBlur}
                     id={inputId}
                     style={{
-                        textDecoration: props.valueHasError ? `var(--text-underline-error)` : props.valueHasWarning ? `var(--text-underline-warning)` : undefined,
-                        border: props.valueHasError ? 'var(--input-border-error)' : props.valueHasWarning ? 'var(--input-border-warning)' : 'var(--input-border)',
+                        textDecoration: props.valueHasError ? inputTextError : props.valueHasWarning ? inputTextWarning : inputTextDefault,
+                        border: props.valueHasError ? inputBorderError : props.valueHasWarning ? inputBorderWarning : inputBorderDefault,
                     }}
                 />
             )}

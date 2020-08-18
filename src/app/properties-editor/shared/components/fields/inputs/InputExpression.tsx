@@ -1,13 +1,15 @@
 import React, { useState, useCallback } from 'react';
 
-import { FieldWrapper } from '../field-wrapper/FieldWrapper';
-import { IProperties, ISuggestion } from '../../../interfaces';
 import { ExpressionInput } from '../../expression-input/ExpressionInput';
+import { IProperties, ISuggestion } from '../../../interfaces';
+import { FieldWrapper } from '../field-wrapper/FieldWrapper';
+import { useConfigs } from '../../../contexts';
 
 interface SimpleStringProps extends IProperties<string> {
     onChange?(data: IProperties<string>): void;
 }
 export const InputExpression: React.FC<SimpleStringProps> = ({ onChange, ...props }) => {
+    const { inputBorderError, inputBorderWarning, inputBorderDefault, inputTextError, inputTextWarning, inputTextDefault } = useConfigs();
     const [value, setValue] = useState(props.value);
 
     const handleOnChange = useCallback((e: React.ChangeEvent<HTMLInputElement>) => {
@@ -57,8 +59,8 @@ export const InputExpression: React.FC<SimpleStringProps> = ({ onChange, ...prop
                     value={value}
                     id={inputId}
                     style={{
-                        textDecoration: props.valueHasError ? `var(--text-underline-error)` : props.valueHasWarning ? `var(--text-underline-warning)` : undefined,
-                        border: props.valueHasError ? 'var(--input-border-error)' : props.valueHasWarning ? 'var(--input-border-warning)' : 'var(--input-border)',
+                        textDecoration: props.valueHasError ? inputTextError : props.valueHasWarning ? inputTextWarning : inputTextDefault,
+                        border: props.valueHasError ? inputBorderError : props.valueHasWarning ? inputBorderWarning : inputBorderDefault,
                     }}
                 />
             )}

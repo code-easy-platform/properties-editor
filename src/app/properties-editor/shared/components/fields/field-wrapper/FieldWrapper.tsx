@@ -2,10 +2,11 @@ import React, { useRef, useEffect, useState } from 'react';
 import { IconMoreInfo } from 'code-easy-components';
 import { useRecoilState } from 'recoil';
 
+import { LocalStorageService } from '../../../local-storage/LocalStorage';
 import { InputWidthStore } from './../../../stores/InputWidth';
+import { useConfigs } from '../../../contexts';
 import { Resizer, Tooltip } from './../../';
 import './FieldWrapper.css';
-import { LocalStorageService } from '../../../local-storage/LocalStorage';
 
 interface FieldWrapperProps {
     id: string;
@@ -22,6 +23,7 @@ interface FieldWrapperProps {
     onDoubleClick?(e: React.MouseEvent<HTMLLabelElement, MouseEvent>): void;
 }
 export const FieldWrapper: React.FC<FieldWrapperProps> = ({ children, id, name, information, minWidth, nameHasError, nameHasWarning, onDoubleClick }) => {
+    const { inputTextError, inputTextWarning, inputTextDefault } = useConfigs();
     const [inputWidth, setInputWidth] = useRecoilState(InputWidthStore);
     const containerWidth = useRef<any>(null);
     const infoIconRef = useRef<any>(null);
@@ -45,7 +47,7 @@ export const FieldWrapper: React.FC<FieldWrapperProps> = ({ children, id, name, 
                 onDoubleClick={onDoubleClick}
                 className={"flex1 label-field-wrapper"}
                 style={{
-                    textDecoration: nameHasError ? `var(--text-underline-error)` : nameHasWarning ? `var(--text-underline-warning)` : undefined,
+                    textDecoration: nameHasError ? inputTextError : nameHasWarning ? inputTextWarning : inputTextDefault,
                     width: (container.width - inputWidth),
                 }}
             >

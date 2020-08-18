@@ -2,11 +2,13 @@ import React, { useState, useCallback } from 'react';
 
 import { FieldWrapper } from '../field-wrapper/FieldWrapper';
 import { IProperties } from '../../../interfaces';
+import { useConfigs } from '../../../contexts';
 
 interface InputSelectionProps extends IProperties<string> {
     onChange?(data: IProperties<string>): void;
 }
 export const InputSelection: React.FC<InputSelectionProps> = ({ onChange, ...props }) => {
+    const { inputBorderError, inputBorderWarning, inputBorderDefault, inputTextError, inputTextWarning, inputTextDefault } = useConfigs();
     const [value, setValue] = useState(props.value);
 
     const handleOnChange = useCallback((e: React.ChangeEvent<HTMLSelectElement>) => {
@@ -34,12 +36,12 @@ export const InputSelection: React.FC<InputSelectionProps> = ({ onChange, ...pro
                     value={value}
                     id={inputId}
                     style={{
-                        textDecoration: props.valueHasError ? `var(--text-underline-error)` : props.valueHasWarning ? `var(--text-underline-warning)` : undefined,
-                        border: props.valueHasError ? 'var(--input-border-error)' : props.valueHasWarning ? 'var(--input-border-warning)' : 'var(--input-border)',
+                        textDecoration: props.valueHasError ? inputTextError : props.valueHasWarning ? inputTextWarning : inputTextDefault,
+                        border: props.valueHasError ? inputBorderError : props.valueHasWarning ? inputBorderWarning : inputBorderDefault,
                         width: '100%',
                     }}
                 >
-                    <option value={undefined}>Selecione</option>
+                    <option value={undefined}>Select</option>
                     {props.suggestions?.map((item, index) => {
                         return (
                             <option

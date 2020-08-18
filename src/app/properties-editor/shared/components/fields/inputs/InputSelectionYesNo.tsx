@@ -2,11 +2,13 @@ import React, { useState, useCallback } from 'react';
 
 import { FieldWrapper } from '../field-wrapper/FieldWrapper';
 import { IProperties } from '../../../interfaces';
+import { useConfigs } from '../../../contexts';
 
 interface InputSelectionYesNoProps extends IProperties<boolean> {
     onChange?(data: IProperties<boolean>): void;
 }
 export const InputSelectionYesNo: React.FC<InputSelectionYesNoProps> = ({ onChange, ...props }) => {
+    const { inputBorderError, inputBorderWarning, inputBorderDefault, inputTextError, inputTextWarning, inputTextDefault } = useConfigs();
     const [value, setValue] = useState(props.value);
 
     const handleOnChange = useCallback((e: React.ChangeEvent<HTMLSelectElement>) => {
@@ -42,8 +44,8 @@ export const InputSelectionYesNo: React.FC<InputSelectionYesNoProps> = ({ onChan
                     value={String(value)}
                     id={inputId}
                     style={{
-                        textDecoration: props.valueHasError ? `var(--text-underline-error)` : props.valueHasWarning ? `var(--text-underline-warning)` : undefined,
-                        border: props.valueHasError ? 'var(--input-border-error)' : props.valueHasWarning ? 'var(--input-border-warning)' : 'var(--input-border)',
+                        textDecoration: props.valueHasError ? inputTextError : props.valueHasWarning ? inputTextWarning : inputTextDefault,
+                        border: props.valueHasError ? inputBorderError : props.valueHasWarning ? inputBorderWarning : inputBorderDefault,
                         width: '100%',
                     }}
                 >

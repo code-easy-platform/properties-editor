@@ -3,11 +3,13 @@ import React, { useState, useCallback } from 'react';
 import { FieldWrapper } from './../field-wrapper/FieldWrapper';
 import { Switch } from '../../toggle-swicth/Switch';
 import { IProperties } from '../../../interfaces';
+import { useConfigs } from '../../../contexts';
 
 interface InputSwitchProps extends IProperties<boolean> {
     onChange?(data: IProperties<boolean>): void;
 }
 export const InputSwitch: React.FC<InputSwitchProps> = ({ onChange, ...props }) => {
+    const { inputBorderError, inputBorderWarning, inputBorderDefault } = useConfigs();
     const [value, setValue] = useState(props.value);
 
     const handleOnChange = useCallback((value: boolean) => {
@@ -32,13 +34,13 @@ export const InputSwitch: React.FC<InputSwitchProps> = ({ onChange, ...props }) 
                     id={inputId}
                     checked={value}
                     onChange={handleOnChange}
+                    border={inputBorderDefault}
                     hasError={props.valueHasError}
-                    border={'var(--input-border)'}
+                    borderError={inputBorderError}
                     autoFocus={props.focusOnRender}
                     hasWarning={props.valueHasWarning}
                     disabled={props.editValueDisabled}
-                    borderError={'var(--input-border-error)'}
-                    borderWarning={'var(--input-border-warning)'}
+                    borderWarning={inputBorderWarning}
                     backgroundColor={'var(--main-background-bars)'}
                 />
             </>)}

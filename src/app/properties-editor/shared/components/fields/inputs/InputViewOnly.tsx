@@ -1,10 +1,12 @@
 import React from 'react';
 
 import { IProperties } from '../../../interfaces';
+import { useConfigs } from '../../../contexts';
 import { FieldWrapper } from '../..';
 
 export const InputViewOnly: React.FC<IProperties> = (props) => {
     const { valueHasError = false, nameHasError = false, nameHasWarning = false, valueHasWarning = false, id, value, information, name } = props;
+    const { inputTextError, inputTextWarning, inputTextDefault } = useConfigs();
 
     return (
         <FieldWrapper
@@ -18,7 +20,7 @@ export const InputViewOnly: React.FC<IProperties> = (props) => {
             {inputId => (
                 <label
                     style={{
-                        textDecoration: valueHasError ? `var(--text-underline-error)` : valueHasWarning ? `var(--text-underline-warning)` : undefined,
+                        textDecoration: valueHasError ? inputTextError : valueHasWarning ? inputTextWarning : inputTextDefault,
                         backgroundColor: 'transparent',
                         textOverflow: 'ellipsis',
                         display: 'inline-block',

@@ -2,11 +2,13 @@ import React, { useState, useCallback } from 'react';
 
 import { FieldWrapper } from '../field-wrapper/FieldWrapper';
 import { IProperties } from '../../../interfaces';
+import { useConfigs } from '../../../contexts';
 
 interface InputBigStringProps extends IProperties<string> {
     onChange?(data: IProperties<string>): void;
 }
 export const InputBigString: React.FC<InputBigStringProps> = ({ onChange, ...props }) => {
+    const { inputBorderError, inputBorderWarning, inputBorderDefault, inputTextError, inputTextWarning, inputTextDefault } = useConfigs();
     const [value, setValue] = useState(props.value);
 
     const handleOnChange = useCallback((e: React.ChangeEvent<HTMLTextAreaElement>) => {
@@ -44,10 +46,10 @@ export const InputBigString: React.FC<InputBigStringProps> = ({ onChange, ...pro
                     value={value}
                     id={inputId}
                     style={{
-                        textDecoration: props.valueHasError ? `var(--text-underline-error)` : props.valueHasWarning ? `var(--text-underline-warning)` : undefined,
-                        border: props.valueHasError ? 'var(--input-border-error)' : props.valueHasWarning ? 'var(--input-border-warning)' : 'var(--input-border)',
+                        textDecoration: props.valueHasError ? inputTextError : props.valueHasWarning ? inputTextWarning : inputTextDefault,
+                        border: props.valueHasError ? inputBorderError : props.valueHasWarning ? inputBorderWarning : inputBorderDefault,
+                        resize: 'vertical',
                         height: '50px',
-                        resize: 'vertical'
                     }}
                 />
             )}

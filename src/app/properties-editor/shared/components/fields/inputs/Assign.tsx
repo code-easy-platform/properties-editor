@@ -1,6 +1,7 @@
 import React, { useCallback, useState } from 'react';
 
 import { IProperties, ISuggestion } from './../../../interfaces';
+import { useConfigs } from '../../../contexts';
 import { ExpressionInput } from './../../';
 
 interface IAssignProps extends IProperties<string> {
@@ -8,12 +9,13 @@ interface IAssignProps extends IProperties<string> {
     onKeyDown?(e: any): void;
 }
 export const Assign: React.FC<IAssignProps> = (props) => {
+    const { inputBorderError, inputBorderWarning, inputBorderDefault, inputTextError, inputTextWarning, inputTextDefault } = useConfigs();
     const [value, setValue] = useState(props.value);
     const [name, setName] = useState(props.name);
 
     const css_prop_item_input_name: React.CSSProperties = {
-        border: props.nameHasError ? 'var(--input-border-error)' : props.nameHasWarning ? 'var(--input-border-warning)' : 'var(--input-border)',
-        textDecoration: props.nameHasError ? `var(--text-underline-error)` : props.nameHasWarning ? `var(--text-underline-warning)` : undefined,
+        border: props.nameHasError ? inputBorderError : props.nameHasWarning ? inputBorderWarning : inputBorderDefault,
+        textDecoration: props.nameHasError ? inputTextError : props.nameHasWarning ? inputTextWarning : inputTextDefault,
         borderBottomLeftRadius: 0,
         borderBottomRightRadius: (
             (
@@ -24,8 +26,8 @@ export const Assign: React.FC<IAssignProps> = (props) => {
         ) ? 0 : undefined,
     }
     const css_prop_item_input_value: React.CSSProperties = {
-        textDecoration: props.valueHasError ? `var(--text-underline-error)` : props.valueHasError ? `var(--text-underline-warning)` : undefined,
-        border: props.valueHasError ? 'var(--input-border-error)' : props.valueHasWarning ? 'var(--input-border-warning)' : 'var(--input-border)',
+        textDecoration: props.valueHasError ? inputTextError : props.valueHasWarning ? inputTextWarning : inputTextDefault,
+        border: props.valueHasError ? inputBorderError : props.valueHasWarning ? inputBorderWarning : inputBorderDefault,
         ...((!props.valueHasError && (!props.valueHasWarning || props.nameHasWarning)) ? { borderTop: 0 } : {}),
         borderTopLeftRadius: 0,
         paddingLeft: 30,

@@ -1,6 +1,7 @@
 import React, { useState, useCallback } from 'react';
 
 import { IProperties } from '../../../interfaces';
+import { useConfigs } from '../../../contexts';
 
 const css_prop_item: React.CSSProperties = {
     justifyContent: 'space-between',
@@ -12,6 +13,7 @@ interface InputFullBigStringProps extends IProperties<string> {
     onChange?(data: IProperties<string>): void;
 }
 export const InputFullBigString: React.FC<InputFullBigStringProps> = ({ onChange, ...props }) => {
+    const { inputBorderError, inputBorderWarning, inputBorderDefault, inputTextError, inputTextWarning, inputTextDefault } = useConfigs();
     const [value, setValue] = useState(props.value);
 
     const handleOnChange = useCallback((e: React.ChangeEvent<HTMLTextAreaElement>) => {
@@ -41,8 +43,8 @@ export const InputFullBigString: React.FC<InputFullBigStringProps> = ({ onChange
                 autoComplete={"off"}
                 value={value}
                 style={{
-                    textDecoration: props.valueHasError ? `var(--text-underline-error)` : props.valueHasWarning ? `var(--text-underline-warning)` : undefined,
-                    border: props.valueHasError ? 'var(--input-border-error)' : props.valueHasWarning ? 'var(--input-border-warning)' : 'var(--input-border)',
+                    textDecoration: props.valueHasError ? inputTextError : props.valueHasWarning ? inputTextWarning : inputTextDefault,
+                    border: props.valueHasError ? inputBorderError : props.valueHasWarning ? inputBorderWarning : inputBorderDefault,
                     resize: 'vertical',
                     height: '100px',
                 }}
