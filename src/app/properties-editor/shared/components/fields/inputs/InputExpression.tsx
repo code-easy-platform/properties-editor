@@ -1,12 +1,12 @@
 import React, { useState, useCallback } from 'react';
 
 import { ExpressionInput } from '../../expression-input/ExpressionInput';
-import { IProperties, ISuggestion } from '../../../interfaces';
+import { IProperty, ISuggestion } from '../../../interfaces';
 import { FieldWrapper } from '../field-wrapper/FieldWrapper';
 import { useConfigs } from '../../../contexts';
 
-interface SimpleStringProps extends IProperties<string> {
-    onChange?(data: IProperties<string>): void;
+interface SimpleStringProps extends IProperty<string> {
+    onChange?(data: IProperty<string>): void;
 }
 export const InputExpression: React.FC<SimpleStringProps> = ({ onChange, ...props }) => {
     const { inputBorderError, inputBorderWarning, inputBorderDefault, inputTextError, inputTextWarning, inputTextDefault } = useConfigs();

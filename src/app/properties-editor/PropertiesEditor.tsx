@@ -1,11 +1,11 @@
 import React from 'react';
 
 import { Header, FieldsList } from './shared/components';
-import { IItem, IProperties } from './shared/interfaces';
+import { IItem, IProperty } from './shared/interfaces';
 
 interface PropertiesEditorFormProps {
     item: IItem;
-    onChange?(fields: IProperties[]): void;
+    onChange?(fields: IProperty[]): void;
 }
 export const PropertiesEditorForm: React.FC<PropertiesEditorFormProps> = ({ item, onChange }) => {
 

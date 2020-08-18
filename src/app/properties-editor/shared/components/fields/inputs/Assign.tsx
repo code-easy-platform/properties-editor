@@ -1,11 +1,11 @@
 import React, { useCallback, useState } from 'react';
 
-import { IProperties, ISuggestion } from './../../../interfaces';
+import { IProperty, ISuggestion } from './../../../interfaces';
 import { useConfigs } from '../../../contexts';
 import { ExpressionInput } from './../../';
 
-interface IAssignProps extends IProperties<string> {
-    onChange?(data: IProperties<string>): void;
+interface IAssignProps extends IProperty<string> {
+    onChange?(data: IProperty<string>): void;
     onKeyDown?(e: any): void;
 }
 export const Assign: React.FC<IAssignProps> = (props) => {

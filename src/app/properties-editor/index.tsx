@@ -1,6 +1,6 @@
 import React from 'react';
 
-import { IItem, IProperties, IPropertiesEditorConfigurations } from './shared/interfaces';
+import { IItem, IProperty, IPropertiesEditorConfigurations } from './shared/interfaces';
 import { RecoilContainer } from './shared/stores/RecoilContainer';
 import { ConfigurationProvider } from './shared/contexts';
 import { PropertiesEditorForm } from './PropertiesEditor';
@@ -8,7 +8,7 @@ import { PropertiesEditorForm } from './PropertiesEditor';
 interface PropertiesEditorProps {
     item: IItem;
     configs?: IPropertiesEditorConfigurations;
-    onChange?(fields: IProperties<any>[]): void;
+    onChange?(fields: IProperty<any>[]): void;
 }
 export const PropertiesEditor: React.FC<PropertiesEditorProps> = ({ item, onChange, configs }) => {
 

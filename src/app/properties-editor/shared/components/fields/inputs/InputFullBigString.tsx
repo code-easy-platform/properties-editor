@@ -1,6 +1,6 @@
 import React, { useState, useCallback } from 'react';
 
-import { IProperties } from '../../../interfaces';
+import { IProperty } from '../../../interfaces';
 import { useConfigs } from '../../../contexts';
 
 const css_prop_item: React.CSSProperties = {
@@ -9,8 +9,8 @@ const css_prop_item: React.CSSProperties = {
     alignItems: 'center',
     position: 'relative',
 }
-interface InputFullBigStringProps extends IProperties<string> {
-    onChange?(data: IProperties<string>): void;
+interface InputFullBigStringProps extends IProperty<string> {
+    onChange?(data: IProperty<string>): void;
 }
 export const InputFullBigString: React.FC<InputFullBigStringProps> = ({ onChange, ...props }) => {
     const { inputBorderError, inputBorderWarning, inputBorderDefault, inputTextError, inputTextWarning, inputTextDefault } = useConfigs();

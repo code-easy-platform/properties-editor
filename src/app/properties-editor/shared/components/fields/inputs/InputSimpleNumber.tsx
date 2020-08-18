@@ -1,11 +1,11 @@
 import React, { useState, useCallback } from 'react';
 
 import { FieldWrapper } from '../field-wrapper/FieldWrapper';
-import { IProperties } from '../../../interfaces';
+import { IProperty } from '../../../interfaces';
 import { useConfigs } from '../../../contexts';
 
-interface InputSimpleNumberProps extends IProperties<number> {
-    onChange?(data: IProperties<number>): void;
+interface InputSimpleNumberProps extends IProperty<number> {
+    onChange?(data: IProperty<number>): void;
 }
 export const InputSimpleNumber: React.FC<InputSimpleNumberProps> = ({ onChange, ...props }) => {
     const { inputBorderError, inputBorderWarning, inputBorderDefault, inputTextError, inputTextWarning, inputTextDefault } = useConfigs();

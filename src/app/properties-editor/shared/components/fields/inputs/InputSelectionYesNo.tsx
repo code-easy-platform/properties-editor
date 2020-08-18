@@ -1,11 +1,11 @@
 import React, { useState, useCallback } from 'react';
 
 import { FieldWrapper } from '../field-wrapper/FieldWrapper';
-import { IProperties } from '../../../interfaces';
+import { IProperty } from '../../../interfaces';
 import { useConfigs } from '../../../contexts';
 
-interface InputSelectionYesNoProps extends IProperties<boolean> {
-    onChange?(data: IProperties<boolean>): void;
+interface InputSelectionYesNoProps extends IProperty<boolean> {
+    onChange?(data: IProperty<boolean>): void;
 }
 export const InputSelectionYesNo: React.FC<InputSelectionYesNoProps> = ({ onChange, ...props }) => {
     const { inputBorderError, inputBorderWarning, inputBorderDefault, inputTextError, inputTextWarning, inputTextDefault } = useConfigs();

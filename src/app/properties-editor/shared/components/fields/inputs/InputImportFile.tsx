@@ -1,12 +1,12 @@
 import React, { useState, useCallback } from 'react';
 
-import { IProperties, IFileContent } from '../../../interfaces';
+import { IProperty, IFileContent } from '../../../interfaces';
 import { FieldWrapper } from '../field-wrapper/FieldWrapper';
 import { InputFile } from '../../input-file/InputFile';
 import { useConfigs } from '../../../contexts';
 
-interface InputImportFileProps extends IProperties<IFileContent> {
-    onChange?(data: IProperties<IFileContent>): void;
+interface InputImportFileProps extends IProperty<IFileContent> {
+    onChange?(data: IProperty<IFileContent>): void;
 }
 export const InputImportFile: React.FC<InputImportFileProps> = ({ onChange, ...props }) => {
     const { inputBorderError, inputBorderWarning, inputBorderDefault, inputTextError, inputTextWarning, inputTextDefault } = useConfigs();

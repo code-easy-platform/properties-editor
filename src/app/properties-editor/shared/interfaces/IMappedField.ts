@@ -1,4 +1,4 @@
-import { IProperties } from "./IFieldProperties";
+import { IProperty } from "./IFieldProperties";
 
 /**
  * 
@@ -11,5 +11,5 @@ export interface IMappedField {
     /**
      * 
      */
-    properties: IProperties[]
+    properties: IProperty[]
 }

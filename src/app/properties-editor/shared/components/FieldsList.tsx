@@ -1,12 +1,12 @@
 import React, { useCallback } from 'react';
 
 import { FieldGroup } from './fields/FieldGroup';
-import { IProperties } from '../interfaces';
+import { IProperty } from '../interfaces';
 import { Field } from './Field';
 
 interface FieldsListProps {
-    fields: IProperties[];
-    onChange?(fields: IProperties[]): void;
+    fields: IProperty[];
+    onChange?(fields: IProperty[]): void;
 }
 export const FieldsList: React.FC<FieldsListProps> = ({ fields = [], onChange }) => {
 
@@ -17,7 +17,7 @@ export const FieldsList: React.FC<FieldsListProps> = ({ fields = [], onChange })
         }
     });
 
-    const handleOnChange = useCallback((data: IProperties<any>) => {
+    const handleOnChange = useCallback((data: IProperty<any>) => {
         onChange && onChange(fields.map(current => {
             if (current.id === data.id) {
                 return data;

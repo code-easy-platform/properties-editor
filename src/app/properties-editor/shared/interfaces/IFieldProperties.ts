@@ -1,7 +1,7 @@
 import { TypeOfValues } from "../enums";
 import { ISuggestion } from "./";
 
-export interface IProperties<T = any> {
+export interface IProperty<T = any> {
     /**
      * This will be used only in types assigns and expressions
      * @param e Event emit by html input

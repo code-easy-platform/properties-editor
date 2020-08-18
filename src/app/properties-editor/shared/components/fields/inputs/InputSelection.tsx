@@ -1,11 +1,11 @@
 import React, { useState, useCallback } from 'react';
 
 import { FieldWrapper } from '../field-wrapper/FieldWrapper';
-import { IProperties } from '../../../interfaces';
+import { IProperty } from '../../../interfaces';
 import { useConfigs } from '../../../contexts';
 
-interface InputSelectionProps extends IProperties<string> {
-    onChange?(data: IProperties<string>): void;
+interface InputSelectionProps extends IProperty<string> {
+    onChange?(data: IProperty<string>): void;
 }
 export const InputSelection: React.FC<InputSelectionProps> = ({ onChange, ...props }) => {
     const { inputBorderError, inputBorderWarning, inputBorderDefault, inputTextError, inputTextWarning, inputTextDefault } = useConfigs();

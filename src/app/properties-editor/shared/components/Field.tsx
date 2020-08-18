@@ -5,12 +5,12 @@ import {
     InputViewOnly, SimpleString, InputSwitch, InputSimpleNumber,
     InputImportFile, InputBigString, InputFullBigString, Assign,
 } from './fields/inputs/';
-import { IProperties } from '../interfaces';
+import { IProperty } from '../interfaces';
 import { TypeOfValues } from '../enums';
 
 interface FieldProps {
-    field: IProperties;
-    onChange?(data: IProperties): void;
+    field: IProperty;
+    onChange?(data: IProperty): void;
 }
 export const Field: React.FC<FieldProps> = ({ field, onChange }) => {
 

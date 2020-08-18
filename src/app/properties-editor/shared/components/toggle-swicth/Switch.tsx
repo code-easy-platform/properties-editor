@@ -21,7 +21,7 @@ export const Switch: React.FC<SwitchProps> = ({ id, checked = false, autoFocus, 
             <input id={id} type="checkbox" style={{ opacity: 0 }} autoFocus={autoFocus} onBlur={onBlur} onChange={e => onChange(!checked)} disabled={disabled} checked={checked} />
             <span
                 className="slider round"
-                style={{ backgroundColor: backgroundColor, border: (hasError ? borderError : (hasWarning ? borderWarning : border)) }}
+                style={{ backgroundColor: backgroundColor, opacity: disabled ? 0.7 : undefined, border: (hasError ? borderError : (hasWarning ? borderWarning : border)) }}
             />
         </label>
     );

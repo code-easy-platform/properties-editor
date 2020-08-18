@@ -1,10 +1,10 @@
 import React from 'react';
 
-import { IProperties } from '../../../interfaces';
+import { IProperty } from '../../../interfaces';
 import { useConfigs } from '../../../contexts';
 import { FieldWrapper } from '../..';
 
-export const InputViewOnly: React.FC<IProperties> = (props) => {
+export const InputViewOnly: React.FC<IProperty> = (props) => {
     const { valueHasError = false, nameHasError = false, nameHasWarning = false, valueHasWarning = false, id, value, information, name } = props;
     const { inputTextError, inputTextWarning, inputTextDefault } = useConfigs();
 

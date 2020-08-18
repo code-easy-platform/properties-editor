@@ -1,11 +1,11 @@
 import React, { useState, useCallback } from 'react';
 
 import { FieldWrapper } from '../field-wrapper/FieldWrapper';
-import { IProperties } from '../../../interfaces';
+import { IProperty } from '../../../interfaces';
 import { useConfigs } from '../../../contexts';
 
-interface InputBigStringProps extends IProperties<string> {
-    onChange?(data: IProperties<string>): void;
+interface InputBigStringProps extends IProperty<string> {
+    onChange?(data: IProperty<string>): void;
 }
 export const InputBigString: React.FC<InputBigStringProps> = ({ onChange, ...props }) => {
     const { inputBorderError, inputBorderWarning, inputBorderDefault, inputTextError, inputTextWarning, inputTextDefault } = useConfigs();
