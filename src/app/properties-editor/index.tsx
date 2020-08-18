@@ -1,14 +1,14 @@
 import React from 'react';
 
-import { IItem, IProperty, IPropertiesEditorConfigurations } from './shared/interfaces';
+import { IItem, IPropertiesEditorConfigurations } from './shared/interfaces';
 import { RecoilContainer } from './shared/stores/RecoilContainer';
 import { ConfigurationProvider } from './shared/contexts';
 import { PropertiesEditorForm } from './PropertiesEditor';
 
 interface PropertiesEditorProps {
     item: IItem;
+    onChange?(item: IItem): void;
     configs?: IPropertiesEditorConfigurations;
-    onChange?(fields: IProperty<any>[]): void;
 }
 export const PropertiesEditor: React.FC<PropertiesEditorProps> = ({ item, onChange, configs }) => {
 
