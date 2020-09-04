@@ -54,6 +54,7 @@ export const InputImportFile: React.FC<InputImportFileProps> = ({ onChange, ...p
             {inputId => (
                 <InputFile
                     className={`full-width background-bars border-radius outline-none`}
+                    fileContent={value?.content || null}
                     disabled={props.editValueDisabled}
                     autoFocus={props.focusOnRender}
                     fileMaxSize={props.fileMaxSize}

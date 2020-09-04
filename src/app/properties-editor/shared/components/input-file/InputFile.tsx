@@ -4,6 +4,13 @@ import { Utils } from 'code-easy-components';
 import './InputFile.css';
 
 type InputFileProps = Omit<{
+    /**
+     * File content, if a image show a preview. 
+     */
+    fileContent: string | ArrayBuffer | null;
+    /**
+     * File name, used to show in the input.
+     */
     fileName?: string;
     /**
      * Max size in bytes
@@ -14,7 +21,7 @@ type InputFileProps = Omit<{
 /**
  * Input use to upload files
  */
-export const InputFile = React.forwardRef(({ fileName, fileMaxSize = 1048576, ...props }: InputFileProps, ref: any) => {
+export const InputFile = React.forwardRef(({ fileName, fileMaxSize = 1048576, fileContent, ...props }: InputFileProps, ref: any) => {
 
     const [state, setState] = useState({ fileName });
     const input: any = useRef(null);
@@ -35,6 +42,8 @@ export const InputFile = React.forwardRef(({ fileName, fileMaxSize = 1048576, ..
     const onChange = (e: React.ChangeEvent<HTMLInputElement>) => {
         if (props.onChange) props.onChange(e);
     }
+
+    console.log(fileContent)
 
     return (<>
         <input
@@ -60,7 +69,12 @@ export const InputFile = React.forwardRef(({ fileName, fileMaxSize = 1048576, ..
             tabIndex={!props.disabled ? 0 : undefined}
             onKeyPress={e => { input.current.click() }}
             className={props.className + " input-file-view"}
-        >{state.fileName || 'Select a file...'}</div>
+        >
+            <div>
+                {fileContent && <img src={String(fileContent)} height={16} alt="" className="padding-right-xs" />}
+                {state.fileName || 'Select a file...'}
+            </div>
+        </div>
     </>);
 
 });

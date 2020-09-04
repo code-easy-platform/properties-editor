@@ -334,7 +334,7 @@ const App: React.FC = () => {
           item={item}
           onChange={console.log}
           configs={{
-            errorColor: 'green'
+            // borderDefaultColor: 'green',
           }}
         />
       </div>
