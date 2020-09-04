@@ -43,8 +43,6 @@ export const InputFile = React.forwardRef(({ fileName, fileMaxSize = 1048576, fi
         if (props.onChange) props.onChange(e);
     }
 
-    console.log(fileContent)
-
     return (<>
         <input
             ref={input}

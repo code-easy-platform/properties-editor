@@ -11,8 +11,8 @@ export const Header: React.FC<IHeaderProps> = ({ title, subtitle, subtitleFontSi
 
     return (
         <div className="padding-m padding-left-s flex-column" style={{ backgroundColor, fontSize: titleFontSize }}>
-            <div>{title}</div>
-            {subtitle && <div className="margin-top-s" style={{ fontSize: subtitleFontSize }}>{subtitle}</div>}
+            <div className="text-ellipsis" title={title}>{title}</div>
+            {subtitle && <div title={subtitle} className="margin-top-s text-ellipsis" style={{ fontSize: subtitleFontSize }}>{subtitle}</div>}
         </div>
     );
 } 

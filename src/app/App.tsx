@@ -6,8 +6,8 @@ import './App.css';
 
 let item: IItem = {
   id: 'T',
-  name: 'My name to view only',
-  subname: 'My interesting subname',
+  name: 'My name to view only My name to view only My name to view only My name to view only My name to view only My name to view only My name to view only My name to view only',
+  subname: 'My interesting subname My interesting subname My interesting subname My interesting subname My interesting subname My interesting subname',
   properties: [
     {
       id: '11',
