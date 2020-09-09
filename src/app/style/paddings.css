@@ -1,5 +1,22 @@
+/* =============================== *
+ * Paddings                        *
+ * =============================== */
+
+:root {
+  --padding-xxs: var(--size-xxs);
+  --padding-xs: var(--size-xs);
+  --padding-s: var(--size-s);
+  --padding-m: var(--size-m);
+  --padding-g: var(--size-g);
+  --padding-xg: var(--size-xg);
+}
+
 .padding-none {
-  padding: unset;
+  padding: 0;
+}
+
+.padding-xxs {
+  padding: var(--padding-xxs);
 }
 
 .padding-xs {
@@ -26,6 +43,10 @@
   padding-top: unset;
 }
 
+.padding-top-xxs {
+  padding-top: var(--padding-xxs);
+}
+
 .padding-top-xs {
   padding-top: var(--padding-xs);
 }
@@ -48,6 +69,10 @@
 
 .padding-left-none {
   padding-left: unset;
+}
+
+.padding-left-xxs {
+  padding-left: var(--padding-xxs);
 }
 
 .padding-left-xs {
@@ -74,6 +99,10 @@
   padding-right: unset;
 }
 
+.padding-right-xxs {
+  padding-right: var(--padding-xxs);
+}
+
 .padding-right-xs {
   padding-right: var(--padding-xs);
 }
@@ -95,7 +124,11 @@
 }
 
 .padding-bottom-none {
-  padding-bottom: 0px;
+  padding-bottom: 0;
+}
+
+.padding-bottom-xxs {
+  padding-bottom: var(--padding-xxs);
 }
 
 .padding-bottom-xs {
@@ -123,9 +156,14 @@
   padding-left: unset;
 }
 
+.padding-horizontal-xxs {
+  padding-right: var(--padding-xxs);
+  padding-left: var(--padding-xxs);
+}
+
 .padding-horizontal-xs {
-  padding-right: var(--padding-xs);
-  padding-left: var(--padding-xs);
+  padding-right: var(--padding-xxs);
+  padding-left: var(--padding-xxs);
 }
 
 .padding-horizontal-s {
