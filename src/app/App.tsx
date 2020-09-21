@@ -11,6 +11,13 @@ let item: IItem = {
   properties: [
     {
       id: '11',
+      name: 'Hidden',
+      type: TypeOfValues.hidden,
+      value: 'My name to view only',
+      information: 'View only, used just for show some information',
+    },
+    {
+      id: '11',
       name: 'View only',
       type: TypeOfValues.viewOnly,
       value: 'My name to view only',
