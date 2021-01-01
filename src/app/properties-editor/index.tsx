@@ -7,15 +7,14 @@ import { PropertiesEditorForm } from './PropertiesEditor';
 
 interface PropertiesEditorProps {
     item: IItem;
-    onChange?(item: IItem): void;
     configs?: IPropertiesEditorConfigurations;
 }
-export const PropertiesEditor: React.FC<PropertiesEditorProps> = ({ item, onChange, configs }) => {
+export const PropertiesEditor: React.FC<PropertiesEditorProps> = ({ item, configs }) => {
 
     return (
         <ConfigurationProvider configs={configs as IPropertiesEditorConfigurations}>
             <RecoilContainer>
-                <PropertiesEditorForm item={item} onChange={onChange} />
+                <PropertiesEditorForm item={item} />
             </RecoilContainer>
         </ConfigurationProvider>
     );
