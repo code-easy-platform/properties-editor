@@ -70,6 +70,7 @@ export const InputImportFile: React.FC<InputImportFileProps> = ({ ...props }) =>
                     fileMaxSize={fileMaxSize}
                     onChange={handleOnChange}
                     fileName={value?.name}
+                    title={value?.name}
                     ref={inputRef}
                     id={inputId}
                     style={{

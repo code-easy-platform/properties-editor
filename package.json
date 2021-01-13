@@ -24,7 +24,6 @@
     "react-monaco-editor": "^0.35.0",
     "react-observing": "^1.2.5",
     "react-scripts": "3.2.0",
-    "recoil": "^0.0.10",
     "typescript": "3.7.2"
   },
   "scripts": {
