@@ -35,7 +35,7 @@ export const Item: IItem = {
   name: name,
   id: observe('T'),
   subname: subname,
-  properties: [
+  properties: observe([
     newPropertie({
       id: observe('10'),
       name: observe('Hidden'),
@@ -264,5 +264,5 @@ export const Item: IItem = {
         }
       ]),
     }),
-  ]
+  ])
 };

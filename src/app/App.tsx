@@ -7,7 +7,7 @@ import { Item } from './Mock';
 import './App.css';
 
 const App: React.FC = () => {
-  const [item, setItem] = useState<IItem>({ id: observe(''), name: observe(''), subname: observe(undefined), properties: [] });
+  const [item, setItem] = useState<IItem>({ id: observe(''), name: observe(''), subname: observe(undefined), properties: observe([]) });
   useEffect(() => {
     setTimeout(() => {
       setItem(Item);
@@ -22,7 +22,7 @@ const App: React.FC = () => {
   const [nameHasError, setNameHasError] = useState(false);
   const [fileMaxSize, setFileMaxSize] = useState(1000000);
 
-  item.properties.forEach(prop => {
+  item.properties.value.forEach(prop => {
     set(prop.editValueDisabled, valueIsDisabled);
     set(prop.editNameDisabled, nameIsDisabled);
     set(prop.valueHasWarning, valueHasWarning);
