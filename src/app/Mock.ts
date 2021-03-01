@@ -23,6 +23,8 @@ const newPropertie = (value: TOptional<IProperty>): IProperty => {
     valueHasWarning: value.valueHasWarning || observe(undefined),
     editNameDisabled: value.editNameDisabled || observe(undefined),
     editValueDisabled: value.editValueDisabled || observe(undefined),
+    nameInputPickerDisabled: value.nameInputPickerDisabled || observe(true),
+    valueInputPickerDisabled: value.valueInputPickerDisabled || observe(true),
     onPickerNameClick: value.onPickerNameClick || observe((e) => console.log('Name', e)),
     onPickerValueClick: value.onPickerValueClick || observe((e) => console.log('Value', e)),
   };

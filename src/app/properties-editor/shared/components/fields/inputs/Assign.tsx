@@ -1,4 +1,4 @@
-import React from 'react';
+import React, { useMemo } from 'react';
 import { useObserver, useObserverValue } from 'react-observing';
 
 import { ExpressionInput } from './../../expression-input/ExpressionInput';
@@ -9,6 +9,8 @@ interface IAssignProps extends IProperty<string> { }
 export const Assign: React.FC<IAssignProps> = ({ ...props }) => {
     const { inputBorderError, inputBorderWarning, inputBorderDefault, inputTextError, inputTextWarning, inputTextDefault } = useConfigs();
 
+    const valueInputPickerDisabled = useObserverValue(props.valueInputPickerDisabled);
+    const nameInputPickerDisabled = useObserverValue(props.nameInputPickerDisabled);
     const onPickerValueClick = useObserverValue(props.onPickerValueClick);
     const onPickerNameClick = useObserverValue(props.onPickerNameClick);
     const editValueDisabled = useObserverValue(props.editValueDisabled);
@@ -23,7 +25,7 @@ export const Assign: React.FC<IAssignProps> = ({ ...props }) => {
     const [value, setValue] = useObserver(props.value);
     const [name, setName] = useObserver(props.name);
 
-    const css_prop_item_input_name: React.CSSProperties = {
+    const css_prop_item_input_name: React.CSSProperties = useMemo(() => ({
         border: nameHasError ? inputBorderError : nameHasWarning ? inputBorderWarning : inputBorderDefault,
         textDecoration: nameHasError ? inputTextError : nameHasWarning ? inputTextWarning : inputTextDefault,
         borderBottomLeftRadius: 0,
@@ -34,8 +36,9 @@ export const Assign: React.FC<IAssignProps> = ({ ...props }) => {
             ) ||
             (!editNameDisabled && editValueDisabled)
         ) ? 0 : undefined,
-    }
-    const css_prop_item_input_value: React.CSSProperties = {
+    }), [editNameDisabled, editValueDisabled, inputBorderDefault, inputBorderError, inputBorderWarning, inputTextDefault, inputTextError, inputTextWarning, nameHasError, nameHasWarning]);
+
+    const css_prop_item_input_value: React.CSSProperties = useMemo(() => ({
         textDecoration: valueHasError ? inputTextError : valueHasWarning ? inputTextWarning : inputTextDefault,
         border: valueHasError ? inputBorderError : valueHasWarning ? inputBorderWarning : inputBorderDefault,
         ...((!valueHasError && (!valueHasWarning || nameHasWarning)) ? { borderTop: 0 } : {}),
@@ -49,7 +52,7 @@ export const Assign: React.FC<IAssignProps> = ({ ...props }) => {
             ) ||
             (editNameDisabled && !editValueDisabled)
         ) ? 0 : undefined,
-    }
+    }), [editNameDisabled, editValueDisabled, inputBorderDefault, inputBorderError, inputBorderWarning, inputTextDefault, inputTextError, inputTextWarning, nameHasWarning, valueHasError, valueHasWarning]);
 
     return (
         <div className="flex-column padding-s padding-bottom-none">
@@ -63,6 +66,7 @@ export const Assign: React.FC<IAssignProps> = ({ ...props }) => {
                 style={css_prop_item_input_name}
                 key={'name_prop_key_' + props.id}
                 onPickerClick={onPickerNameClick}
+                inputPickerDisabled={nameInputPickerDisabled}
                 onChange={e => setName(e.currentTarget.value)}
                 onSelectSuggest={option => setName(option.value.value.toString())}
             />
@@ -81,11 +85,11 @@ export const Assign: React.FC<IAssignProps> = ({ ...props }) => {
                     style={css_prop_item_input_value}
                     key={'value_prop_key_' + props.id}
                     onPickerClick={onPickerValueClick}
+                    inputPickerDisabled={valueInputPickerDisabled}
                     onChange={e => setValue(e.currentTarget.value)}
                     onSelectSuggest={option => setValue(option.value.value.toString())}
                 />
             </div>
         </div>
     );
-
 }

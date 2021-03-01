@@ -10,6 +10,7 @@ interface SimpleStringProps extends IProperty<string> { }
 export const InputExpression: React.FC<SimpleStringProps> = ({ ...props }) => {
     const { inputBorderError, inputBorderWarning, inputBorderDefault, inputTextError, inputTextWarning, inputTextDefault } = useConfigs();
 
+    const valueInputPickerDisabled = useObserverValue(props.valueInputPickerDisabled);
     const onPickerValueClick = useObserverValue(props.onPickerValueClick);
     const editValueDisabled = useObserverValue(props.editValueDisabled);
     const valueHasWarning = useObserverValue(props.valueHasWarning);
@@ -36,6 +37,7 @@ export const InputExpression: React.FC<SimpleStringProps> = ({ ...props }) => {
                 <ExpressionInput
                     onSelectSuggest={option => setValue(option.value.value.toString())}
                     onChange={e => setValue(e.currentTarget.value)}
+                    inputPickerDisabled={valueInputPickerDisabled}
                     className="full-width background-bars"
                     onPickerClick={onPickerValueClick}
                     disabled={editValueDisabled}

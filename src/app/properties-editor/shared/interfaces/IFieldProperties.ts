@@ -15,6 +15,14 @@ export interface IProperty<T = any> {
      */
     onPickerNameClick: IObservable<((e: React.MouseEvent<HTMLInputElement, MouseEvent>) => void) | undefined>;
     /**
+     * Allow you indicate if the value input picker is displayed
+     */
+    valueInputPickerDisabled: IObservable<boolean | undefined>;
+    /**
+     * Allow you indicate if the name input picker is displayed 
+     */
+    nameInputPickerDisabled: IObservable<boolean | undefined>;
+    /**
      * This will be used only in type assigns
      */
     nameSuggestions: IObservable<ISuggestion[] | undefined>;

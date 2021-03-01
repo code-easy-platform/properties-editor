@@ -1,4 +1,4 @@
-import React, { useState, useRef, useEffect } from 'react';
+import React, { useState, useRef, useEffect, useCallback, useMemo } from 'react';
 import { IconCollapsedFolder } from 'code-easy-components';
 
 import { SearchAutocomplete } from '../auto-complete/SearchAutocomplete';
@@ -8,9 +8,10 @@ import './ExpressionInput.css';
 interface ExpressionInputProps extends React.InputHTMLAttributes<HTMLInputElement> {
     onPickerClick?(e: React.MouseEvent<HTMLInputElement, MouseEvent>): void;
     onSelectSuggest(option: ISuggestion): void;
+    inputPickerDisabled?: boolean;
     suggestions?: ISuggestion[];
 }
-export const ExpressionInput: React.FC<ExpressionInputProps> = ({ onPickerClick, suggestions, onSelectSuggest, ...props }) => {
+export const ExpressionInput: React.FC<ExpressionInputProps> = ({ onPickerClick, suggestions, inputPickerDisabled, onSelectSuggest, ...props }) => {
 
     const inputRef = useRef<HTMLInputElement>(null);
     useEffect(() => {
@@ -21,7 +22,7 @@ export const ExpressionInput: React.FC<ExpressionInputProps> = ({ onPickerClick,
 
     const [showAutoComplete, setAutoComplete] = useState(false);
 
-    const css_picker_editor: React.CSSProperties = {
+    const css_picker_editor: React.CSSProperties = useMemo(() => ({
         border: 'var(--input-border)',
         cursor: 'pointer',
         borderRadius: 50,
@@ -30,17 +31,17 @@ export const ExpressionInput: React.FC<ExpressionInputProps> = ({ onPickerClick,
         height: 20,
         paddingRight: 4,
         paddingLeft: 4,
-    }
+    }), []);
 
-    const dismissSuggestion = () => {
+    const dismissSuggestion = useCallback(() => {
         window.onmouseup = null;
         setAutoComplete(false);
-    }
+    }, [])
 
-    const openSuggestions = () => {
+    const openSuggestions = useCallback(() => {
         window.onmouseup = dismissSuggestion;
         setAutoComplete(true);
-    }
+    }, [dismissSuggestion])
 
     return (
         <div className="flex1" style={{ alignItems: 'center', justifyContent: 'flex-end', position: "relative" }}>
@@ -57,7 +58,15 @@ export const ExpressionInput: React.FC<ExpressionInputProps> = ({ onPickerClick,
                     onClick={openSuggestions}
                     src={IconCollapsedFolder}
                     className={`btn background-transparent border-radius open-suggestions`}
-                    style={{ paddingLeft: 6, paddingRight: 6, paddingBottom: 0, paddingTop: 0, minHeight: 32, zIndex: 1, outline: 'none' }}
+                    style={{
+                        zIndex: 1,
+                        paddingTop: 0,
+                        minHeight: 32,
+                        paddingLeft: 6,
+                        paddingRight: 6,
+                        outline: 'none',
+                        paddingBottom: 0,
+                    }}
                     onKeyDown={e => {
                         if (e.keyCode === 13 || e.keyCode === 32) {
                             openSuggestions();
@@ -73,7 +82,15 @@ export const ExpressionInput: React.FC<ExpressionInputProps> = ({ onPickerClick,
                     !props.disabled && onSelectSuggest(opt);
                 }}
             />
-            {!props.disabled && <input type="button" tabIndex={-1} className="full-height background-bars" style={css_picker_editor} onClick={!props.disabled && onPickerClick} />}
+            {(!props.disabled && inputPickerDisabled) && (
+                <input
+                    type="button"
+                    tabIndex={-1}
+                    style={css_picker_editor}
+                    className="full-height background-bars"
+                    onClick={!props.disabled && onPickerClick}
+                />
+            )}
         </div>
     );
 }
