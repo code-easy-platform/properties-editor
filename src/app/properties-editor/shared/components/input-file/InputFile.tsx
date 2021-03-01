@@ -1,4 +1,4 @@
-import React, { useRef, useState } from 'react';
+import React, { useCallback, useMemo, useRef, useState } from 'react';
 import { Utils } from 'code-easy-components';
 
 import './InputFile.css';
@@ -17,16 +17,20 @@ type InputFileProps = Omit<{
      * Default value 1MB(1048576)
      */
     fileMaxSize?: number;
+    /**
+     * Clear input file value
+     */
+    onClear: () => void;
 }, keyof React.InputHTMLAttributes<HTMLInputElement>> & React.InputHTMLAttributes<HTMLInputElement>;
 /**
  * Input use to upload files
  */
-export const InputFile = React.forwardRef(({ fileName, fileMaxSize = 1048576, fileContent, ...props }: InputFileProps, ref: any) => {
+export const InputFile = React.forwardRef(({ fileName, onClear, fileMaxSize = 1048576, fileContent, ...props }: InputFileProps, ref: any) => {
 
     const [state, setState] = useState({ fileName });
-    const input: any = useRef(null);
+    const input = useRef<HTMLInputElement>(null);
 
-    const css_input_file: React.CSSProperties = {
+    const css_input_file: React.CSSProperties = useMemo(() => ({
         ...props.style,
         opacity: props.disabled ? 0.7 : undefined,
         textOverflow: 'ellipsis',
@@ -34,17 +38,29 @@ export const InputFile = React.forwardRef(({ fileName, fileMaxSize = 1048576, fi
         whiteSpace: 'nowrap',
         textAlign: 'start',
         overflow: 'hidden',
-    }
+    }), [props.disabled, props.style]);
 
-    const onChange = (e: React.ChangeEvent<HTMLInputElement>) => {
+    const css_remove_file: React.CSSProperties = useMemo(() => ({
+        backgroundColor: 'var(--main-error-color)',
+        border: 'var(--input-border)',
+        alignSelf: 'center',
+        cursor: 'pointer',
+        borderRadius: 50,
+        color: 'white',
+        marginLeft: 4,
+        height: 20,
+        paddingRight: 4,
+        paddingLeft: 4,
+    }), []);
+
+    const onChange = useCallback((e: React.ChangeEvent<HTMLInputElement>) => {
         if (props.onChange) props.onChange(e);
-    }
+    }, [props]);
 
     return (<>
         <input
             ref={input}
             type={'file'}
-            id={props.id}
             key={props.id}
             disabled={props.disabled}
             style={{ display: 'none' }}
@@ -58,11 +74,10 @@ export const InputFile = React.forwardRef(({ fileName, fileMaxSize = 1048576, fi
         <div
             {...props}
             style={css_input_file}
-            id={Utils.getUUID() + "_" + props.id}
+            onClick={e => input.current?.click()}
             key={Utils.getUUID() + "_" + props.id}
-            onClick={e => { input.current.click() }}
+            onKeyPress={e => input.current?.click()}
             tabIndex={!props.disabled ? 0 : undefined}
-            onKeyPress={e => { input.current.click() }}
             className={props.className + " input-file-view padding-s padding-horizontal-xs"}
         >
             <div>
@@ -70,6 +85,17 @@ export const InputFile = React.forwardRef(({ fileName, fileMaxSize = 1048576, fi
                 {state.fileName || 'Select a file...'}
             </div>
         </div>
+        {state.fileName && (
+            <input
+                type="button"
+                tabIndex={-1}
+                style={css_remove_file}
+                className="full-height background-bars"
+                onClick={() => {
+                    setState({ fileName: undefined });
+                    onClear();
+                }}
+            />
+        )}
     </>);
-
 });
