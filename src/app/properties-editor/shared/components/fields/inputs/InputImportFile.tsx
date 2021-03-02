@@ -10,6 +10,7 @@ interface InputImportFileProps extends IProperty<IFileContent> { }
 export const InputImportFile: React.FC<InputImportFileProps> = ({ ...props }) => {
     const { inputBorderError, inputBorderWarning, inputBorderDefault, inputTextError, inputTextWarning, inputTextDefault } = useConfigs();
 
+    const typeOfFilesToAccept = useObserverValue(props.typeOfFilesToAccept);
     const editValueDisabled = useObserverValue(props.editValueDisabled);
     const valueHasWarning = useObserverValue(props.valueHasWarning);
     const nameHasWarning = useObserverValue(props.nameHasWarning);
@@ -64,6 +65,7 @@ export const InputImportFile: React.FC<InputImportFileProps> = ({ ...props }) =>
             {inputId => (
                 <InputFile
                     className={`full-width background-bars border-radius outline-none`}
+                    typeOfFilesToAccept={typeOfFilesToAccept}
                     fileContent={value?.content || null}
                     onClear={() => setValue({})}
                     disabled={editValueDisabled}

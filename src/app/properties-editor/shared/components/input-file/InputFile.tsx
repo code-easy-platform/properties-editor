@@ -18,6 +18,10 @@ type InputFileProps = Omit<{
      */
     fileMaxSize?: number;
     /**
+     * List of files types accepteds to import
+     */
+    typeOfFilesToAccept?: string[] | string;
+    /**
      * Clear input file value
      */
     onClear: () => void;
@@ -25,8 +29,7 @@ type InputFileProps = Omit<{
 /**
  * Input use to upload files
  */
-export const InputFile = React.forwardRef(({ fileName, onClear, fileMaxSize = 1048576, fileContent, ...props }: InputFileProps, ref: any) => {
-
+export const InputFile = React.forwardRef(({ fileName, onClear, typeOfFilesToAccept, fileMaxSize = 1048576, fileContent, ...props }: InputFileProps, ref: any) => {
     const [state, setState] = useState({ fileName });
     const input = useRef<HTMLInputElement>(null);
 
@@ -54,8 +57,21 @@ export const InputFile = React.forwardRef(({ fileName, onClear, fileMaxSize = 10
     }), []);
 
     const onChange = useCallback((e: React.ChangeEvent<HTMLInputElement>) => {
+
+        if (!e.target || !e.target.files) return;
+
+        const fileName = e.target.files.item(0)?.name;
+        if (!fileName) return;
+
+        const lastDot = fileName.lastIndexOf(".") || 0;
+        const extensionFile = fileName.substr(lastDot, fileName.length).toLowerCase();
+
+        if (Array.isArray(typeOfFilesToAccept) ? !typeOfFilesToAccept.includes(extensionFile) : typeOfFilesToAccept !== extensionFile) return;
+
+        setState({ fileName });
+
         if (props.onChange) props.onChange(e);
-    }, [props]);
+    }, [props, typeOfFilesToAccept]);
 
     return (<>
         <input
@@ -64,9 +80,9 @@ export const InputFile = React.forwardRef(({ fileName, onClear, fileMaxSize = 10
             key={props.id}
             disabled={props.disabled}
             style={{ display: 'none' }}
+            accept={Array.isArray(typeOfFilesToAccept) ? typeOfFilesToAccept.join(',') : typeOfFilesToAccept}
             onChange={(e: any) => {
                 if (e.target.files[0]?.size < fileMaxSize) {
-                    setState({ fileName: e.target.files[0]?.name });
                     onChange(e)
                 }
             }}

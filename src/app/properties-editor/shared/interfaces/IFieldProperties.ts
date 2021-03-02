@@ -15,6 +15,10 @@ export interface IProperty<T = any> {
      */
     onPickerNameClick: IObservable<((e: React.MouseEvent<HTMLInputElement, MouseEvent>) => void) | undefined>;
     /**
+     * List of files types accepteds to import
+     */
+    typeOfFilesToAccept: IObservable<string[] | string | undefined>;
+    /**
      * Allow you indicate if the value input picker is displayed
      */
     valueInputPickerDisabled: IObservable<boolean | undefined>;
@@ -47,21 +51,17 @@ export interface IProperty<T = any> {
      */
     nameHasWarning: IObservable<boolean | undefined>;
     /**
+     * This property allows the input to be focused automatically when rendered on the screen
+     */
+    focusOnRender: IObservable<boolean | undefined>;
+    /**
      * Allow you indicate if the input has a error 
      */
     valueHasError: IObservable<boolean | undefined>;
     /**
-     * Property identifier
-     */
-    id: IObservable<string | undefined>;
-    /**
      * Allow you indicate if the label has a error 
      */
     nameHasError: IObservable<boolean | undefined>;
-    /**
-     * This property allows the input to be focused automatically when rendered on the screen
-     */
-    focusOnRender: IObservable<boolean | undefined>;
     /**
      * Used to display information between the label and the input 
      */
@@ -76,10 +76,6 @@ export interface IProperty<T = any> {
      */
     propertieType: IObservable<any | undefined>;
     /**
-     * Define the type of field will be displayed
-     */
-    type: IObservable<TypeOfValues>;
-    /**
      * Indicates the group of the property, used to group some properties
      */
     group: IObservable<string | undefined>;
@@ -87,6 +83,14 @@ export interface IProperty<T = any> {
      * Value displayed in the label of the input
      */
     name: IObservable<string | undefined>;
+    /**
+     * Property identifier
+     */
+    id: IObservable<string | undefined>;
+    /**
+     * Define the type of field will be displayed
+     */
+    type: IObservable<TypeOfValues>;
     /**
      * Value to be displayed in the input
      */
