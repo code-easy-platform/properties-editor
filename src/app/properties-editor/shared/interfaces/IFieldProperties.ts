@@ -80,6 +80,10 @@ export interface IProperty<T = any> {
      */
     group: IObservable<string | undefined>;
     /**
+     * Indicates the order to show this propertie in the list of properties
+     */
+    order: IObservable<number | undefined>;
+    /**
      * Value displayed in the label of the input
      */
     name: IObservable<string | undefined>;

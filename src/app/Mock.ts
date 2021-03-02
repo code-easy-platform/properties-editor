@@ -9,6 +9,7 @@ const newPropertie = (value: TOptional<IProperty>): IProperty => {
     value: value.value || observe(''),
     id: value.id || observe(undefined),
     name: value.name || observe(undefined),
+    order: value.order || observe(undefined),
     group: value.group || observe(undefined),
     suggestions: value.suggestions || observe([]),
     type: value.type || observe(TypeOfValues.assign),
@@ -56,7 +57,7 @@ export const Item: IItem = {
     newPropertie({
       value: name,
       id: observe('12'),
-      group: observe('Simple'),
+      //group: observe('Simple'),
       name: observe('Simple string'),
       type: observe(TypeOfValues.string),
       information: observe('Input simple string, allow you type any string'),
