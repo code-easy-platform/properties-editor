@@ -9,10 +9,10 @@ interface InputSelectionProps extends IProperty<string> { }
 export const InputSelection: React.FC<InputSelectionProps> = ({ ...props }) => {
     const { inputBorderError, inputBorderWarning, inputBorderDefault, inputTextError, inputTextWarning, inputTextDefault } = useConfigs();
 
+    const [focusOnRender, setFocusOnRender] = useObserver(props.focusOnRender);
     const editValueDisabled = useObserverValue(props.editValueDisabled);
     const valueHasWarning = useObserverValue(props.valueHasWarning);
     const nameHasWarning = useObserverValue(props.nameHasWarning);
-    const focusOnRender = useObserverValue(props.focusOnRender);
     const valueHasError = useObserverValue(props.valueHasError);
     const nameHasError = useObserverValue(props.nameHasError);
     const suggestions = useObserverValue(props.suggestions);
@@ -40,9 +40,9 @@ export const InputSelection: React.FC<InputSelectionProps> = ({ ...props }) => {
             {inputId => (
                 <select
                     onChange={e => setValue(e.currentTarget.value)}
+                    onBlur={() => setFocusOnRender(false)}
                     className={"background-bars"}
                     disabled={editValueDisabled}
-                    autoFocus={focusOnRender}
                     ref={inputRef}
                     value={value}
                     id={inputId}

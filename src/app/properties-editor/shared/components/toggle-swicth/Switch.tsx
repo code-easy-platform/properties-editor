@@ -21,6 +21,7 @@ export const Switch: React.FC<SwitchProps> = ({ id, checked = false, autoFocus, 
     useEffect(() => {
         if (inputRef.current && autoFocus) {
             inputRef.current.focus();
+            inputRef.current.select();
         }
     }, [autoFocus]);
 

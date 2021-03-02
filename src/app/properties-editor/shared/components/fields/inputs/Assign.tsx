@@ -11,6 +11,7 @@ export const Assign: React.FC<IAssignProps> = ({ ...props }) => {
 
     const valueInputPickerDisabled = useObserverValue(props.valueInputPickerDisabled);
     const nameInputPickerDisabled = useObserverValue(props.nameInputPickerDisabled);
+    const [focusOnRender, setFocusOnRender] = useObserver(props.focusOnRender);
     const onPickerValueClick = useObserverValue(props.onPickerValueClick);
     const onPickerNameClick = useObserverValue(props.onPickerNameClick);
     const editValueDisabled = useObserverValue(props.editValueDisabled);
@@ -19,7 +20,6 @@ export const Assign: React.FC<IAssignProps> = ({ ...props }) => {
     const valueHasWarning = useObserverValue(props.valueHasWarning);
     const nameHasWarning = useObserverValue(props.nameHasWarning);
     const valueHasError = useObserverValue(props.valueHasError);
-    const focusOnRender = useObserverValue(props.focusOnRender);
     const nameHasError = useObserverValue(props.nameHasError);
     const suggestions = useObserverValue(props.suggestions);
     const [value, setValue] = useObserver(props.value);
@@ -66,6 +66,7 @@ export const Assign: React.FC<IAssignProps> = ({ ...props }) => {
                 style={css_prop_item_input_name}
                 key={'name_prop_key_' + props.id}
                 onPickerClick={onPickerNameClick}
+                onBlur={() => setFocusOnRender(false)}
                 inputPickerDisabled={nameInputPickerDisabled}
                 onChange={e => setName(e.currentTarget.value)}
                 onSelectSuggest={option => setName(option.value.value.toString())}

@@ -9,10 +9,10 @@ interface InputSimpleNumberProps extends IProperty<number> { }
 export const InputSimpleNumber: React.FC<InputSimpleNumberProps> = ({ ...props }) => {
     const { inputBorderError, inputBorderWarning, inputBorderDefault, inputTextError, inputTextWarning, inputTextDefault } = useConfigs();
 
+    const [focusOnRender, setFocusOnRender] = useObserver(props.focusOnRender);
     const editValueDisabled = useObserverValue(props.editValueDisabled);
     const valueHasWarning = useObserverValue(props.valueHasWarning);
     const nameHasWarning = useObserverValue(props.nameHasWarning);
-    const focusOnRender = useObserverValue(props.focusOnRender);
     const valueHasError = useObserverValue(props.valueHasError);
     const nameHasError = useObserverValue(props.nameHasError);
     const information = useObserverValue(props.information);
@@ -24,6 +24,7 @@ export const InputSimpleNumber: React.FC<InputSimpleNumberProps> = ({ ...props }
     useEffect(() => {
         if (inputRef.current && focusOnRender) {
             inputRef.current.focus();
+            inputRef.current.select();
         }
     }, [focusOnRender]);
 
@@ -40,8 +41,8 @@ export const InputSimpleNumber: React.FC<InputSimpleNumberProps> = ({ ...props }
                 <input
                     onChange={e => setValue(Number(e.currentTarget.value))}
                     className={"full-width background-bars"}
+                    onBlur={() => setFocusOnRender(false)}
                     disabled={editValueDisabled}
-                    autoFocus={focusOnRender}
                     autoComplete={'off'}
                     type={"number"}
                     ref={inputRef}

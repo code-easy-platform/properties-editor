@@ -1,4 +1,4 @@
-import React from 'react';
+import React, { useEffect, useRef } from 'react';
 import { useObserver, useObserverValue } from 'react-observing';
 
 import { IProperty } from '../../../interfaces';
@@ -14,20 +14,28 @@ interface InputFullBigStringProps extends IProperty<string> { }
 export const InputFullBigString: React.FC<InputFullBigStringProps> = ({ ...props }) => {
     const { inputBorderError, inputBorderWarning, inputBorderDefault, inputTextError, inputTextWarning, inputTextDefault } = useConfigs();
 
+    const [focusOnRender, setFocusOnRender] = useObserver(props.focusOnRender);
     const editValueDisabled = useObserverValue(props.editValueDisabled);
     const valueHasWarning = useObserverValue(props.valueHasWarning);
-    const focusOnRender = useObserverValue(props.focusOnRender);
     const valueHasError = useObserverValue(props.valueHasError);
     const [value, setValue] = useObserver(props.value);
     const id = useObserverValue(props.id);
+
+    const inputRef = useRef<HTMLTextAreaElement>(null);
+    useEffect(() => {
+        if (inputRef.current && focusOnRender) {
+            inputRef.current.focus();
+            inputRef.current.select();
+        }
+    }, [focusOnRender]);
 
     return (
         <div style={css_prop_item} className="padding-s padding-bottom-none">
             <textarea
                 onChange={e => setValue(e.currentTarget.value)}
                 className={"full-width background-bars"}
+                onBlur={() => setFocusOnRender(false)}
                 disabled={editValueDisabled}
-                autoFocus={focusOnRender}
                 id={'prop_id_' + id}
                 autoComplete={"off"}
                 value={value}

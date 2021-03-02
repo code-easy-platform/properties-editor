@@ -9,10 +9,10 @@ interface InputBigStringProps extends IProperty<string> { }
 export const InputBigString: React.FC<InputBigStringProps> = ({ ...props }) => {
     const { inputBorderError, inputBorderWarning, inputBorderDefault, inputTextError, inputTextWarning, inputTextDefault } = useConfigs();
 
+    const [focusOnRender, setFocusOnRender] = useObserver(props.focusOnRender);
     const editValueDisabled = useObserverValue(props.editValueDisabled);
     const valueHasWarning = useObserverValue(props.valueHasWarning);
     const nameHasWarning = useObserverValue(props.nameHasWarning);
-    const focusOnRender = useObserverValue(props.focusOnRender);
     const valueHasError = useObserverValue(props.valueHasError);
     const nameHasError = useObserverValue(props.nameHasError);
     const information = useObserverValue(props.information);
@@ -24,6 +24,7 @@ export const InputBigString: React.FC<InputBigStringProps> = ({ ...props }) => {
     useEffect(() => {
         if (inputRef.current && focusOnRender) {
             inputRef.current.focus();
+            inputRef.current.select();
         }
     }, [focusOnRender]);
 
@@ -40,8 +41,8 @@ export const InputBigString: React.FC<InputBigStringProps> = ({ ...props }) => {
                 <textarea
                     onChange={e => setValue(e.currentTarget.value)}
                     className={"full-width background-bars"}
+                    onBlur={() => setFocusOnRender(false)}
                     disabled={editValueDisabled}
-                    autoFocus={focusOnRender}
                     autoComplete={"off"}
                     ref={inputRef}
                     value={value}

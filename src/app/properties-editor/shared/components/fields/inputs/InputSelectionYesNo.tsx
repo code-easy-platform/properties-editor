@@ -9,10 +9,10 @@ interface InputSelectionYesNoProps extends IProperty<boolean> { }
 export const InputSelectionYesNo: React.FC<InputSelectionYesNoProps> = ({ ...props }) => {
     const { inputBorderError, inputBorderWarning, inputBorderDefault, inputTextError, inputTextWarning, inputTextDefault } = useConfigs();
 
+    const [focusOnRender, setFocusOnRender] = useObserver(props.focusOnRender);
     const editValueDisabled = useObserverValue(props.editValueDisabled);
     const valueHasWarning = useObserverValue(props.valueHasWarning);
     const nameHasWarning = useObserverValue(props.nameHasWarning);
-    const focusOnRender = useObserverValue(props.focusOnRender);
     const valueHasError = useObserverValue(props.valueHasError);
     const nameHasError = useObserverValue(props.nameHasError);
     const information = useObserverValue(props.information);
@@ -40,9 +40,9 @@ export const InputSelectionYesNo: React.FC<InputSelectionYesNoProps> = ({ ...pro
             {inputId => (
                 <select
                     onChange={e => setValue(e.currentTarget.value === 'true')}
+                    onBlur={() => setFocusOnRender(false)}
                     className={"background-bars"}
                     disabled={editValueDisabled}
-                    autoFocus={focusOnRender}
                     value={String(value)}
                     ref={inputRef}
                     id={inputId}

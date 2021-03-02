@@ -11,11 +11,11 @@ export const InputExpression: React.FC<SimpleStringProps> = ({ ...props }) => {
     const { inputBorderError, inputBorderWarning, inputBorderDefault, inputTextError, inputTextWarning, inputTextDefault } = useConfigs();
 
     const valueInputPickerDisabled = useObserverValue(props.valueInputPickerDisabled);
+    const [focusOnRender, setFocusOnRender] = useObserver(props.focusOnRender);
     const onPickerValueClick = useObserverValue(props.onPickerValueClick);
     const editValueDisabled = useObserverValue(props.editValueDisabled);
     const valueHasWarning = useObserverValue(props.valueHasWarning);
     const nameHasWarning = useObserverValue(props.nameHasWarning);
-    const focusOnRender = useObserverValue(props.focusOnRender);
     const valueHasError = useObserverValue(props.valueHasError);
     const nameHasError = useObserverValue(props.nameHasError);
     const suggestions = useObserverValue(props.suggestions);
@@ -38,11 +38,12 @@ export const InputExpression: React.FC<SimpleStringProps> = ({ ...props }) => {
                     onSelectSuggest={option => setValue(option.value.value.toString())}
                     onChange={e => setValue(e.currentTarget.value)}
                     inputPickerDisabled={valueInputPickerDisabled}
+                    onBlur={() => setFocusOnRender(false)}
                     className="full-width background-bars"
                     onPickerClick={onPickerValueClick}
                     disabled={editValueDisabled}
-                    autoFocus={focusOnRender}
                     suggestions={suggestions}
+                    autoFocus={focusOnRender}
                     value={value}
                     id={inputId}
                     style={{

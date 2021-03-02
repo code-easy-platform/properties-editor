@@ -10,11 +10,11 @@ interface InputImportFileProps extends IProperty<IFileContent> { }
 export const InputImportFile: React.FC<InputImportFileProps> = ({ ...props }) => {
     const { inputBorderError, inputBorderWarning, inputBorderDefault, inputTextError, inputTextWarning, inputTextDefault } = useConfigs();
 
+    const [focusOnRender, setFocusOnRender] = useObserver(props.focusOnRender);
     const typeOfFilesToAccept = useObserverValue(props.typeOfFilesToAccept);
     const editValueDisabled = useObserverValue(props.editValueDisabled);
     const valueHasWarning = useObserverValue(props.valueHasWarning);
     const nameHasWarning = useObserverValue(props.nameHasWarning);
-    const focusOnRender = useObserverValue(props.focusOnRender);
     const valueHasError = useObserverValue(props.valueHasError);
     const nameHasError = useObserverValue(props.nameHasError);
     const fileMaxSize = useObserverValue(props.fileMaxSize);
@@ -27,6 +27,7 @@ export const InputImportFile: React.FC<InputImportFileProps> = ({ ...props }) =>
     useEffect(() => {
         if (inputRef.current && focusOnRender) {
             inputRef.current.focus();
+            inputRef.current.select();
         }
     }, [focusOnRender]);
 
@@ -66,10 +67,10 @@ export const InputImportFile: React.FC<InputImportFileProps> = ({ ...props }) =>
                 <InputFile
                     className={`full-width background-bars border-radius outline-none`}
                     typeOfFilesToAccept={typeOfFilesToAccept}
+                    onBlur={() => setFocusOnRender(false)}
                     fileContent={value?.content || null}
                     onClear={() => setValue({})}
                     disabled={editValueDisabled}
-                    autoFocus={focusOnRender}
                     fileMaxSize={fileMaxSize}
                     onChange={handleOnChange}
                     fileName={value?.name}

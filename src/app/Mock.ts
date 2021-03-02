@@ -57,8 +57,9 @@ export const Item: IItem = {
     newPropertie({
       value: name,
       id: observe('12'),
-      //group: observe('Simple'),
+      group: observe('Simple'),
       name: observe('Simple string'),
+      focusOnRender: observe(true),
       type: observe(TypeOfValues.string),
       information: observe('Input simple string, allow you type any string'),
     }),

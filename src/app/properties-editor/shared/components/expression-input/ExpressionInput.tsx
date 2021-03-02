@@ -17,8 +17,9 @@ export const ExpressionInput: React.FC<ExpressionInputProps> = ({ onPickerClick,
     useEffect(() => {
         if (inputRef.current && props.autoFocus) {
             inputRef.current.focus();
+            inputRef.current.select();
         }
-    }, [props]);
+    }, [props.autoFocus]);
 
     const [showAutoComplete, setAutoComplete] = useState(false);
 
