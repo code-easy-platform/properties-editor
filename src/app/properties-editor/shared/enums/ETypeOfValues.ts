@@ -1,6 +1,7 @@
 export enum TypeOfValues {
     yesNoSelection = 'yesNoSelection',
     fullBigString = 'fullBigString',
+    colorPicker = 'colorPicker',
     expression = 'expression',
     bigstring = 'bigstring',
     selection = 'selection',

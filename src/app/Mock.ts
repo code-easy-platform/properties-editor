@@ -72,12 +72,20 @@ export const Item: IItem = {
       information: observe('Input switch, allow you toggle between true or false'),
     }),
     newPropertie({
-      id: observe('14'),
+      id: observe('14.1'),
       value: observe(0),
       name: observe('Number'),
       group: observe('Simple'),
       type: observe(TypeOfValues.number),
       information: observe('Input simple number, allow you type any number'),
+    }),
+    newPropertie({
+      id: observe('14'),
+      value: observe('#fff000'),
+      name: observe('Color'),
+      group: observe('Simple'),
+      type: observe(TypeOfValues.colorPicker),
+      information: observe('Input color picker, allow you select a hex color'),
     }),
     newPropertie({
       id: observe('15'),

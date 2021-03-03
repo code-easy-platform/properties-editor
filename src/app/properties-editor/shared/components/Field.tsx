@@ -4,7 +4,7 @@ import { useObserverValue } from 'react-observing';
 import {
     InputSelectionYesNo, InputExpression, InputSelection,
     InputViewOnly, SimpleString, InputSwitch, InputSimpleNumber,
-    InputImportFile, InputBigString, InputFullBigString, Assign,
+    InputImportFile, InputBigString, InputFullBigString, Assign, InputColorPicker,
 } from './fields/inputs/';
 import { IProperty } from '../interfaces';
 import { TypeOfValues } from '../enums';
@@ -21,6 +21,9 @@ export const Field: React.FC<FieldProps> = ({ field }) => {
 
         case TypeOfValues.string:
             return <SimpleString {...field} />;
+
+        case TypeOfValues.colorPicker:
+            return <InputColorPicker {...field} />;
 
         case TypeOfValues.boolean:
             return <InputSwitch {...field} />;

@@ -2,6 +2,7 @@ export * from './InputSelectionYesNo';
 export * from './InputFullBigString';
 export * from './InputSimpleString';
 export * from './InputSimpleNumber';
+export * from './InputColorPicker';
 export * from './InputImportFile';
 export * from './InputExpression';
 export * from './InputBigString';
