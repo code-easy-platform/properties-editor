@@ -1,5 +1,5 @@
 import React, { useState, useRef, useEffect, useCallback, useMemo } from 'react';
-import { IconCollapsedFolder } from 'code-easy-components';
+import { VscChevronDown } from 'react-icons/vsc';
 
 import { SearchAutocomplete } from '../auto-complete/SearchAutocomplete';
 import { ISuggestion } from '../../interfaces';
@@ -54,10 +54,8 @@ export const ExpressionInput: React.FC<ExpressionInputProps> = ({ onPickerClick,
                 className={`${(suggestions || []).length > 0 && "padding-right-g"}`}
             />
             {(!props.disabled && (suggestions || []).length > 0) && (
-                <img
-                    alt={"open-suggestions"}
+                <VscChevronDown
                     onClick={openSuggestions}
-                    src={IconCollapsedFolder}
                     className={`btn background-transparent border-radius open-suggestions`}
                     style={{
                         zIndex: 1,
@@ -69,7 +67,7 @@ export const ExpressionInput: React.FC<ExpressionInputProps> = ({ onPickerClick,
                         paddingBottom: 0,
                     }}
                     onKeyDown={e => {
-                        if (e.keyCode === 13 || e.keyCode === 32) {
+                        if (e.code === 'Enter' || e.code === 'Space') {
                             openSuggestions();
                         }
                     }}

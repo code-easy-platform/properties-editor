@@ -1,6 +1,6 @@
 import React, { useRef, useEffect, useState } from 'react';
-import { IconMoreInfo } from 'code-easy-components';
 import { useObserver } from 'react-observing';
+import { VscInfo } from 'react-icons/vsc';
 
 import { LocalStorageService } from '../../../local-storage/LocalStorage';
 import { InputWidthStore } from './../../../stores/InputWidth';
@@ -45,14 +45,20 @@ export const FieldWrapper: React.FC<FieldWrapperProps> = ({ children, id, name, 
             <label
                 htmlFor={'prop_id_' + id}
                 onDoubleClick={onDoubleClick}
-                className={"flex1 label-field-wrapper"}
+                className="flex1 label-field-wrapper"
                 style={{
                     textDecoration: nameHasError ? inputTextError : nameHasWarning ? inputTextWarning : inputTextDefault,
                     width: (container.width - inputWidth),
                 }}
             >
-                {name}
-                {(information !== "" && information !== undefined) && <img ref={infoIconRef} className="margin-left-xs" width={10} height={10} src={IconMoreInfo} alt="info-icon" />}
+                <div className="display-flex flex-items-center">
+                    {name}
+                    {(information !== "" && information !== undefined) && (
+                        <span ref={infoIconRef} className="margin-left-s" style={{ width: 15, height: 15 }}>
+                            <VscInfo />
+                        </span>
+                    )}
+                </div>
             </label>
             <Tooltip elementRef={infoIconRef} description={information} />
             <Resizer

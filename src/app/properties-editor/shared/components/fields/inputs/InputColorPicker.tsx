@@ -1,6 +1,6 @@
 import React, { useEffect, useRef } from 'react';
 import { useObserver, useObserverValue } from 'react-observing';
-import { Utils } from 'code-easy-components';
+import { v4 as uuid } from 'uuid';
 
 import { FieldWrapper } from '../field-wrapper/FieldWrapper';
 import { IProperty } from '../../../interfaces';
@@ -33,8 +33,8 @@ export const InputColorPicker: React.FC<InputColorPickerProps> = ({ ...props }) 
         <FieldWrapper
             minWidth={60}
             name={name || ''}
+            id={id || uuid()}
             information={information}
-            id={id || Utils.getUUID()}
             nameHasError={nameHasError}
             nameHasWarning={nameHasWarning}
         >

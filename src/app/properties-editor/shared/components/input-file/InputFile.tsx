@@ -1,5 +1,5 @@
 import React, { useCallback, useMemo, useRef, useState } from 'react';
-import { Utils } from 'code-easy-components';
+import { v4 as uuid } from 'uuid';
 
 import './InputFile.css';
 
@@ -90,8 +90,8 @@ export const InputFile = React.forwardRef(({ fileName, onClear, typeOfFilesToAcc
         <div
             {...props}
             style={css_input_file}
+            key={uuid() + "_" + props.id}
             onClick={e => input.current?.click()}
-            key={Utils.getUUID() + "_" + props.id}
             onKeyPress={e => input.current?.click()}
             tabIndex={!props.disabled ? 0 : undefined}
             className={props.className + " input-file-view padding-s padding-horizontal-xs"}

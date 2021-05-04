@@ -1,10 +1,10 @@
 import React, { useState, useCallback, useEffect } from 'react';
-import { IconExpandedFolder, IconCollapsedFolder } from 'code-easy-components';
+import { VscChevronDown, VscChevronUp } from 'react-icons/vsc';
+import { ISubscription } from 'react-observing';
 
 import { LocalStorageService } from '../../local-storage/LocalStorage';
 import { IProperty } from '../../interfaces';
 import { Field } from '../Field';
-import { ISubscription } from 'react-observing';
 
 interface FieldGroupProps {
     group?: string;
@@ -57,8 +57,8 @@ export const FieldGroup: React.FC<FieldGroupProps> = ({ properties, group }) => 
                     >
                         {group.toUpperCase()}
                         {isOpen
-                            ? <img src={IconCollapsedFolder} alt="icon" />
-                            : <img src={IconExpandedFolder} alt="icon" />
+                            ? <VscChevronUp />
+                            : <VscChevronDown />
                         }
                     </div>
                 </>
