@@ -18,4 +18,5 @@ export const PropertiesEditor: React.FC<PropertiesEditorProps> = ({ item, config
 }
 
 export * from './shared/interfaces';
+export * from './shared/helpers';
 export * from './shared/enums';

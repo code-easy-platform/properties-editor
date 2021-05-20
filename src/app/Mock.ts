@@ -1,36 +1,7 @@
 import { observe } from "react-observing";
 
-import { IItem, IProperty, ISuggestion, TypeOfValues } from "./properties-editor";
+import { IItem, ISuggestion, TypeOfValues, newEmptyPropertie } from "./properties-editor";
 
-type TOptional<T> = { [k in keyof T]?: T[k] };
-
-const newPropertie = (value: TOptional<IProperty>): IProperty => {
-  return {
-    value: value.value || observe(''),
-    id: value.id || observe(undefined),
-    name: value.name || observe(undefined),
-    order: value.order || observe(undefined),
-    group: value.group || observe(undefined),
-    suggestions: value.suggestions || observe([]),
-    type: value.type || observe(TypeOfValues.assign),
-    information: value.information || observe(undefined),
-    fileMaxSize: value.fileMaxSize || observe(undefined),
-    propertieType: value.propertieType || observe('text'),
-    nameSuggestions: value.nameSuggestions || observe([]),
-    nameHasError: value.nameHasError || observe(undefined),
-    valueHasError: value.valueHasError || observe(undefined),
-    focusOnRender: value.focusOnRender || observe(undefined),
-    nameHasWarning: value.nameHasWarning || observe(undefined),
-    valueHasWarning: value.valueHasWarning || observe(undefined),
-    editNameDisabled: value.editNameDisabled || observe(undefined),
-    editValueDisabled: value.editValueDisabled || observe(undefined),
-    typeOfFilesToAccept: value.typeOfFilesToAccept || observe(['.iso', '.jpg']),
-    nameInputPickerDisabled: value.nameInputPickerDisabled || observe(true),
-    valueInputPickerDisabled: value.valueInputPickerDisabled || observe(true),
-    onPickerNameClick: value.onPickerNameClick || observe((e) => console.log('Name', e)),
-    onPickerValueClick: value.onPickerValueClick || observe((e) => console.log('Value', e)),
-  };
-};
 
 const name = observe('Nome que pode ser editado');
 const subname = observe(undefined);
@@ -40,21 +11,21 @@ export const Item: IItem = {
   id: observe('T'),
   subname: subname,
   properties: observe([
-    newPropertie({
+    newEmptyPropertie({
       id: observe('10'),
       name: observe('Hidden'),
       type: observe(TypeOfValues.hidden),
       value: observe('My name to hidden'),
       information: observe('Hidden, used just for show some information'),
     }),
-    newPropertie({
+    newEmptyPropertie({
       id: observe('11'),
       name: observe('View only'),
       type: observe(TypeOfValues.viewOnly),
       value: observe('My name to view only'),
       information: observe('View only, used just for show some information'),
     }),
-    newPropertie({
+    newEmptyPropertie({
       value: name,
       id: observe('12'),
       group: observe('Simple'),
@@ -63,7 +34,7 @@ export const Item: IItem = {
       type: observe(TypeOfValues.string),
       information: observe('Input simple string, allow you type any string'),
     }),
-    newPropertie({
+    newEmptyPropertie({
       id: observe('13'),
       value: observe(false),
       name: observe('Boolean'),
@@ -71,7 +42,7 @@ export const Item: IItem = {
       type: observe(TypeOfValues.boolean),
       information: observe('Input switch, allow you toggle between true or false'),
     }),
-    newPropertie({
+    newEmptyPropertie({
       id: observe('14.1'),
       value: observe(0),
       name: observe('Number'),
@@ -79,7 +50,7 @@ export const Item: IItem = {
       type: observe(TypeOfValues.number),
       information: observe('Input simple number, allow you type any number'),
     }),
-    newPropertie({
+    newEmptyPropertie({
       id: observe('14'),
       value: observe('#fff000'),
       name: observe('Color'),
@@ -87,7 +58,7 @@ export const Item: IItem = {
       type: observe(TypeOfValues.colorPicker),
       information: observe('Input color picker, allow you select a hex color'),
     }),
-    newPropertie({
+    newEmptyPropertie({
       id: observe('15'),
       value: observe(null),
       name: observe('Binary'),
@@ -95,7 +66,7 @@ export const Item: IItem = {
       type: observe(TypeOfValues.binary),
       information: observe('Input binary, allow you import your files from your device'),
     }),
-    newPropertie({
+    newEmptyPropertie({
       id: observe('16'),
       group: observe('Simple'),
       name: observe('Big string'),
@@ -103,14 +74,14 @@ export const Item: IItem = {
       type: observe(TypeOfValues.bigstring),
       information: observe('Input big string, allow you write a big string with many lines'),
     }),
-    newPropertie({
+    newEmptyPropertie({
       id: observe('17'),
       group: observe('Simple'),
       value: observe('My full big string'),
       type: observe(TypeOfValues.fullBigString),
       information: observe('Input big string, allow you write a big string with many lines and not show the input label'),
     }),
-    newPropertie({
+    newEmptyPropertie({
       value: subname,
       id: observe('18'),
       name: observe('Combo'),
@@ -148,7 +119,7 @@ export const Item: IItem = {
         }
       ]),
     }),
-    newPropertie({
+    newEmptyPropertie({
       id: observe('19'),
       value: observe(true),
       group: observe('Simple'),
@@ -156,7 +127,7 @@ export const Item: IItem = {
       type: observe(TypeOfValues.yesNoSelection),
       information: observe('Input selection yes/no, allow you toggle between "yes" and "no". The output is boolean'),
     }),
-    newPropertie({
+    newEmptyPropertie({
       id: observe('20'),
       group: observe('Advanced'),
       name: observe('Expression'),
@@ -165,7 +136,7 @@ export const Item: IItem = {
       onPickerValueClick: observe((e) => console.log('Value', e)),
       information: observe('Input expression, allow you type expressions and conditions'),
     }),
-    newPropertie({
+    newEmptyPropertie({
       id: observe('21'),
       group: observe('Advanced'),
       value: observe('tesstetes'),
@@ -204,7 +175,7 @@ export const Item: IItem = {
         },
       ]),
     }),
-    newPropertie({
+    newEmptyPropertie({
       id: observe('22'),
       name: observe('Name'),
       value: observe('My name'),
