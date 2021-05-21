@@ -1,13 +1,15 @@
 import { observe } from "react-observing";
-import { TypeOfValues } from "../enums";
+import { v4 as uuid } from "uuid";
+
 import { IProperty } from "../interfaces";
+import { TypeOfValues } from "../enums";
 
 type TOptional<T> = { [k in keyof T]?: T[k] };
 
 export const newEmptyPropertie = (value: TOptional<IProperty>): IProperty => {
     return {
+        id: value.id || observe(uuid()),
         value: value.value || observe(''),
-        id: value.id || observe(undefined),
         name: value.name || observe(undefined),
         order: value.order || observe(undefined),
         group: value.group || observe(undefined),
