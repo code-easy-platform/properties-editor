@@ -8,7 +8,7 @@ import { useConfigs } from '../../../contexts';
 
 interface InputSwitchProps extends IProperty<boolean> { }
 export const InputSwitch: React.FC<InputSwitchProps> = ({ ...props }) => {
-    const { inputBorderError, inputBorderWarning, inputBorderDefault } = useConfigs();
+    const { inputBorderError, inputBorderWarning, inputBorderDefault, textDefaultColor } = useConfigs();
 
     const [focusOnRender, setFocusOnRender] = useObserver(props.focusOnRender);
     const editValueDisabled = useObserverValue(props.editValueDisabled);
@@ -42,6 +42,7 @@ export const InputSwitch: React.FC<InputSwitchProps> = ({ ...props }) => {
                     disabled={editValueDisabled}
                     border={inputBorderDefault}
                     autoFocus={focusOnRender}
+                    color={textDefaultColor}
                     hasError={valueHasError}
                     checked={value}
                     id={inputId}

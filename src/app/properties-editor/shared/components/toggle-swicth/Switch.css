@@ -45,8 +45,8 @@ input:focus + .slider {
 }
 
 input:checked + .slider:before {
+    background-color: var(--color-text);
     -webkit-transform: translateX(22px);
     -ms-transform: translateX(22px);
     transform: translateX(22px);
-    background-color: white;
 }

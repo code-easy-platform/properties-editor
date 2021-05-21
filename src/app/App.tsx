@@ -102,6 +102,7 @@ const App: React.FC = () => {
         <PropertiesEditor
           item={item}
           configs={{
+            // textDefaultColor: 'red',
             // borderDefaultColor: 'green',
           }}
         />
