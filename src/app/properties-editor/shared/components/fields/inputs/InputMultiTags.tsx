@@ -14,7 +14,7 @@ const css_prop_item: React.CSSProperties = {
 }
 interface InputMultiTagsProps extends IProperty<string[]> { }
 export const InputMultiTags: React.FC<InputMultiTagsProps> = ({ ...props }) => {
-    const { inputBorderError, inputBorderWarning, inputBorderDefault, inputTextError, inputTextWarning, inputTextDefault } = useConfigs();
+    const { inputBorderError, inputBorderWarning, inputBorderDefault, inputTextError, inputTextWarning, inputTextDefault, textDefaultColor } = useConfigs();
 
     const [focusOnRender, setFocusOnRender] = useObserver(props.focusOnRender);
     const editValueDisabled = useObserverValue(props.editValueDisabled);
@@ -99,7 +99,8 @@ export const InputMultiTags: React.FC<InputMultiTagsProps> = ({ ...props }) => {
                             display: 'flex',
                             fontSize: 'small',
                             alignItems: 'center',
-                            justifyContent: "center"
+                            justifyContent: "center",
+                            border: `thin solid ${textDefaultColor}`,
                         }}
                     >
                         {currentTag}
@@ -112,6 +113,7 @@ export const InputMultiTags: React.FC<InputMultiTagsProps> = ({ ...props }) => {
 
                 <input
                     id={'prop_id_' + id}
+                    placeholder="Add..."
                     autoComplete={"off"}
                     onKeyDown={handleKeyDown}
                     list={'prop_data_id_' + id}
@@ -121,8 +123,10 @@ export const InputMultiTags: React.FC<InputMultiTagsProps> = ({ ...props }) => {
                     style={{
                         textDecoration: valueHasError ? inputTextError : valueHasWarning ? inputTextWarning : inputTextDefault,
                         border: valueHasError ? inputBorderError : valueHasWarning ? inputBorderWarning : inputBorderDefault,
-                        height: '8px',
-                        width: '80px',
+                        padding: 0,
+                        paddingLeft: 4,
+                        height: 26,
+                        width: 80,
                     }}
                 />
 
