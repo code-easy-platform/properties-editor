@@ -7,6 +7,7 @@ export * from './InputImportFile';
 export * from './InputExpression';
 export * from './InputBigString';
 export * from './InputSelection';
+export * from './InputMultiTags';
 export * from './InputViewOnly';
 export * from './InputSwitch';
 export * from './Assign';

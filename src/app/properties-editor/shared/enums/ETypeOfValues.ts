@@ -1,5 +1,6 @@
 export enum TypeOfValues {
     yesNoSelection = 'yesNoSelection',
+    inputMultiTags = 'inputMultiTags',
     fullBigString = 'fullBigString',
     colorPicker = 'colorPicker',
     expression = 'expression',

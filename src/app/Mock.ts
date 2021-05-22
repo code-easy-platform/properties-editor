@@ -64,6 +64,7 @@ export const Item: IItem = {
       name: observe('Binary'),
       group: observe('Simple'),
       type: observe(TypeOfValues.binary),
+      typeOfFilesToAccept: observe(['.png', '.jpg']),
       information: observe('Input binary, allow you import your files from your device'),
     }),
     newEmptyPropertie({
@@ -130,6 +131,14 @@ export const Item: IItem = {
     newEmptyPropertie({
       id: observe('20'),
       group: observe('Advanced'),
+      name: observe('Classes'),
+      value: observe(['teste1', 'teste2']),
+      type: observe(TypeOfValues.inputMultiTags),
+      information: observe('Input expression, allow you type expressions and conditions'),
+    }),
+    newEmptyPropertie({
+      id: observe('21'),
+      group: observe('Advanced'),
       name: observe('Expression'),
       value: observe('tesstetes'),
       type: observe(TypeOfValues.expression),
@@ -137,7 +146,7 @@ export const Item: IItem = {
       information: observe('Input expression, allow you type expressions and conditions'),
     }),
     newEmptyPropertie({
-      id: observe('21'),
+      id: observe('22'),
       group: observe('Advanced'),
       value: observe('tesstetes'),
       name: observe('Expression suggests'),
@@ -176,7 +185,7 @@ export const Item: IItem = {
       ]),
     }),
     newEmptyPropertie({
-      id: observe('22'),
+      id: observe('23'),
       name: observe('Name'),
       value: observe('My name'),
       group: observe('Advanced'),

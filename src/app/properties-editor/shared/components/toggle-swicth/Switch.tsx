@@ -34,7 +34,7 @@ export const Switch: React.FC<SwitchProps> = ({ id, checked = false, color = 'wh
                 style={{
                     backgroundColor: backgroundColor,
                     opacity: disabled ? 0.7 : undefined,
-                    ...{ '--color-text': color } as any,
+                    ...{ '--switch-color-text': color } as any,
                     border: (hasError ? borderError : (hasWarning ? borderWarning : border))
                 }}
             />

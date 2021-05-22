@@ -4,7 +4,7 @@ import { useObserverValue } from 'react-observing';
 import {
     InputSelectionYesNo, InputExpression, InputSelection,
     InputViewOnly, SimpleString, InputSwitch, InputSimpleNumber,
-    InputImportFile, InputBigString, InputFullBigString, Assign, InputColorPicker,
+    InputImportFile, InputBigString, InputFullBigString, Assign, InputColorPicker, InputMultiTags,
 } from './fields/inputs/';
 import { IProperty } from '../interfaces';
 import { TypeOfValues } from '../enums';
@@ -51,6 +51,9 @@ export const Field: React.FC<FieldProps> = ({ field }) => {
 
         case TypeOfValues.assign:
             return <Assign {...field} />;
+
+        case TypeOfValues.inputMultiTags:
+            return <InputMultiTags {...field} />;
 
         case TypeOfValues.hidden:
             return null;
