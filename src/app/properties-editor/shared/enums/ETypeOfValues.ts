@@ -1,4 +1,5 @@
 export enum TypeOfValues {
+    stringWithSuggestions = 'stringWithSuggestions',
     yesNoSelection = 'yesNoSelection',
     inputMultiTags = 'inputMultiTags',
     fullBigString = 'fullBigString',

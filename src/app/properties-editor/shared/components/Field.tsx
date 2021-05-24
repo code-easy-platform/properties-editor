@@ -3,7 +3,7 @@ import { useObserverValue } from 'react-observing';
 
 import {
     InputSelectionYesNo, InputExpression, InputSelection,
-    InputViewOnly, SimpleString, InputSwitch, InputSimpleNumber,
+    InputViewOnly, SimpleString, InputSwitch, InputSimpleNumber, InputSimpleStringWithSuggestions,
     InputImportFile, InputBigString, InputFullBigString, Assign, InputColorPicker, InputMultiTags,
 } from './fields/inputs/';
 import { IProperty } from '../interfaces';
@@ -54,6 +54,9 @@ export const Field: React.FC<FieldProps> = ({ field }) => {
 
         case TypeOfValues.inputMultiTags:
             return <InputMultiTags {...field} />;
+
+        case TypeOfValues.stringWithSuggestions:
+            return <InputSimpleStringWithSuggestions {...field} />;
 
         case TypeOfValues.hidden:
             return null;

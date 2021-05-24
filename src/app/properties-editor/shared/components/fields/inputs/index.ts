@@ -1,3 +1,4 @@
+export * from './InputSimpleStringWithSuggestions';
 export * from './InputSelectionYesNo';
 export * from './InputFullBigString';
 export * from './InputSimpleString';
