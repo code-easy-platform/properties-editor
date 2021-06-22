@@ -1,9 +1,9 @@
 import React, { useCallback, useEffect, useRef } from 'react';
 import { useObserver, useObserverValue } from 'react-observing';
+import { VscClose, VscEdit } from 'react-icons/vsc';
 
 import { IProperty } from '../../../interfaces';
 import { useConfigs } from '../../../contexts';
-import { VscClose } from 'react-icons/vsc';
 
 const css_prop_item: React.CSSProperties = {
     alignItems: 'flex-start',
@@ -25,7 +25,7 @@ export const InputMultiTags: React.FC<InputMultiTagsProps> = ({ ...props }) => {
     const [name] = useObserver(props.name);
     const id = useObserverValue(props.id);
 
-    const inputRef = useRef<HTMLTextAreaElement>(null);
+    const inputRef = useRef<HTMLInputElement>(null);
     useEffect(() => {
         if (inputRef.current && focusOnRender) {
             inputRef.current.focus();
@@ -80,6 +80,18 @@ export const InputMultiTags: React.FC<InputMultiTagsProps> = ({ ...props }) => {
         }
     }, [setValue]);
 
+    const handlePaste: React.ClipboardEventHandler<HTMLInputElement> = useCallback((e) => {
+        e.preventDefault();
+
+        const classNames = e.clipboardData.getData('text').split(/,| |\n/g).map(word => word.trim()).filter(word => word.length > 0);
+        setValue(old => {
+            return [
+                ...old,
+                ...classNames.filter(word => !old.includes(word)),
+            ];
+        });
+    }, [setValue]);
+
     return (
         <div style={css_prop_item} className="padding-s padding-bottom-none">
             <label>{name}</label>
@@ -104,6 +116,17 @@ export const InputMultiTags: React.FC<InputMultiTagsProps> = ({ ...props }) => {
                         }}
                     >
                         {currentTag}
+                        <VscEdit
+                            style={{ padding: 2, cursor: 'pointer' }}
+                            onClick={() => {
+                                setValue(value.filter((_, i) => i !== index));
+                                if (inputRef.current) {
+                                    inputRef.current.value = currentTag;
+                                    inputRef.current.focus();
+                                    inputRef.current.select();
+                                }
+                            }}
+                        />
                         <VscClose
                             style={{ padding: 2, cursor: 'pointer' }}
                             onClick={() => setValue(value.filter((_, i) => i !== index))}
@@ -112,9 +135,11 @@ export const InputMultiTags: React.FC<InputMultiTagsProps> = ({ ...props }) => {
                 ))}
 
                 <input
+                    ref={inputRef}
+                    autoComplete="off"
                     id={'prop_id_' + id}
                     placeholder="Add..."
-                    autoComplete={"off"}
+                    onPaste={handlePaste}
                     onKeyDown={handleKeyDown}
                     list={'prop_data_id_' + id}
                     disabled={editValueDisabled}
@@ -125,8 +150,8 @@ export const InputMultiTags: React.FC<InputMultiTagsProps> = ({ ...props }) => {
                         border: valueHasError ? inputBorderError : valueHasWarning ? inputBorderWarning : inputBorderDefault,
                         padding: 0,
                         paddingLeft: 4,
+                        width: '100%',
                         height: 26,
-                        width: 80,
                     }}
                 />
 
