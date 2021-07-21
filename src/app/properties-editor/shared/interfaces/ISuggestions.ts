@@ -27,3 +27,7 @@ export interface ISuggestion<T = string | number> {
      */
     value: IObservable<T>;
 }
+
+export type ISuggestionWithoutObservable<T = any> = {
+    [k in keyof ISuggestion<T>]: ISuggestion<T>[k]['value']
+}
