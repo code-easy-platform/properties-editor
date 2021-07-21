@@ -100,3 +100,7 @@ export interface IProperty<T = any> {
      */
     value: IObservable<T>;
 }
+
+export type IPropertyWithoutObservable<T = any> = {
+    [k in keyof IProperty<T>]: IProperty<T>[k]['value']
+}
