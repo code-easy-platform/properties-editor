@@ -1,7 +1,7 @@
 import { IObservable } from "react-observing";
 
+import { ISuggestionWithoutObservable, ISuggestion } from './ISuggestions';
 import { TypeOfValues } from "../enums";
-import { ISuggestion } from "./";
 
 export interface IProperty<T = any> {
     /**
@@ -101,6 +101,11 @@ export interface IProperty<T = any> {
     value: IObservable<T>;
 }
 
+interface IPropertyWithSuggestionsWithoutObservable<T> extends Omit<IProperty<T>, 'nameSuggestions' | 'suggestions'> {
+    nameSuggestions: IObservable<ISuggestionWithoutObservable[] | undefined>;
+    suggestions: IObservable<ISuggestionWithoutObservable[] | undefined>;
+}
+
 export type IPropertyWithoutObservable<T = any> = {
-    [k in keyof IProperty<T>]: IProperty<T>[k]['value']
+    [k in keyof IPropertyWithSuggestionsWithoutObservable<T>]: IPropertyWithSuggestionsWithoutObservable<T>[k]['value'];
 }

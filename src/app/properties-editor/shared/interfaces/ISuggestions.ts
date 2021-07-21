@@ -29,5 +29,5 @@ export interface ISuggestion<T = string | number> {
 }
 
 export type ISuggestionWithoutObservable<T = any> = {
-    [k in keyof ISuggestion<T>]: ISuggestion<T>[k]['value']
+    [k in keyof ISuggestion<T>]: ISuggestion<T>[k]['value'];
 }
