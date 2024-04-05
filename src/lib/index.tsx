@@ -4,7 +4,7 @@ import { IObservable } from 'react-observing';
 import { IPropertiesEditorConfigurations, IProperty, ISuggestion } from './shared/interfaces';
 import { ConfigurationProvider } from './shared/contexts';
 import { FieldsList } from './shared/components';
-import './styles.css';
+import './index.css';
 
 
 interface PropertiesEditorProps {

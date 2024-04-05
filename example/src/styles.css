@@ -3,11 +3,6 @@
   --color-secondary: #83f1b1;
   --color-background: #f3f4f6;
   --color-paper: #ffffff;
-  --color-primary-contrast: #ffffff;
-  --color-secondary-contrast: #ffffff;
-  --color-primary-skeleton: #83f1b1;
-  --color-secondary-skeleton: #a6f5c7;
-  --color-border-secondary: #e5e7eb;
   --color-border: #e5e7eb;
   --color-text: #000;
 }
@@ -18,11 +13,6 @@ body,
   --color-secondary: #83f1b1;
   --color-background: #1b1b1b;
   --color-paper: #3a3a3a;
-  --color-primary-contrast: #ffffff;
-  --color-secondary-contrast: #000000;
-  --color-primary-skeleton: #83f1b1;
-  --color-secondary-skeleton: #a6f5c7;
-  --color-border-secondary: #3a3a3a;
   --color-border: #1b1b1b;
   --color-text: #fff;
 }
@@ -84,11 +74,6 @@ button.bg-primary {
   @apply text-contrast-primary
 }
 
-/* Ace editor selection style */
-
-.ace-kuroir .ace_marker-layer .ace_selection {
-  background: var(--color-primary);
-}
 
 .overflow-overlay {
   overflow: overlay;
