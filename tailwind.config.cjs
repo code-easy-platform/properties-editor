@@ -13,6 +13,7 @@ module.exports = {
         background: 'var(--color-background)',
         paper: 'var(--color-paper)',
         text: 'var(--color-text)',
+        "contrast-primary": 'var(--color-primary-contrast)',
       },
       minHeight: {
         '20': '5rem',
