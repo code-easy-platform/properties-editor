@@ -1,0 +1,138 @@
+body,
+[data-theme="light"] {
+  --color-primary: #56da8e;
+  --color-secondary: #83f1b1;
+  --color-background: #f3f4f6;
+  --color-paper: #ffffff;
+  --color-primary-contrast: #ffffff;
+  --color-secondary-contrast: #ffffff;
+  --color-primary-skeleton: #83f1b1;
+  --color-secondary-skeleton: #a6f5c7;
+  --color-border-secondary: #e5e7eb;
+  --color-border: #e5e7eb;
+  --color-text: #000;
+}
+
+[data-theme="dark"] {
+  --color-primary: #178746;
+  --color-secondary: #83f1b1;
+  --color-background: #1b1b1b;
+  --color-paper: #3a3a3a;
+  --color-primary-contrast: #ffffff;
+  --color-secondary-contrast: #000000;
+  --color-primary-skeleton: #83f1b1;
+  --color-secondary-skeleton: #a6f5c7;
+  --color-border-secondary: #3a3a3a;
+  --color-border: #1b1b1b;
+  --color-text: #fff;
+}
+
+html,
+body,
+#root {
+  overscroll-behavior: contain;
+  color: var(--color-text);
+  height: 100vh;
+  width: 100vw;
+}
+
+.hide-number-spin::-webkit-outer-spin-button,
+.hide-number-spin::-webkit-inner-spin-button {
+  -webkit-appearance: none;
+  margin: 0;
+}
+
+/* Firefox */
+.hide-number-spin {
+  -moz-appearance: textfield;
+}
+
+@tailwind base;
+@tailwind components;
+@tailwind utilities;
+
+input,
+select,
+textarea {
+  @apply p-2 bg-paper rounded outline-none text-text
+}
+
+input:focus,
+button:focus,
+select:focus,
+textarea:focus {
+  @apply ring-1 ring-primary
+}
+
+button {
+  @apply px-3 py-1 rounded-md text-text text-base outline-none
+}
+
+button:active {
+  @apply opacity-100
+}
+
+button:focus {
+  @apply opacity-90
+}
+
+button:hover {
+  @apply opacity-80
+}
+
+button.bg-primary {
+  @apply text-contrast-primary
+}
+
+/* Ace editor selection style */
+
+.ace-kuroir .ace_marker-layer .ace_selection {
+  background: var(--color-primary);
+}
+
+.overflow-overlay {
+  overflow: overlay;
+}
+
+.overflow-primary::-webkit-scrollbar-thumb {
+  @apply bg-primary;
+}
+
+.overflow-track-transparent::-webkit-scrollbar-track {
+  @apply bg-transparent;
+}
+
+*::-webkit-scrollbar {
+  width: 8px;
+  height: 8px;
+}
+
+*::-webkit-scrollbar-button {
+  display: none;
+}
+
+*::-webkit-scrollbar-corner {
+  background-color: transparent;
+}
+
+*::-webkit-scrollbar-thumb {
+  border-radius: 4px;
+  background-color: var(--color-background);
+}
+
+*::-webkit-scrollbar-track {
+  background-color: var(--color-paper);
+}
+
+.scroll-theme-negative::-webkit-scrollbar-thumb {
+  border-radius: 4px;
+  background-color: var(--color-paper);
+}
+
+.scroll-theme-negative::-webkit-scrollbar-track {
+  background-color: var(--color-background);
+}
+
+.scroll-height-2::-webkit-scrollbar {
+  height: 16px;
+}

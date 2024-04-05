@@ -1,0 +1,29 @@
+{
+  "name": "example-properties-editor",
+  "version": "0.0.0",
+  "scripts": {
+    "dev": "vite --port 3000 --force",
+    "build": "tsc && vite build",
+    "preview": "vite preview"
+  },
+  "dependencies": {
+    "react": "^18.2.0",
+    "react-dom": "^18.2.0",
+    "react-icons": "^4.12.0",
+    "react-observing": "^2.6.16",
+    "properties-editor": "link:./../",
+    "uuid": "^8.3.2"
+  },
+  "devDependencies": {
+    "@types/node": "^18.0.6",
+    "@types/react": "^18.0.15",
+    "@types/uuid": "^8.3.4",
+    "@types/react-dom": "^18.0.6",
+    "@vitejs/plugin-react": "^2.0.0",
+    "autoprefixer": "^10.4.14",
+    "postcss": "^8.4.23",
+    "tailwindcss": "^3.3.2",
+    "typescript": "^5.3.3",
+    "vite": "^3.0.0"
+  }
+}

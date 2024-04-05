@@ -1,4 +1,0 @@
-.input-file-view:focus {
-    background-color: var(--main-background-input-focus);
-    outline: var(--outline-none);
-}
