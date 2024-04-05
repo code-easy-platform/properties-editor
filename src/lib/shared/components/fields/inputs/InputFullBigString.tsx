@@ -23,10 +23,10 @@ export const InputFullBigString: React.FC<InputFullBigStringProps> = ({ ...props
 
 
   return (
-    <div style={css_prop_item} className="p-2 padding-bottom-none">
+    <div style={css_prop_item}>
       <textarea
         onChange={e => setValue(e.currentTarget.value)}
-        className={"w-full bg-background"}
+        className="w-full bg-background"
         disabled={editValueDisabled}
         id={'prop_id_' + id}
         autoComplete="off"
