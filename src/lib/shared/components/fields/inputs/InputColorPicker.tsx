@@ -33,7 +33,7 @@ export const InputColorPicker: React.FC<InputColorPickerProps> = ({ ...props }) 
       {inputId => (
         <input
           onChange={e => setValue(e.currentTarget.value)}
-          className="bg-background p-1"
+          className="bg-background p-1 disabled:opacity-50"
           disabled={editValueDisabled}
           autoComplete='off'
           value={value}

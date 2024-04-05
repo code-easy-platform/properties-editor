@@ -33,7 +33,7 @@ export const InputSimpleNumber: React.FC<InputSimpleNumberProps> = ({ ...props }
       {inputId => (
         <input
           onChange={e => setValue(Number(e.currentTarget.value))}
-          className="w-full bg-background py-0.5"
+          className="w-full bg-background py-0.5 disabled:opacity-50"
           disabled={editValueDisabled}
           autoComplete={'off'}
           type={"number"}

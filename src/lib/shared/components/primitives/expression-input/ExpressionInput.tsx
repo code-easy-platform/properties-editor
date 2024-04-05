@@ -19,7 +19,6 @@ interface ExpressionInputProps {
   value: TExpressionValue;
   placeholder?: string;
   autoFocus?: boolean;
-  className?: string;
   disabled?: boolean;
   warning?: boolean;
   error?: boolean;
@@ -32,7 +31,6 @@ export const ExpressionInput: React.FC<ExpressionInputProps> = ({
   warning,
   disabled,
   autoFocus,
-  className,
   placeholder,
   suggestions,
   disabledPicker,
@@ -130,7 +128,7 @@ export const ExpressionInput: React.FC<ExpressionInputProps> = ({
         placeholder={placeholder}
         onFocus={() => setIsTyping(true)}
         {...isTyping ? { value: typedValue } : { value: valueToShow }}
-        className={`${className} flex-1 p-1 py-0.5 data-[warning=true]:border data-[warning=true]:border-yellow-500 data-[error=true]:border data-[error=true]:border-red-500 data-[has-suggestions=true]:pr-6 disabled:opacity-50`}
+        className={'bg-background flex-1 p-1 py-0.5 data-[warning=true]:border data-[warning=true]:border-yellow-500 data-[error=true]:border data-[error=true]:border-red-500 data-[has-suggestions=true]:pr-6 disabled:opacity-50'}
       />
 
       {(!disabled && (suggestions || []).length > 0) && (

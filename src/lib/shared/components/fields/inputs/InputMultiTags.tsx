@@ -97,7 +97,7 @@ export const InputMultiTags: React.FC<InputMultiTagsProps> = ({ ...props }) => {
 
 
   return (
-    <div style={css_prop_item} className="p-2 gap-2 bg-background rounded">
+    <div style={css_prop_item} data-disabled={editValueDisabled} className="p-2 gap-2 bg-background rounded data-[disabled=true]:opacity-50">
       <label>{name}</label>
 
       <div className="flex flex-wrap justify-start items-center gap-1">

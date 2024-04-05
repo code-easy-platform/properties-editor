@@ -19,11 +19,6 @@ module.exports = {
         paper: 'var(--color-paper)',
         text: 'var(--color-text)',
         "contrast-primary": 'var(--color-primary-contrast)',
-        "contrast-secondary": 'var(--color-secondary-contrast)',
-        "skeleton-primary": 'var(--color-primary-skeleton)',
-        "skeleton-secondary": 'var(--color-secondary-skeleton)',
-        "modal-backdrop": '#010409b0',
-        "border-secondary": 'var(--color-border-secondary)',
       },
       minHeight: {
         '20': '5rem',

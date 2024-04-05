@@ -95,7 +95,7 @@ export const App = () => {
         </div>
       </div>
 
-      <div className='w-96 bg-paper mt-2 p-2 rounded overflow-auto'>
+      <div className='w-96 bg-paper mt-2 p-2 pb-20 rounded overflow-auto'>
         <PropertiesEditor
           properties={properties.current}
         />

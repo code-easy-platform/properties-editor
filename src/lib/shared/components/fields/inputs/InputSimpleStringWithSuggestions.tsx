@@ -42,7 +42,7 @@ export const InputSimpleStringWithSuggestions: React.FC<InputSimpleStringWithSug
         <>
           <input
             onChange={e => setValue(e.currentTarget.value)}
-            className="w-full bg-background py-0.5"
+            className="w-full bg-background py-0.5 disabled:opacity-50"
             disabled={editValueDisabled}
             list={'prop_data_id_' + id}
             autoComplete={'off'}

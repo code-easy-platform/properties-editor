@@ -41,7 +41,6 @@ export const Assign: React.FC<IAssignProps> = ({ inputClassName = '', ...props }
         error={nameHasError}
         placeholder="Property"
         warning={nameHasWarning}
-        className={inputClassName}
         disabled={editNameDisabled}
         suggestions={nameSuggestions}
         id={'name_prop_id_' + props.id}
@@ -64,7 +63,6 @@ export const Assign: React.FC<IAssignProps> = ({ inputClassName = '', ...props }
           error={valueHasError}
           warning={valueHasWarning}
           suggestions={suggestions}
-          className={inputClassName}
           disabled={editValueDisabled}
           id={'value_prop_id_' + props.id}
           key={'value_prop_key_' + props.id}

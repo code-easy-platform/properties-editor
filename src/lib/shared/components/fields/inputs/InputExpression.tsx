@@ -49,7 +49,6 @@ export const InputExpression: React.FC<InputExpressionProps> = ({ dividerPositio
           onPickerClick={() => onPickerValueClick?.(props)}
           onChange={e => setValue(e.currentTarget.value)}
           disabledPicker={valueInputPickerDisabled}
-          className="w-full bg-background"
           disabled={editValueDisabled}
           suggestions={suggestions}
           warning={valueHasWarning}

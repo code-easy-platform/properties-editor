@@ -94,13 +94,13 @@ export const InputFile = ({ value, fileMaxSize, disabled, error, warning, typeOf
       data-disabled={disabled}
       tabIndex={disabled ? -1 : 0}
       onKeyDown={handleInputKeyDown}
-      className='flex gap-2 bg-background p-1 rounded cursor-pointer focus:outline outline-primary ring-1 ring-transparent data-[warning]:ring-yellow-500 data-[error]:ring-red-500 data-[disabled]:opacity-50 data-[disabled]:focus:outline-none'
+      className='flex gap-2 bg-background p-1 rounded cursor-pointer focus:outline outline-primary ring-1 ring-transparent data-[warning=true]:ring-yellow-500 data-[error=true]:ring-red-500 data-[disabled=true]:opacity-50 data-[disabled=true]:focus:outline-none data-[disabled=true]:cursor-default'
     >
       {value
         ? (
           <div className='flex-1 flex gap-1'>
             <img draggable={false} src={value.content || ''} height={24} width={24} alt={value.name} className="object-contain" />
-            <div data-disabled={disabled} className='flex-1 data-[disabled]:cursor-default data-[disabled]:select-text'>
+            <div data-disabled={disabled} className='flex-1 data-[disabled=true]:cursor-default data-[disabled=true]:select-text'>
               {value.name}
             </div>
           </div>
@@ -119,7 +119,7 @@ export const InputFile = ({ value, fileMaxSize, disabled, error, warning, typeOf
         onKeyDown={handleTrashKeyDown}
         tabIndex={!!value || disabled ? -1 : 1}
         onClick={e => { e.stopPropagation(); e.preventDefault(); onChange(undefined); }}
-        className="cursor-pointer text-white self-start rounded-full hover:bg-primary focus:outline outline-primary data-[show=false]:hidden data-[disabled]:hidden"
+        className="cursor-pointer text-white self-start rounded-full hover:bg-primary focus:outline outline-primary data-[show=false]:hidden data-[disabled=true]:hidden"
       >
         <VscTrash size={24} className='p-1' />
       </div>

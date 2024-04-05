@@ -26,7 +26,7 @@ export const InputFullBigString: React.FC<InputFullBigStringProps> = ({ ...props
     <div style={css_prop_item}>
       <textarea
         onChange={e => setValue(e.currentTarget.value)}
-        className="w-full bg-background"
+        className="w-full bg-background disabled:opacity-50"
         disabled={editValueDisabled}
         id={'prop_id_' + id}
         autoComplete="off"
