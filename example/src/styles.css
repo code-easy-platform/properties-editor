@@ -1,4 +1,3 @@
-body,
 [data-theme="light"] {
   --color-primary: #56da8e;
   --color-secondary: #83f1b1;
@@ -13,6 +12,7 @@ body,
   --color-text: #000;
 }
 
+body,
 [data-theme="dark"] {
   --color-primary: #178746;
   --color-secondary: #83f1b1;
