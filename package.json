@@ -1,6 +1,6 @@
 {
   "name": "properties-editor",
-  "version": "1.0.0",
+  "version": "1.0.1",
   "license": "MIT",
   "private": false,
   "type": "module",
@@ -13,7 +13,7 @@
   "scripts": {
     "dev": "cd example && vite --port 3000 --force",
     "build": "tsc && vite build",
-    "postinstall": "cd example && yarn"
+    "postinstall": "[ -d example ] && cd example && yarn || true"
   },
   "dependencies": {
     "@radix-ui/react-dropdown-menu": "^2.0.6",
@@ -24,25 +24,25 @@
   "peerDependencies": {
     "react": "^18.2.0",
     "react-dom": "^18.2.0",
-    "react-icons": "^4.12.0",
+    "react-icons": "^5.0.1",
     "react-observing": "^2.6.16",
-    "uuid": "^8.3.2"
+    "uuid": "^9.0.1"
   },
   "devDependencies": {
-    "@types/node": "^18.0.6",
-    "@types/react": "^18.0.15",
-    "@types/react-dom": "^18.0.6",
-    "@types/react-window": "^1.8.5",
-    "@types/uuid": "^8.3.4",
-    "autoprefixer": "^10.4.14",
-    "postcss": "^8.4.23",
+    "@types/node": "^20.12.5",
+    "@types/react": "^18.2.74",
+    "@types/react-dom": "^18.2.24",
+    "@types/react-window": "^1.8.8",
+    "@types/uuid": "^9.0.8",
+    "autoprefixer": "^10.4.19",
+    "postcss": "^8.4.38",
     "react": "^18.2.0",
-    "react-icons": "^4.12.0",
+    "react-icons": "^5.0.1",
     "react-observing": "^2.6.16",
-    "tailwindcss": "^3.3.2",
-    "typescript": "^5.3.3",
-    "uuid": "^8.3.2",
-    "vite": "^3.0.0",
+    "tailwindcss": "^3.4.3",
+    "typescript": "^5.4.4",
+    "uuid": "^9.0.1",
+    "vite": "^5.2.8",
     "vite-plugin-dts": "^3.8.1"
   }
 }
