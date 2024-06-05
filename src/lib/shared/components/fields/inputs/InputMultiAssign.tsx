@@ -37,7 +37,7 @@ export const InputMultiAssign: React.FC<InputMultiAssignProps> = ({ ...props }) 
       <div className="flex justify-between items-center">
         <div className="flex items-center">
 
-          <span className='text-sm font-light'>{name}</span>
+          <span className='text-sm font-light pr-2'>{name}</span>
           {(information !== "" && information !== undefined) && (
             <Tooltip text={information}>
               <VscInfo size={15} />

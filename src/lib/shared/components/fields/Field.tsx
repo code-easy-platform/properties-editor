@@ -69,6 +69,9 @@ export const Field: React.FC<FieldProps> = ({ field }) => {
     case TypeOfValues.multiExpression:
       return <Inputs.InputMultiExpression {...field} />;
 
+    case TypeOfValues.recursive:
+      return <Inputs.InputRecursive {...field} />;
+
     case TypeOfValues.fieldsTree:
       return <FieldsTree {...field} />;
 

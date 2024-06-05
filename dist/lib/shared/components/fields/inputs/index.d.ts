@@ -13,6 +13,7 @@ export * from './InputStringList';
 export * from './InputBigString';
 export * from './InputSelection';
 export * from './InputMultiTags';
+export * from './InputRecursive';
 export * from './InputViewOnly';
 export * from './InputSwitch';
 export * from './Assign';

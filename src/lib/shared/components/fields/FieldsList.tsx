@@ -42,6 +42,8 @@ export const FieldsList: React.FC<FieldsListProps> = ({ fields }) => {
           />
         );
       })}
+
+      {properties.length === 0 && <span className="font-light italic">Nothing here...</span>}
     </div>
   );
 }

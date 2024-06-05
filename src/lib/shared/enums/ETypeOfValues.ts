@@ -12,6 +12,7 @@ export enum TypeOfValues {
   stringList = 'stringList',
   bigString = 'bigString',
   selection = 'selection',
+  recursive = 'recursive',
   viewOnly = 'viewOnly',
   boolean = 'boolean',
   string = 'string',
